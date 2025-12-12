@@ -151,14 +151,15 @@ function renderItems(items, root) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      const partId = item.part.match(/\d+/)?.[0];
+      const partIdMatch = item.part.match(/\d+/);
+      const partId = partIdMatch ? partIdMatch[0] : null;
       const meta = partId ? PART_META[partId] : null;
 
-      if (meta && meta.origin) {
+      if (meta && meta.origin && meta.origin.length === 2) {
         img.setAttribute("x", -meta.origin[0]);
         img.setAttribute("y", -meta.origin[1]);
       } else {
-        // fallback
+        // Fallback for parts without metadata
         img.setAttribute("x", -item.w / 2);
         img.setAttribute("y", -item.h / 2);
       }
