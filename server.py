@@ -18,7 +18,8 @@ SERVO_MIN = 58
 SERVO_MAX = 100
 
 kit = ServoKit(channels=16)
-app = Flask(__name__, static_folder="static")
+app = Flask(__name__, static_folder="web", static_url_path="")
+
 
 lock = threading.Lock()
 
@@ -152,7 +153,7 @@ def api_switch_auto_calibrate(switch_id):
     result = auto_calibrate_switch(switch_id)
     return jsonify(result)
 
-@app.route("/web/")
+@app.route("/")
 def index():
     return send_from_directory("static", "index.html")
 
