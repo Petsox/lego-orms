@@ -151,19 +151,9 @@ function renderItems(items, root) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      const partIdMatch = item.part.match(/\d+/);
-      const partId = partIdMatch ? partIdMatch[0] : null;
-      const meta = partId ? PART_META[partId] : null;
+      img.setAttribute("x", -item.w / 2);
+      img.setAttribute("y", -item.h / 2);
 
-      if (meta && meta.origin && meta.origin.length === 2) {
-        img.setAttribute("x", -meta.origin[0]);
-        img.setAttribute("y", -meta.origin[1]);
-      } else {
-        // Fallback for parts without metadata
-        img.setAttribute("x", -item.w / 2);
-        img.setAttribute("y", -item.h / 2);
-      }
-      
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
       img.setAttribute("filter", "url(#shadow)");
