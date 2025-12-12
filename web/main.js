@@ -31,16 +31,36 @@ async function loadLayout() {
 // -------------------------------------------------------
 // SWITCH DETECTION (ROBUST)
 // -------------------------------------------------------
-function isSwitchPart(partName) {
-    if (!partName) return false;
-    const n = partName.toUpperCase();
-    return (
-        n.includes("SWITCH") ||
-        n.includes("POINT") ||
-        n.includes("TURNOUT") ||
-        n.includes("SLIP") ||
-        n.includes("CROSSING")
-    );
+
+const SWITCH_PART_IDS = new Set([
+    "2861", // Left switch
+    "2859", // Right switch
+    "7996", // Double crossover / special switch
+]);
+
+function isSwitchPart(item) {
+    if (!item || !item.part) return false;
+
+    const name = item.part.toUpperCase();
+
+    // Keyword-based detection
+    if (
+        name.includes("SWITCH") ||
+        name.includes("POINT") ||
+        name.includes("TURNOUT") ||
+        name.includes("SLIP")
+    ) {
+        return true;
+    }
+
+    // Part-number-based detection (BlueBrick reality)
+    // Extract numeric ID from part name if present
+    const match = name.match(/\b\d{4}\b/);
+    if (match && SWITCH_PART_IDS.has(match[0])) {
+        return true;
+    }
+
+    return false;
 }
 
 // -------------------------------------------------------
@@ -156,7 +176,7 @@ function switchButtonOffset(item) {
 
 function renderSwitches(items, root) {
     items.forEach(item => {
-        if (!isSwitchPart(item.part)) return;
+        if (!isSwitchPart(item)) return;
 
         const { dx, dy } = switchButtonOffset(item);
 
