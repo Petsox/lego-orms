@@ -163,9 +163,7 @@ function renderItems(items, root) {
         img.setAttribute("x", -item.w / 2);
         img.setAttribute("y", -item.h / 2);
       }
-
-      img.setAttribute("x", -meta.origin[0]);
-      img.setAttribute("y", -meta.origin[1]);
+      
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
       img.setAttribute("filter", "url(#shadow)");
