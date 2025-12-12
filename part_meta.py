@@ -1,24 +1,51 @@
 import xml.etree.ElementTree as ET
 from pathlib import Path
+import re
+
 
 def parse_part_xml(xml_path):
-    tree = ET.parse(xml_path)
-    root = tree.getroot()
+    """
+    BlueBrick XML files are NOT strict XML.
+    They often contain multiple top-level elements.
+    This function safely extracts the first valid XML block.
+    """
+    text = Path(xml_path).read_text(encoding="utf-8", errors="ignore")
+
+    # Try to extract the first XML root element
+    # This matches <Something> ... </Something>
+    match = re.search(r"(<[^!?][\s\S]*?</[^>]+>)", text)
+    if not match:
+        return {}
+
+    xml_clean = match.group(1)
+
+    try:
+        root = ET.fromstring(xml_clean)
+    except ET.ParseError:
+        return {}
 
     meta = {}
 
-    # Try common BlueBrick fields
-    anchor_x = root.findtext(".//Anchor/X")
-    anchor_y = root.findtext(".//Anchor/Y")
+    # Try common BlueBrick anchor fields
+    def find_float(path):
+        el = root.find(path)
+        if el is not None and el.text:
+            try:
+                return float(el.text)
+            except ValueError:
+                pass
+        return None
 
-    pivot_x = root.findtext(".//Pivot/X")
-    pivot_y = root.findtext(".//Pivot/Y")
+    ax = find_float(".//Anchor/X")
+    ay = find_float(".//Anchor/Y")
+    px = find_float(".//Pivot/X")
+    py = find_float(".//Pivot/Y")
 
-    if anchor_x and anchor_y:
-        meta["anchor"] = [float(anchor_x), float(anchor_y)]
+    if ax is not None and ay is not None:
+        meta["anchor"] = [ax, ay]
 
-    if pivot_x and pivot_y:
-        meta["pivot"] = [float(pivot_x), float(pivot_y)]
+    if px is not None and py is not None:
+        meta["pivot"] = [px, py]
 
     return meta
 
@@ -29,7 +56,6 @@ def build_part_meta(parts_root="web/parts"):
     for xml in Path(parts_root).rglob("*.xml"):
         part_id = xml.stem  # e.g. "2861"
         data = parse_part_xml(xml)
-
         if data:
             meta[part_id] = data
 
