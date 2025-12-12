@@ -40,21 +40,21 @@ def api_update_switch_config():
     angle0 = int(data.get("angle0", 58))
     angle1 = int(data.get("angle1", 100))
 
-    # Load existing config
+    # Load config
     with open("switch_config.json", "r") as f:
         cfg = json.load(f)
 
-    if "switches" not in cfg:
+    # Normalize structure
+    if "switches" not in cfg or isinstance(cfg["switches"], list):
         cfg["switches"] = {}
 
-    # Update / create entry
     cfg["switches"][sid] = {
         "channel": channel,
         "angle0": angle0,
         "angle1": angle1
     }
 
-    # Save back to disk
+    # Save
     with open("switch_config.json", "w") as f:
         json.dump(cfg, f, indent=2)
 
