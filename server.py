@@ -152,7 +152,7 @@ def api_switch_auto_calibrate(switch_id):
     result = auto_calibrate_switch(switch_id)
     return jsonify(result)
 
-@app.route("/")
+@app.route("/web/")
 def index():
     return send_from_directory("static", "index.html")
 
