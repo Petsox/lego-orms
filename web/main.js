@@ -1,5 +1,5 @@
 async function loadLayout() {
-    const data = await fetch("/api/get_layout").then(r => r.json());
+    const data = await fetch("/api/layout").then(r => r.json());
 
     const svg = document.getElementById("track-svg");
 
