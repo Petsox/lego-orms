@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Thomas Hess (rumpelmuck, scorpy63)</Author>
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/608-1.1117815730.thumb2.jpg</ImageURL>
+	<Description>
+		<de>Kiosk</de>
+		<en>Kiosk</en>
+		<fr>Kiosk</fr>
+	</Description>
+	<OldNameList>
+		<OldName>608.SET</OldName>
+	</OldNameList>
+	<SortingKey>Vintage</SortingKey>
+</part>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>Trixbrix Monster Crossover R104</en>
+	</Description>
+	<SortingKey>TrixBrix - F71</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Monster-Crossover-R104/92</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R104 BASE TRIPLE.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 TRIPLE.8">
+			<position>
+				<x>0</x>
+				<y>-14</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 MIDDLE SECTION.8">
+			<position>
+				<x>8</x>
+				<y>-25.75</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 LEFT.8">
+			<position>
+				<x>14.125</x>
+				<y>-14</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 BASE LEFT.8">
+			<position>
+				<x>14</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 TRACK TERMINATOR.8">
+			<position>
+				<x>17.875</x>
+				<y>-26</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 MIDDLE SECTION.8">
+			<position>
+				<x>8</x>
+				<y>-38.25</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 TRIPLE.8">
+			<position>
+				<x>0</x>
+				<y>-50</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 BASE TRIPLE.8">
+			<position>
+				<x>0</x>
+				<y>-64</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 LEFT.8">
+			<position>
+				<x>-14.125</x>
+				<y>-50</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 BASE LEFT.8">
+			<position>
+				<x>-14.00001</x>
+				<y>-64</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 TRACK TERMINATOR.8">
+			<position>
+				<x>-17.875</x>
+				<y>-38</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 MIDDLE SECTION.8">
+			<position>
+				<x>-8</x>
+				<y>-38.25</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 MIDDLE SECTION.8">
+			<position>
+				<x>-8</x>
+				<y>-25.75</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 RIGHT.8">
+			<position>
+				<x>-14.125</x>
+				<y>-14</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 BASE RIGHT.8">
+			<position>
+				<x>-14</x>
+				<y>0</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 TRACK TERMINATOR.8">
+			<position>
+				<x>-17.875</x>
+				<y>-26</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DETACH 1 RIGHT.8">
+			<position>
+				<x>14.125</x>
+				<y>-50</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 BASE RIGHT.8">
+			<position>
+				<x>14</x>
+				<y>-64</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 TRACK TERMINATOR.8">
+			<position>
+				<x>17.875</x>
+				<y>-38</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">19</nextIndex>
+		<nextIndex from="19">34</nextIndex>
+		<nextIndex from="34">42</nextIndex>
+		<nextIndex from="42">60</nextIndex>
+		<nextIndex from="60">68</nextIndex>
+		<nextIndex from="68">0</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

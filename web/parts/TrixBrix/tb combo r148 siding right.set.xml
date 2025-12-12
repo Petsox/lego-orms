@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R148 with Siding Curves</en>
+		<de>TrixBrix Rechtsweiche R148 mit Parallelkurven</de>
+	</Description>
+	<SortingKey>TrixBrix - H22</SortingKey>
+
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R148 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.875</x>
+				<y>-31.625</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.875</x>
+				<y>-47.625</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.875</x>
+				<y>-63.625</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>11.74989</x>
+				<y>-64.37497</y>
+			</position>
+			<angle>450</angle>
+		</SubPart>
+		<SubPart id="TB CT R148SC.8">
+			<position>
+				<x>6.729507</x>
+				<y>-33.12701</y>
+			</position>
+			<angle>461.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>10.32851</x>
+				<y>-49.94012</y>
+			</position>
+			<angle>455.625</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">9</nextIndex>
+		<nextIndex from="9">10</nextIndex>
+		<nextIndex from="10">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

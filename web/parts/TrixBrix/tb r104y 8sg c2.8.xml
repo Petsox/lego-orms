@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wye Switch R104 8 stud gap curve 2 (R90 / 8.41°)</en>
+		<de>TrixBrix Y-Weiche R104 8 Noppen Gleisabstand Kurve 2 (R90 / 8,41°)</de>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/8-Stud-Gap-Wye-Switch-R104/698</ImageURL>
+	<SortingKey>TrixBrix - E17</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-6.375</x>
+				<y>0.5625</y>
+			</position>
+			<angle>171.588</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>6.796971235</x>
+				<y>-0.406175918</y>
+			</position>
+			<angle>0</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Switch R48 turnout right</en>
+	</Description>
+	<SortingKey>TrixBrix - Z46</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB NG SWITCH R48 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>720</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48 TC.8">
+			<position>
+				<x>6.123856</x>
+				<y>-8.297493</y>
+			</position>
+			<angle>933.75</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48.8">
+			<position>
+				<x>10.66861</x>
+				<y>-14.58165</y>
+			</position>
+			<angle>1023.75</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48.8">
+			<position>
+				<x>17.34132</x>
+				<y>-21.16731</y>
+			</position>
+			<angle>1395</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48.8">
+			<position>
+				<x>25.17056</x>
+				<y>-26.32465</y>
+			</position>
+			<angle>1046.25</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48.8">
+			<position>
+				<x>33.8555</x>
+				<y>-29.85546</y>
+			</position>
+			<angle>1417.5</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R48.8">
+			<position>
+				<x>43.06248</x>
+				<y>-31.62408</y>
+			</position>
+			<angle>1428.75</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">2</nextIndex>
+		<nextIndex from="2">15</nextIndex>
+		<nextIndex from="15">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

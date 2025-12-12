@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch Motor</en>
+		<de>TrixBrix Weichenantrieb links</de>
+		<fr>TrixBrix Moteur d'aiguillage gauche</fr>
+		<nl>TrixBrix Wissel Motor Links</nl>
+	</Description>
+	<SortingKey>TrixBrix - YA01</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-1</x>
+				<y>-1</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+</part>

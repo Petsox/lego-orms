@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Thomas Hess (rumpelmuck, scorpy63)</Author>
+	<ImageURL>http://img.lugnet.com/display.cgi?set/universal/lego373.jpg</ImageURL>
+	<Description>
+		<de>Offshore Rig mit Öltanker</de>
+		<en>Offshore Rig with Fuel Tanker</en>
+		<fr>Offshore Rig avec carburants pétroliers</fr>
+	</Description>
+	<OldNameList>
+		<OldName>373.SET</OldName>
+	</OldNameList>
+	<SortingKey>Vintage</SortingKey>
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>8.75</left>
+		<right>9</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+</part>

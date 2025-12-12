@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Pass-Through Crossing R56 left</en>
+		<de>TrixBrix Durchgangskreuzung R56 links</de>
+		<fr>TrixBrix Croisement de passage R56 gauche</fr>
+		<nl>TrixBrix Doorsteek Kruising R56 Links</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Left-Pass-Through-Crossing-R56/299</ImageURL>
+	<SortingKey>TrixBrix - X21</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-8.331296225</x>
+				<y>-7.653402952</y>
+			</position>
+			<angle>-144.3907918</angle>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.9375</x>
+				<y>-10.125</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>6.609669812</x>
+				<y>8.290094341</y>
+			</position>
+			<angle>58.1092082</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.9375</x>
+				<y>9.875</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>107</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>107</x>
+			<y>44</y>
+		</point>
+		<point>
+			<x>167</x>
+			<y>138</y>
+		</point>
+		<point>
+			<x>117</x>
+			<y>172</y>
+		</point>
+		<point>
+			<x>42</x>
+			<y>172</y>
+		</point>
+		<point>
+			<x>42</x>
+			<y>92</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>49</y>
+		</point>
+		<point>
+			<x>32</x>
+			<y>0</y>
+		</point>
+	</hull>
+</part>

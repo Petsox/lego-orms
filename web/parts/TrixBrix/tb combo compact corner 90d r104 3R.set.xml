@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Compact Corner R104 90° - 3R</en>
+		<de>TrixBrix Kompakte Ecke R104 90° - 3R</de>
+	</Description>
+	<SortingKey>TrixBrix - E37</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R104 CURVED 90D LEFT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB CT R104 HALF.8">
+			<position>
+				<x>-6.401611</x>
+				<y>-36.14989</y>
+			</position>
+			<angle>416.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-84.75009</x>
+				<y>-69.87474</y>
+			</position>
+			<angle>1080</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-64.85019</x>
+				<y>-65.99109</y>
+			</position>
+			<angle>731.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-46.12805</x>
+				<y>-58.29378</y>
+			</position>
+			<angle>742.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-29.30328</x>
+				<y>-47.07843</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-15.02243</x>
+				<y>-32.7761</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-13.30328</x>
+				<y>-63.07843</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>0.9779663</x>
+				<y>-48.77624</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-30.12793</x>
+				<y>-90.29378</y>
+			</position>
+			<angle>1102.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-29.30328</x>
+				<y>-63.07843</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-15.02243</x>
+				<y>-48.77609</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 CURVED 90D RIGHT.8">
+			<position>
+				<x>-62.25009</x>
+				<y>-78.18741</y>
+			</position>
+			<angle>810</angle>
+		</SubPart>
+		<SubPart id="TB CT R104 HALF.8">
+			<position>
+				<x>-26.09479</x>
+				<y>-71.84513</y>
+			</position>
+			<angle>748.125</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-13.30347</x>
+				<y>-79.07823</y>
+			</position>
+			<angle>1113.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>0.9779663</x>
+				<y>-64.77623</y>
+			</position>
+			<angle>1125</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>24.5007</x>
+				<y>25.24952</y>
+			</position>
+			<angle>810</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 CURVED 90D LEFT.8">
+			<position>
+				<x>16.0004</x>
+				<y>-16.00014</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB CT R104 HALF.8">
+			<position>
+				<x>9.598785</x>
+				<y>-52.15003</y>
+			</position>
+			<angle>416.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-68.75034</x>
+				<y>-101.874</y>
+			</position>
+			<angle>1440</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-48.85004</x>
+				<y>-97.9912</y>
+			</position>
+			<angle>1451.25</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-87.50034</x>
+				<y>-102.749</y>
+			</position>
+			<angle>1440</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">6</nextIndex>
+		<nextIndex from="6">26</nextIndex>
+		<nextIndex from="26">37</nextIndex>
+		<nextIndex from="37">48</nextIndex>
+		<nextIndex from="48">0</nextIndex>
+		<nextIndex from="3">29</nextIndex>
+		<nextIndex from="29">41</nextIndex>
+		<nextIndex from="41">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

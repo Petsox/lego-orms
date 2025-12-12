@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Curved Cross Track R72</en>
+		<de>TrixBrix Kurvenkreuzung R72</de>
+		<fr>TrixBrix Croisement de virage R72</fr>
+		<nl>TrixBrix Kruising met bocht R72</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Curved-Cross-Track-R72/43</ImageURL>
+	<SortingKey>TrixBrix - X64</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-7.057234104</x>
+				<y>0.34669968</y>
+			</position>
+			<angle>174.375</angle>
+			<angleToPrev>84.375</angleToPrev>
+			<angleToNext>95.625</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>95.625</angleToPrev>
+			<angleToNext>95.625</angleToNext>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>7.057234104</x>
+				<y>0.34669968</y>
+			</position>
+			<angle>5.625</angle>
+			<angleToPrev>95.625</angleToPrev>
+			<angleToNext>84.375</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>84.375</angleToPrev>
+			<angleToNext>84.375</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>30</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>94</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>87</x>
+			<y>44</y>
+		</point>
+		<point>
+			<x>125</x>
+			<y>38</y>
+		</point>
+		<point>
+			<x>122</x>
+			<y>102</y>
+		</point>
+		<point>
+			<x>87</x>
+			<y>95</y>
+		</point>
+		<point>
+			<x>94</x>
+			<y>137</y>
+		</point>
+		<point>
+			<x>30</x>
+			<y>137</y>
+		</point>
+		<point>
+			<x>37</x>
+			<y>95</y>
+		</point>
+		<point>
+			<x>3</x>
+			<y>103</y>
+		</point>
+		<point>
+			<x>0</x>
+			<y>38</y>
+		</point>
+		<point>
+			<x>37</x>
+			<y>44</y>
+		</point>
+	</hull>
+</part>

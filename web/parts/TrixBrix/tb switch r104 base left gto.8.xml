@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch R104 Base / ground throw outer side</en>
+		<de>TrixBrix Linksweiche R104 Basis / Stellwerk außen</de>
+		<fr>TrixBrix Aiguillage gauche R104 base / levier extérieur</fr>
+		<nl>TrixBrix Wissel base R104 Links met schakelaar aan buitenkant</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Left-Switch-R104-Base-with-the-ground-throw-on-the-outer-side/95</ImageURL>
+	<SortingKey>TrixBrix - F23</SortingKey>
+	
+	<SnapMargin>
+		<left>1.25</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-1.375</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>171.0</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_left_turn</type>
+			<position>
+				<x>-2.375</x>
+				<y>-8</y>
+			</position>
+			<angle>-99</angle>
+			<angleToPrev>171.0</angleToPrev>
+			<angleToNext>9</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_left_straight</type>
+			<position>
+				<x>-1.375</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>9</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>5.625</x>
+				<y>3.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-3</x>
+			<y>-1</y>
+		</point>
+		<point>
+			<x>9</x>
+			<y>136</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>136</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>108</y>
+		</point>
+		<point>
+			<x>106</x>
+			<y>108</y>
+		</point>
+		<point>
+			<x>106</x>
+			<y>83</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>83</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>-1</y>
+		</point>
+	</hull>
+</part>

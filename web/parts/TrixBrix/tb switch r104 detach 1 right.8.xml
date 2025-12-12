@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R104 Detach 1</en>
+		<de>TrixBrix Rechtsweiche R104 Herzstück</de>
+		<fr>TrixBrix Aiguillage droite R104 partie croisement</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F10</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-1.875</x>
+				<y>-18</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>15.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_right</type>
+			<position>
+				<x>2.125</x>
+				<y>-6</y>
+			</position>
+			<angle>-74.25</angle>
+			<angleToPrev>15.75</angleToPrev>
+			<angleToNext>173.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_right_turn</type>
+			<position>
+				<x>-0.875</x>
+				<y>6</y>
+			</position>
+			<angle>99</angle>
+			<angleToPrev>173.5</angleToPrev>
+			<angleToNext>-9</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_right_straight</type>
+			<position>
+				<x>-1.875</x>
+				<y>6</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>-9</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

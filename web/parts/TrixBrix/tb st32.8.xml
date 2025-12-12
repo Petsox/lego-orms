@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Double Straight Track</en>
+		<de>TrixBrix Doppelgerade</de>
+		<fr>TrixBrix Voie droite double</fr>
+		<nl>TrixBrix Rechte dubbel rails</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Double-Straight-Track-Set-10-pcs/288</ImageURL>
+	<SortingKey>TrixBrix - B00</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-16</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>16</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

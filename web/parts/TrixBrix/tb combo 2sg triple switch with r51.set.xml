@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix 2 Stud Gap Triple Switch with R51 curve</en>
+		<de>TrixBrix Drillingsweiche (2 Noppen Gleisabstand) mit R51 Kurve</de>
+		<nl>TrixBrix Drieweg Wissel (2 noppen tussenruimte) med bocht R51</nl>
+	</Description>
+	<SortingKey>TrixBrix - Y26</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB 2 STUD GAP TRIPLE SWITCH.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R51SC.8">
+			<position>
+				<x>-9.714203</x>
+				<y>-20.01363</y>
+			</position>
+			<angle>170.6425</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>0</x>
+				<y>-16</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB CT R51SC.8">
+			<position>
+				<x>9.6875</x>
+				<y>-19.6875</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">7</nextIndex>
+		<nextIndex from="7">9</nextIndex>
+		<nextIndex from="9">10</nextIndex>
+		<nextIndex from="10">0</nextIndex>
+		<nextIndex from="4">5</nextIndex>
+		<nextIndex from="5">4</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

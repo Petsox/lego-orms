@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>L@go</Author>
+	<Description>
+		<en>Family Home - Option 2</en>
+		<fr>Maison de famille - Option 2</fr>
+	</Description>
+	<OldNameList>
+	    <OldName>6754.set_option_2</OldName>
+	</OldNameList>
+	<SortingKey>Creator</SortingKey>
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/6754-1.1249008242.thumb2.jpg</ImageURL>
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+</part>

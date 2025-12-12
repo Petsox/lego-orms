@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch R104 Base</en>
+		<de>TrixBrix Linksweiche R104 Basis</de>
+		<fr>TrixBrix Aiguillage gauche R104 base</fr>
+		<nl>TrixBrix Wissel base R104 Links</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F22</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>2</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>171.0</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_left_turn</type>
+			<position>
+				<x>1</x>
+				<y>-8</y>
+			</position>
+			<angle>-99</angle>
+			<angleToPrev>171.0</angleToPrev>
+			<angleToNext>9</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_left_straight</type>
+			<position>
+				<x>2</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>9</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-5</x>
+				<y>3.5</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+	</ConnexionList>
+</part>

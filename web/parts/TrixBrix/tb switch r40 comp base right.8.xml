@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R40 Base</en>
+		<de>TrixBrix Rechtsweiche R40 Basis</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - D50A</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<!-- peak -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-2</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+
+		<!-- straight end -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_straight</type>
+			<position>
+				<x>-2</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+
+		<!-- turn end -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_turn</type>
+			<position>
+				<x>1.0448187</x>
+				<y>-7.307337295</y>
+			</position>
+			<angle>-67.5</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+
+		<!-- switch motor -->
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>5</x>
+				<y>4.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+</part>

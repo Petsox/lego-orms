@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Railyard Switch R40 left</en>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - D41</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<!-- peak -->
+			<type>1</type>
+			<position>
+				<x>1</x>
+				<y>14.5</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>146.25</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<!-- turn end -->
+			<type>1</type>
+			<position>
+				<x>-5.741215508</x>
+				<y>-7.722809321</y>
+			</position>
+			<angle>-123.75</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>33.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<!-- straight end -->
+			<type>1</type>
+			<position>
+				<x>0.969828204</x>
+				<y>-14.34439442</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>33.75</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>8</x>
+				<y>11</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>47</x>
+			<y>-1</y>
+		</point>
+		<point>
+			<x>113</x>
+			<y>-1</y>
+		</point>
+		<point>
+			<x>113</x>
+			<y>194</y>
+		</point>
+		<point>
+			<x>145</x>
+			<y>194</y>
+		</point>
+		<point>
+			<x>145</x>
+			<y>219</y>
+		</point>
+		<point>
+			<x>113</x>
+			<y>240</y>
+		</point>
+		<point>
+			<x>47</x>
+			<y>240</y>
+		</point>
+		<point>
+			<x>33</x>
+			<y>151</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>70</y>
+		</point>
+		<point>
+			<x>47</x>
+			<y>36</y>
+		</point>
+	</hull>
+</part>

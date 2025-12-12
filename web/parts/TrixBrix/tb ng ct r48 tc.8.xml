@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Switch R48 Turnout Curve 6.7°</en>
+		<de>TrixBrix Schmalspur Weiche R48 Turnout Curve 6.7°</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - Z43</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<!-- bottom -->
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0.15</x>
+				<y>2.75</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<!-- top -->
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-0.181027292</x>
+				<y>-2.877525299</y>
+			</position>
+			<angle>-96.73284812</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

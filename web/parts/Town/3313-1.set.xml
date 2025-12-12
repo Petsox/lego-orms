@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Alexander McKenna</Author>
+	<Description>
+		<en>SHELL Promotional Set: Soccer - Light Poles</en>
+		<fr>Boite promotionnelle SHELL : Football - Pilliers d'éclairage</fr>
+	</Description>
+	<OldNameList>
+		<OldName>3313.SET</OldName>
+	</OldNameList>
+	<SortingKey>City</SortingKey>
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/3313-1.1122331797.thumb2.jpg</ImageURL>
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+</part>

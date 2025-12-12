@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Pass-Through Crossing R72 Type A right</en>
+		<de>TrixBrix Durchgangskreuzung R72 Typ A rechts</de>
+		<fr>TrixBrix Croisement de passage R72 type A droite</fr>
+		<nl>TrixBrix Doorsteek Kruising R72 Typ A Rechts</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Right-Pass-Through-Crossing-R72/376</ImageURL>
+	<SortingKey>TrixBrix - X30a</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.9375</x>
+				<y>-10.9375</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>9.38618354</x>
+				<y>-10.59425264</y>
+			</position>
+			<angle>-39.375</angle>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.9375</x>
+				<y>13.0625</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-8.435831033</x>
+				<y>11.12193495</y>
+			</position>
+			<angle>118.125</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+	
+	<hull>
+		<point>
+			<x>-4</x>
+			<y>182</y>
+		</point>
+		<point>
+			<x>55</x>
+			<y>86</y>
+		</point>
+		<point>
+			<x>55</x>
+			<y>17</y>
+		</point>
+		<point>
+			<x>126</x>
+			<y>17</y>
+		</point>
+		<point>
+			<x>150</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>194</x>
+			<y>46</y>
+		</point>
+		<point>
+			<x>120</x>
+			<y>125</y>
+		</point>
+		<point>
+			<x>120</x>
+			<y>218</y>
+		</point>
+		<point>
+			<x>54</x>
+			<y>218</y>
+		</point>
+	</hull>
+</part>

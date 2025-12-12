@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Double Turnout R104-R120 right</en>
+		<de>TrixBrix Doppelabzweig R104-R120 rechts</de>
+	</Description>
+	<SortingKey>TrixBrix - X56B</SortingKey>
+	<CanUngroup>true</CanUngroup>
+
+	<SubPartList>
+		<SubPart id="TB SWITCH R120 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 THIRD RIGHT.8">
+			<position>
+				<x>4.31488</x>
+				<y>-22.44856</y>
+			</position>
+			<angle>18.75</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 RIGHT.8">
+			<position>
+				<x>16.375</x>
+				<y>-0.625</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB PASS-THOUGH CROSSING R120 RIGHT.8">
+			<position>
+				<x>13.5625</x>
+				<y>-40.0625</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>40.7457</x>
+				<y>-72.66353</y>
+			</position>
+			<angle>315</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 SIXTH.8">
+			<position>
+				<x>22.64215</x>
+				<y>-54.71484</y>
+			</position>
+			<angle>37.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>25.10205</x>
+				<y>-29.76042</y>
+			</position>
+			<angle>292.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>36.3175</x>
+				<y>-46.58517</y>
+			</position>
+			<angle>303.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>50.53644</x>
+				<y>-60.66502</y>
+			</position>
+			<angle>315</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-36.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-52.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-68.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 HALF.8">
+			<position>
+				<x>27.78613</x>
+				<y>-60.58684</y>
+			</position>
+			<angle>309.375</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>60.15735</x>
+				<y>-85.59151</y>
+			</position>
+			<angle>326.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>67.37616</x>
+				<y>-71.8532</y>
+			</position>
+			<angle>326.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>81.73694</x>
+				<y>-94.4689</y>
+			</position>
+			<angle>337.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>86.10608</x>
+				<y>-79.51862</y>
+			</position>
+			<angle>337.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>104.6544</x>
+				<y>-98.95461</y>
+			</position>
+			<angle>348.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>106.1948</x>
+				<y>-83.36688</y>
+			</position>
+			<angle>348.75</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-24.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>12.5625</x>
+				<y>-68.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-84.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>12.5625</x>
+				<y>-84.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">7</nextIndex>
+		<nextIndex from="7">41</nextIndex>
+		<nextIndex from="41">43</nextIndex>
+		<nextIndex from="43">49</nextIndex>
+		<nextIndex from="49">51</nextIndex>
+		<nextIndex from="51">0</nextIndex>
+		<nextIndex from="3">9</nextIndex>
+		<nextIndex from="9">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

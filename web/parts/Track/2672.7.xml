@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Alban Nanty</Author>
+	<Description>
+		<en>Monorail Track Curve quarter</en>
+		<fr>Monorail quart de cercle</fr>
+	</Description>
+	<ImageURL>http://media.peeron.com/pics/inv/custpics/2672.1092233091.jpg</ImageURL>
+	<SortingKey>Mono - C</SortingKey>
+	
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<!-- list of connexion point (assuming that this part can connect to another one), the position of the connexion is in stud coord and relative to the origine defined above) -->
+	<ConnexionList>
+		<!-- the center of this part in stud is x = 240 pix / 8 pixperstud / 2 = 15    and    y = 240 / 8 / 2 = 15 -->
+		<connexion>
+			<!-- type of connexion (0=none, 1=rail, 2=road) -->
+			<type>mono</type>
+			<position>
+				<x>-15</x>
+				<y>-13</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>270</angleToPrev> <!-- how much angle between this connection and the prev one in this circular list -->
+			<angleToNext>90</angleToNext> <!-- how much angle between this connection and the next one in this circular list -->
+			<nextConnexionPreference>1</nextConnexionPreference> <!-- index (0-based) in that list for connecting the next part -->
+		</connexion>
+		<connexion>
+			<!-- type of connexion (0=none, 1=rail, 2=road) -->
+			<type>mono</type>
+			<position>
+				<x>13</x>
+				<y>15</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>90</angleToPrev> <!-- how much angle between this connection and the prev one in this circular list -->
+			<angleToNext>270</angleToNext> <!-- how much angle between this connection and the next one in this circular list -->
+			<nextConnexionPreference>0</nextConnexionPreference> <!-- index (0-based) in that list for connecting the next part -->
+		</connexion>
+	</ConnexionList>
+	<hull>
+		<point>
+			<x>0</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>56</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>118</x>
+			<y>23</y>
+		</point>
+		<point>
+			<x>173</x>
+			<y>65</y>
+		</point>
+		<point>
+			<x>223</x>
+			<y>134</y>
+		</point>
+		<point>
+			<x>239</x>
+			<y>188</y>
+		</point>
+		<point>
+			<x>239</x>
+			<y>239</y>
+		</point>
+		<point>
+			<x>207</x>
+			<y>239</y>
+		</point>
+		<point>
+			<x>195</x>
+			<y>161</y>
+		</point>
+		<point>
+			<x>149</x>
+			<y>92</y>
+		</point>
+		<point>
+			<x>86</x>
+			<y>47</y>
+		</point>		
+		<point>
+			<x>0</x>
+			<y>32</y>
+		</point>
+	</hull>
+
+	<!-- Track Designer remaping data -->
+	<TrackDesigner>
+		<ID>202672</ID> <!-- ID of this part in Track Designer -->
+		<Flag>0</Flag> <!-- 0=no flag, 1=piece is an attachment, 2=piece is used to support elevation, 3=piece is an attachment and is used to support elevation -->
+		<HasSeveralGeometries>true</HasSeveralGeometries>
+		<TDBitmapList>
+			<TDBitmap>
+				<BBConnexionPointIndex>0</BBConnexionPointIndex>
+				<Type>2</Type> <!-- The type list is too long, please refer to the help file -->
+				<AngleBetweenTDandBB>0</AngleBetweenTDandBB>
+			</TDBitmap>
+			<TDBitmap>
+				<BBConnexionPointIndex>1</BBConnexionPointIndex>
+				<Type>1</Type> <!-- The type list is too long, please refer to the help file -->
+				<AngleBetweenTDandBB>90</AngleBetweenTDandBB>
+			</TDBitmap>
+		</TDBitmapList>
+	</TrackDesigner>
+
+	<!-- LDraw remaping data -->
+	<LDraw>
+		<Translation>
+			<x>100</x>
+			<y>100</y>
+		</Translation>
+		<PreferredHeight>-265</PreferredHeight>
+	</LDraw>
+
+	<!-- Remap info for 4DBrix format -->
+	<FourDBrix>
+		<PartType>SEGMENT</PartType>
+		<PartName>TS_MONORAILCURVE</PartName>
+	</FourDBrix>
+</part>

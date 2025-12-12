@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Compact Corner R104 90° - 1R</en>
+		<de>TrixBrix Kompakte Ecke R104 90° - 1R</de>
+	</Description>
+	<SortingKey>TrixBrix - E33</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R104 CURVED 90D LEFT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB CT R104 HALF.8">
+			<position>
+				<x>-6.401604</x>
+				<y>-36.14989</y>
+			</position>
+			<angle>416.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-84.7501</x>
+				<y>-69.87474</y>
+			</position>
+			<angle>1080</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-64.8502</x>
+				<y>-65.99109</y>
+			</position>
+			<angle>731.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-46.12804</x>
+				<y>-58.29379</y>
+			</position>
+			<angle>742.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-29.30332</x>
+				<y>-47.07843</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-15.02241</x>
+				<y>-32.7761</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-84.7501</x>
+				<y>-85.87438</y>
+			</position>
+			<angle>720</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-64.85016</x>
+				<y>-81.99107</y>
+			</position>
+			<angle>731.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-46.12807</x>
+				<y>-74.29376</y>
+			</position>
+			<angle>742.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-29.3033</x>
+				<y>-63.07845</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-15.02242</x>
+				<y>-48.77609</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">6</nextIndex>
+		<nextIndex from="6">16</nextIndex>
+		<nextIndex from="16">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

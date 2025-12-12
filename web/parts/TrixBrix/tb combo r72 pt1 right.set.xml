@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Crossover Turnout R72 right</en>
+		<de>TrixBrix Kreuzende Abzweigung R72 rechts</de>
+	</Description>
+	<SortingKey>TrixBrix - X32a</SortingKey>
+	<CanUngroup>true</CanUngroup>
+
+	<SubPartList>
+		<SubPart id="TB SWITCH R72 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R72 HALF.8">
+			<position>
+				<x>25.13019</x>
+				<y>-40.004</y>
+			</position>
+			<angle>320.625</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>46.86441</x>
+				<y>-51.05212</y>
+			</position>
+			<angle>-22.50003</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>60.74911</x>
+				<y>-53.67981</y>
+			</position>
+			<angle>-11.25002</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>-3.999969</x>
+				<y>-18.25</y>
+			</position>
+			<angle>-90.00002</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.999969</x>
+				<y>-30.25</y>
+			</position>
+			<angle>-90.00002</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>33.90659</x>
+				<y>-45.78033</y>
+			</position>
+			<angle>-33.75001</angle>
+		</SubPart>
+		<SubPart id="TB ST32.8">
+			<position>
+				<x>12</x>
+				<y>1.75</y>
+			</position>
+			<angle>-90.00002</angle>
+		</SubPart>
+		<SubPart id="TB PASS-THOUGH CROSSING R72A RIGHT.8">
+			<position>
+				<x>12.9375</x>
+				<y>-27.3125</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">9</nextIndex>
+		<nextIndex from="9">13</nextIndex>
+		<nextIndex from="13">16</nextIndex>
+		<nextIndex from="16">18</nextIndex>
+		<nextIndex from="18">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

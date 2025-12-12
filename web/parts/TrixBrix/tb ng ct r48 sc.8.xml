@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Switch R48 Siding Curve R65 7.9°</en>
+		<de>TrixBrix Schmalspur Weiche R48 Siding Curve R65 7.9°</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - Z42</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<!-- bottom -->
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-0.3</x>
+				<y>4.5</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<!-- top -->
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0.313797727</x>
+				<y>-4.407764178</y>
+			</position>
+			<angle>-82.11642406</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

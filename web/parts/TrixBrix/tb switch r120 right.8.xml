@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R120</en>
+		<de>TrixBrix Rechtsweiche R120</de>
+		<fr>TrixBrix Aiguillage droite R120</fr>
+		<nl>TrixBrix Wissel R120 Rechts</nl>
+	</Description>
+	<SortingKey>TrixBrix - G05</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+        <!-- peak -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-3.1875</x>
+				<y>20</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- turn end -->
+		<connexion>
+			<type>trixbrix_sw_r120_right</type>
+			<position>
+				<x>3.180884461</x>
+				<y>-18.57273584</y>
+			</position>
+			<angle>-71.25</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- straight end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-3.1875</x>
+				<y>-20</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- switch motor -->
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>3.8125</x>
+				<y>15.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>115</x>
+			<y>21</y>
+		</point>
+		<point>
+			<x>54</x>
+			<y>-1</y>
+		</point>
+		<point>
+			<x>-1</x>
+			<y>-1</y>
+		</point>
+		<point>
+			<x>-1</x>
+			<y>329</y>
+		</point>
+		<point>
+			<x>62</x>
+			<y>329</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>300</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>275</y>
+		</point>
+		<point>
+			<x>65</x>
+			<y>275</y>
+		</point>
+		<point>
+			<x>82</x>
+			<y>143</y>
+		</point>
+	</hull>
+</part>

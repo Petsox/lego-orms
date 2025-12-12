@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R148 / ground throw outer side</en>
+		<de>TrixBrix Weiche R148 rechts / Stellwerk außen</de>
+		<fr>TrixBrix Aiguillage R148 droite / levier extérieur</fr>
+		<nl>TrixBrix Wissel R148 Rechts met schakelaar aan buitenkant</nl>
+	</Description>
+	<SortingKey>TrixBrix - H04</SortingKey>
+	
+	<SnapMargin>
+		<left>1.3125</left>
+		<right>0.5625</right>
+		<top>3.75</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>24.375</x>
+				<y>1.875</y>
+			</position>
+			<angle>0</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-23.625</x>
+				<y>1.875</y>
+			</position>
+			<angle>180</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-23.625</x>
+				<y>-6.125</y>
+			</position>
+			<angle>198.9246444</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>21</x>
+				<y>8.875</y>
+			</position>
+			<angle>90</angle>
+		</connexion>
+	</ConnexionList>
+	<hull>
+		<point>
+			<x>400</x>
+			<y>126</y>
+		</point>
+		<point>
+			<x>400</x>
+			<y>61</y>
+		</point>
+		<point>
+			<x>188</x>
+			<y>41</y>
+		</point>
+		<point>
+			<x>20</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>60</y>
+		</point>
+		<point>
+			<x>6</x>
+			<y>64</y>
+		</point>
+		<point>
+			<x>6</x>
+			<y>126</y>
+		</point>
+		<point>
+			<x>354</x>
+			<y>126</y>
+		</point>
+		<point>
+			<x>354</x>
+			<y>159</y>
+		</point>
+		<point>
+			<x>379</x>
+			<y>159</y>
+		</point>
+		<point>
+			<x>379</x>
+			<y>126</y>
+		</point>
+	</hull>
+</part>

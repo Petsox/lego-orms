@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Triple Switch R104 Base</en>
+		<de>TrixBrix Drillings-Weiche R104 Basis</de>
+		<fr>TrixBrix Aiguillage triple R104 base</fr>
+		<nl>TrixBrix Drieweg Wissel base R104</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F21</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>-157.5</angleToPrev>
+			<angleToNext>157.5</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_left</type>
+			<position>
+				<x>-1</x>
+				<y>-8</y>
+			</position>
+			<angle>-99</angle>
+			<angleToPrev>157.5</angleToPrev>
+			<angleToNext>22.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_middle</type>
+			<position>
+				<x>0</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>22.5</angleToPrev>
+			<angleToNext>22.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_right</type>
+			<position>
+				<x>1</x>
+				<y>-8</y>
+			</position>
+			<angle>-81</angle>
+			<angleToPrev>22.5</angleToPrev>
+			<angleToNext>157.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>7</x>
+				<y>3.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-7</x>
+				<y>3.5</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+	</ConnexionList>
+</part>

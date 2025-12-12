@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Pass-Through Connector R40 for 45° Crossing</en>
+		<de>TrixBrix Durchgangsadapter R40 für 45° Kreuzung</de>
+		<fr>TrixBrix Adaptateur de passage R40 pour croisement 45°</fr>
+		<nl>TrixBrix Doorsteek adapter R40</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Pass-Through-Connector-R40%2C-2-pieces/101</ImageURL>
+	<SortingKey>TrixBrix - X12</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-1.547998054</x>
+				<y>-1.316404242</y>
+			</position>
+			<angle>-135</angle>
+			<angleToPrev>168.75</angleToPrev>
+			<angleToNext>191.25</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>1.125</x>
+				<y>1.875</y>
+			</position>
+			<angle>56.25</angle>
+			<angleToPrev>191.25</angleToPrev>
+			<angleToNext>168.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>42</x>
+			<y>-6</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>32</y>
+		</point>
+		<point>
+			<x>18</x>
+			<y>69</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>42</y>
+		</point>
+	</hull>
+</part>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Curved Track R148 / 7.7° Siding Curve</en>
+		<de>TrixBrix Kurve R148 / 7.7° Parallelgleis-Kurve</de>
+		<fr>TrixBrix Virage R148 / 7.7° Virage parallel</fr>
+		<nl>TrixBrix Bocht R148 / 7.7° Siding Curve</nl>
+	</Description>
+	<SortingKey>TrixBrix - H11</SortingKey>
+
+	<SnapMargin>
+		<left>0.0</left>
+		<right>0.0</right>
+		<top>0.0</top>
+		<bottom>0.0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-9.9375</x>
+				<y>-0.625</y>
+			</position>
+			<angle>180</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>9.827548392</x>
+				<y>0.700725289</y>
+			</position>
+			<angle>7.674644422</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

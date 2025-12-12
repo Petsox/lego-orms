@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Double Slip R104 Middle Section</en>
+		<de>TrixBrix Doppelte Kreuzungsweiche R104 Mittelsektion</de>
+		<fr>TrixBrix Interrupteur d'aiguillage double R104 partie centre</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Left-Double-Slip-Switch-R104/127</ImageURL>
+	<SortingKey>TrixBrix - F60</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_sw_r104_dss</type>
+			<position>
+				<x>0</x>
+				<y>-4</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>-180</angleToPrev>
+			<angleToNext>180</angleToNext>		
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_dss</type>
+			<position>
+				<x>0</x>
+				<y>4</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>-180</angleToPrev>
+			<angleToNext>180</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

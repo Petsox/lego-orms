@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Dual Gauge Crossing 45° left</en>
+		<de>TrixBrix Doppelspur Kreuzung 45° links</de>
+		<nl>TrixBrix Dubbelspoor kruising 45 graden links</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Dual-Gauge-Left-Crossing-45deg./688</ImageURL>
+	<SortingKey>TrixBrix - Z83</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>8</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-8</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>5.171572875</x>
+				<y>-5.171572875</y>
+			</position>
+			<angle>-45</angle>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-5.171572875</x>
+				<y>5.171572875</y>
+			</position>
+			<angle>135</angle>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>0</x>
+			<y>25</y>
+		</point>
+		<point>
+			<x>66</x>
+			<y>25</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>-5</y>
+		</point>
+		<point>
+			<x>136</x>
+			<y>25</y>
+		</point>
+		<point>
+			<x>136</x>
+			<y>90</y>
+		</point>
+		<point>
+			<x>69</x>
+			<y>90</y>
+		</point>
+		<point>
+			<x>39</x>
+			<y>120</y>
+		</point>
+		<point>
+			<x>0</x>
+			<y>90</y>
+		</point>
+	</hull>
+</part>

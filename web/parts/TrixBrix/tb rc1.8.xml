@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Railyard Connector RC1 1.8/16</en>
+		<de>TrixBrix Railyard Connector RC1 1.8/16</de>
+		<fr>TrixBrix Connecteur Triage RC1 1.8/16</fr>
+		<nl>TrixBrix RC1 Rangeerterrein Connector 1.8/16</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/RC1-Rail-Yard-Connector/111</ImageURL>
+	<SortingKey>TrixBrix - Y51</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.905007438</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0.905007438</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

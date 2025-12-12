@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Buffer</en>
+		<de>TrixBrix Prellbock</de>
+		<fr>TrixBrix Butoir</fr>
+		<nl>TrixBrix Stootblok</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Buffer-Stop/61</ImageURL>
+	<SortingKey>TrixBrix - Y01</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>-1</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-1.25</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+	</ConnexionList>
+</part>

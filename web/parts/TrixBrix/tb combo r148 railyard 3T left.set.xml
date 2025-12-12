@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Railyard R148 3 tracks left</en>
+		<de>TrixBrix Railyard R148 3 Gleise links</de>
+	</Description>
+	<SortingKey>TrixBrix - H23</SortingKey>
+
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-11.24995</angle>
+		</SubPart>
+		<SubPart id="TB CT R148SC.8">
+			<position>
+				<x>-16.7074</x>
+				<y>3.571091</y>
+			</position>
+			<angle>-18.92464</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R148 LEFT.8">
+			<position>
+				<x>-96.60211</x>
+				<y>26.32787</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>14.43481</x>
+				<y>-1.421936</y>
+			</position>
+			<angle>-5.624956</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-64.97711</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-48.97711</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-32.97711</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB ST1.3.8">
+			<position>
+				<x>-26.94104</x>
+				<y>6.419052</y>
+			</position>
+			<angle>-18.92473</angle>
+		</SubPart>
+		<SubPart id="TB ST1.3.8">
+			<position>
+				<x>22.35614</x>
+				<y>-1.797165</y>
+			</position>
+			<angle>6.465942E-05</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-16.97711</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-0.9771118</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>15.02289</x>
+				<y>30.20287</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-16.97711</x>
+				<y>14.20287</y>
+			</position>
+			<angle>-1.730285E-05</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-0.9771118</x>
+				<y>14.20287</y>
+			</position>
+			<angle>-1.730285E-05</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>15.02289</x>
+				<y>14.20287</y>
+			</position>
+			<angle>-1.730285E-05</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R148 RIGHT GTO.8">
+			<position>
+				<x>-50.03116</x>
+				<y>14.58459</y>
+			</position>
+			<angle>161.0753</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="4">19</nextIndex>
+		<nextIndex from="19">25</nextIndex>
+		<nextIndex from="25">31</nextIndex>
+		<nextIndex from="31">4</nextIndex>
+		<nextIndex from="7">35</nextIndex>
+		<nextIndex from="35">7</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

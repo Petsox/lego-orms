@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Dome Crossing R104-R120</en>
+		<de>TrixBrix Dom Kreuzung R104-R120</de>
+	</Description>
+	<SortingKey>TrixBrix - X59A</SortingKey>
+	<CanUngroup>true</CanUngroup>
+
+	<SubPartList>
+		<SubPart id="TB SWITCH R120 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 THIRD RIGHT.8">
+			<position>
+				<x>4.31485</x>
+				<y>-22.44852</y>
+			</position>
+			<angle>18.75</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 RIGHT.8">
+			<position>
+				<x>16.375</x>
+				<y>-0.625</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB PASS-THOUGH CROSSING R120 RIGHT.8">
+			<position>
+				<x>13.5625</x>
+				<y>-40.0625</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 SIXTH.8">
+			<position>
+				<x>22.69427</x>
+				<y>-54.56213</y>
+			</position>
+			<angle>219.375</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>25.10202</x>
+				<y>-29.76047</y>
+			</position>
+			<angle>292.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>36.31726</x>
+				<y>-46.58514</y>
+			</position>
+			<angle>303.75</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-36.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-24.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>12.5625</x>
+				<y>-68.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>28.64624</x>
+				<y>-84.38867</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>50.61987</x>
+				<y>-60.86612</y>
+			</position>
+			<angle>675</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>67.45956</x>
+				<y>-72.05447</y>
+			</position>
+			<angle>686.25</angle>
+		</SubPart>
+		<SubPart id="TB PASS-THOUGH CROSSING R120 LEFT.8">
+			<position>
+				<x>56.64575</x>
+				<y>-83.51367</y>
+			</position>
+			<angle>990</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 THIRD LEFT.8">
+			<position>
+				<x>74.38504</x>
+				<y>-92.63626</y>
+			</position>
+			<angle>971.25</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R120 LEFT.8">
+			<position>
+				<x>96.45874</x>
+				<y>-96.95117</y>
+			</position>
+			<angle>990</angle>
+		</SubPart>
+		<SubPart id="TB CT R120 SIXTH.8">
+			<position>
+				<x>41.95981</x>
+				<y>-74.34802</y>
+			</position>
+			<angle>410.625</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>44.39624</x>
+				<y>-100.2635</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>60.39624</x>
+				<y>-100.2636</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>28.39624</x>
+				<y>-100.2635</y>
+			</position>
+			<angle>540</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 LEFT.8">
+			<position>
+				<x>96.08374</x>
+				<y>-80.57605</y>
+			</position>
+			<angle>900</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>31.99323</x>
+				<y>-65.06454</y>
+			</position>
+			<angle>669.375</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>72.39624</x>
+				<y>-100.2636</y>
+			</position>
+			<angle>540</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-52.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-3.4375</x>
+				<y>-68.1875</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB CROSSING X90.8">
+			<position>
+				<x>12.70874</x>
+				<y>-84.26367</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB CROSSING X90.8">
+			<position>
+				<x>-3.22876</x>
+				<y>-84.45117</y>
+			</position>
+			<angle>270</angle>
+		</SubPart>
+		<SubPart id="TB CROSSING X90.8">
+			<position>
+				<x>-3.41626</x>
+				<y>-100.5137</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB CROSSING X90.8">
+			<position>
+				<x>12.58374</x>
+				<y>-100.5137</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">7</nextIndex>
+		<nextIndex from="7">38</nextIndex>
+		<nextIndex from="38">50</nextIndex>
+		<nextIndex from="50">67</nextIndex>
+		<nextIndex from="67">72</nextIndex>
+		<nextIndex from="72">73</nextIndex>
+		<nextIndex from="73">77</nextIndex>
+		<nextIndex from="77">0</nextIndex>
+		<nextIndex from="3">9</nextIndex>
+		<nextIndex from="9">41</nextIndex>
+		<nextIndex from="41">53</nextIndex>
+		<nextIndex from="53">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Thomas Hess (rumpelmuck, scorpy63)</Author>
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/675-1.1105127511.thumb2.jpg</ImageURL>
+	<Description>
+		<de>Snack Bar</de>
+		<en>Snack Bar</en>
+		<fr>Snack Bar</fr>
+	</Description>
+	<OldNameList>
+		<OldName>675.SET</OldName>
+	</OldNameList>
+	<SortingKey>Legoland</SortingKey>	
+</part>

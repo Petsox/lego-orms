@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>L@go</Author>
+	<Description>
+		<en>Statue of Liberty Sculpture</en>
+		<fr>Sculpture de la Statue de la Liberté</fr>
+	</Description>
+	<OldNameList>
+		<OldName>3450.SET</OldName>
+	</OldNameList>
+	<SortingKey>Expert</SortingKey>
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/3450-1.1162958765.thumb2.jpg</ImageURL>
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>0</left>
+		<right>4</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+</part>

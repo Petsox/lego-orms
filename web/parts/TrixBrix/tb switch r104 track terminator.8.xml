@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Crossover R104 Track Terminator</en>
+		<de>TrixBrix Weichenkreuzung R104 Seitenteil</de>
+		<fr>TrixBrix Croisement d'aiguillage R104 partie latérale</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F01</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_sw_r104_d2.5_side</type>
+			<position>
+				<x>1.875</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>0</angleToPrev>
+			<angleToNext>0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+		</connexion>
+	</ConnexionList>
+</part>

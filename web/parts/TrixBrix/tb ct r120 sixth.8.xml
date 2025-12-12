@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Pass-Through Adapter R120 1.875°</en>
+		<de>TrixBrix Durchgangskreuzung R120 Adapter 1.875°</de>
+	</Description>
+	<SortingKey>TrixBrix - X52</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0.0</top>
+		<bottom>0.0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+        <!-- south -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>2</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- north -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0.064249503</x>
+				<y>-1.926289939</y>
+			</position>
+			<angle>-91.875</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

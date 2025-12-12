@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix 4 Stud Gap Switch left</en>
+		<de>TrixBrix Weiche links (4 Noppen Gleisabstand)</de>
+		<nl>TrixBrix Wissel links (4 noppen tussenruimte)</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/4-Stud-Gap-Switch-Left/284</ImageURL>
+	<SortingKey>TrixBrix - Y30</SortingKey>
+	<SnapMargin>
+		<left>1.375</left>
+		<right>0</right>
+		<top>1.25</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-2.3125</x>
+				<y>10.875</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.6875</x>
+				<y>14.375</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180</angleToPrev>
+			<angleToNext>167.5</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4.87664504</x>
+				<y>-13.37913016</y>
+			</position>
+			<angle>-112.5</angle>
+			<angleToPrev>-167.5</angleToPrev>
+			<angleToNext>22.5</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.6875</x>
+				<y>-9.625</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>22.5</angleToPrev>
+			<angleToNext>180</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-4</x>
+			<y>20</y>
+		</point>
+		<point>
+			<x>60</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>77</x>
+			<y>37</y>
+		</point>
+		<point>
+			<x>140</x>
+			<y>37</y>
+		</point>
+		<point>
+			<x>140</x>
+			<y>239</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>239</y>
+		</point>
+		<point>
+			<x>74</x>
+			<y>219</y>
+		</point>
+		<point>
+			<x>42</x>
+			<y>219</y>
+		</point>
+		<point>
+			<x>42</x>
+			<y>193</y>
+		</point>
+		<point>
+			<x>72</x>
+			<y>193</y>
+		</point>
+	</hull>
+</part>

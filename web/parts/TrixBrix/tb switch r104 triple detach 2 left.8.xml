@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Switch R104 Detach 2 Left</en>
+		<de>TrixBrix Weiche R104 Außensektion links</de>
+		<fr>TrixBrix Aiguillage R104 partie extérieur gauche</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F02</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-2.25</x>
+				<y>-5.75</y>
+			</position>
+			<angle>-112.5</angle>
+			<angleToPrev>173.25</angleToPrev>
+			<angleToNext>112.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2.5_side</type>
+			<position>
+				<x>5.75</x>
+				<y>0.25</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>112.5</angleToPrev>
+			<angleToNext>74.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_left</type>
+			<position>
+				<x>1.75</x>
+				<y>6.25</y>
+			</position>
+			<angle>74.25</angle>
+			<angleToPrev>74.25</angleToPrev>
+			<angleToNext>173.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

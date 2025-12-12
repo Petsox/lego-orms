@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wye Switch R56-R40</en>
+		<de>TrixBrix Y-Weiche R56-R40</de>
+		<fr>TrixBrix Aiguillage Y R56-R40</fr>
+		<nl>TrixBrix Y Wissel R56-R40</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/T-Junction-R40-R56/632</ImageURL>
+	<SortingKey>TrixBrix - D88B</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.1875</x>
+				<y>11.1875</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.535649426</x>
+				<y>-7.668369473</y>
+			</position>
+			<angle>-61.875</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4.450246179</x>
+				<y>-10.24277221</y>
+			</position>
+			<angle>-112.5</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>7</x>
+				<y>7.75</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>133</x>
+			<y>44</y>
+		</point>
+		<point>
+			<x>64</x>
+			<y>8</y>
+		</point>
+		<point>
+			<x>58</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>20</y>
+		</point>
+		<point>
+			<x>30</x>
+			<y>187</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>187</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>167</y>
+		</point>
+		<point>
+			<x>128</x>
+			<y>167</y>
+		</point>
+		<point>
+			<x>128</x>
+			<y>142</y>
+		</point>
+		<point>
+			<x>100</x>
+			<y>142</y>
+		</point>
+	</hull>
+</part>

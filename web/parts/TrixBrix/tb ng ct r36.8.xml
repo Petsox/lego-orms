@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Curved Track R36 22.5°</en>
+		<de>TrixBrix Schmalspur Kurve R36 22.5°</de>
+		<nl>TrixBrix Smalspoor bocht R36 - 22,5 graden</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - Z13</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>-1.25</right>
+		<top>0</top>
+		<bottom>1.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-7.0625</x>
+				<y>-1.25</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>157.5</angleToPrev>
+			<angleToNext>202.5</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>6.714103565</x>
+				<y>1.49033683</y>
+			</position>
+			<angle>22.5</angle>
+			<angleToPrev>202.5</angleToPrev>
+			<angleToNext>157.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-1</x>
+			<y>-2</y>
+		</point>
+		<point>
+			<x>64</x>
+			<y>2</y>
+		</point>
+		<point>
+			<x>128</x>
+			<y>24</y>
+		</point>
+		<point>
+			<x>109</x>
+			<y>69</y>
+		</point>
+		<point>
+			<x>-1</x>
+			<y>48</y>
+		</point>
+	</hull>
+</part>

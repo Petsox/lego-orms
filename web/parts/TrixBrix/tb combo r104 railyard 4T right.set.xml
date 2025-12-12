@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Railyard R104 4 tracks right</en>
+		<de>TrixBrix Railyard R104 4 Gleise rechts</de>
+	</Description>
+	<SortingKey>TrixBrix - E55</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/4-Track-Right-Rail-Yard-R104/100</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R104 LEFT GTO.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>22.49998</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 RIGHT.8">
+			<position>
+				<x>-77.59381</x>
+				<y>-27.7834</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 LEFT GTO.8">
+			<position>
+				<x>-38.62744</x>
+				<y>-15.99998</y>
+			</position>
+			<angle>22.49998</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>28.37268</x>
+				<y>11.56194</y>
+			</position>
+			<angle>-168.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R104BC.8">
+			<position>
+				<x>48.48596</x>
+				<y>15.48825</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>-20.24001</x>
+				<y>-7.942245</y>
+			</position>
+			<angle>22.49998</angle>
+		</SubPart>
+		<SubPart id="TB RC2.8">
+			<position>
+				<x>61.2948</x>
+				<y>16.36325</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-42.15631</x>
+				<y>-31.7209</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-26.15631</x>
+				<y>-31.72091</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-10.15631</x>
+				<y>-31.72092</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>5.843689</x>
+				<y>-31.72092</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>21.84369</x>
+				<y>-31.72093</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>37.84369</x>
+				<y>-31.72094</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>53.84369</x>
+				<y>-31.72095</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>25.84369</x>
+				<y>0.2790985</y>
+			</position>
+			<angle>-3.460569E-05</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>5.985352</x>
+				<y>-15.67976</y>
+			</position>
+			<angle>-2.479553E-05</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-10.01466</x>
+				<y>-15.67961</y>
+			</position>
+			<angle>-2.479553E-05</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>18.38742</x>
+				<y>8.057739</y>
+			</position>
+			<angle>22.49998</angle>
+		</SubPart>
+		<SubPart id="TB RC2.8">
+			<position>
+				<x>59.92224</x>
+				<y>16.36325</y>
+			</position>
+			<angle>540</angle>
+		</SubPart>
+		<SubPart id="TB RC2.8">
+			<position>
+				<x>21.15738</x>
+				<y>0.2790985</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>21.98535</x>
+				<y>-15.67987</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>37.98535</x>
+				<y>-15.67984</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>53.98535</x>
+				<y>-15.67996</y>
+			</position>
+			<angle>-0.0001010895</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>37.84369</x>
+				<y>0.2790985</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>53.84369</x>
+				<y>0.2790985</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>-54.03131</x>
+				<y>-31.5959</y>
+			</position>
+			<angle>-3.051758E-05</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="4">16</nextIndex>
+		<nextIndex from="16">29</nextIndex>
+		<nextIndex from="29">48</nextIndex>
+		<nextIndex from="48">51</nextIndex>
+		<nextIndex from="51">4</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

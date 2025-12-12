@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix R120 Turnout Curve 3.75° right</en>
+		<de>TrixBrix R120 Abzweigungskurve 3.75° left</de>
+	</Description>
+	<SortingKey>TrixBrix - G07</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0.0</top>
+		<bottom>0.0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+        <!-- south -->
+		<connexion>
+			<type>trixbrix_sw_r120_right</type>
+			<position>
+				<x>-0.125</x>
+				<y>3.9375</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- north -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0.131929211</x>
+				<y>-3.910875508</y>
+			</position>
+			<angle>-86.25</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte</Author>
+	<Description>
+		<en>TrixBrix Railyard R40 2 tracks right</en>
+		<de>TrixBrix Railyard R40 2 Gleise rechts</de>
+	</Description>
+	<SortingKey>TrixBrix - D43</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-157.5</angle>
+		</SubPart>
+		<SubPart id="TB 2867.8">
+			<position>
+				<x>10.78267</x>
+				<y>3.288025</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R40 RIGHT.8">
+			<position>
+				<x>-12.7173</x>
+				<y>-8.14949</y>
+			</position>
+			<angle>89.99999</angle>
+		</SubPart>
+		<SubPart id="TB CONNECTOR R40 RIGHT.8">
+			<position>
+				<x>-4.6548</x>
+				<y>-3.33699</y>
+			</position>
+			<angle>-90.00002</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="2">4</nextIndex>
+		<nextIndex from="4">5</nextIndex>
+		<nextIndex from="5">2</nextIndex>
+		<nextIndex from="7">7</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

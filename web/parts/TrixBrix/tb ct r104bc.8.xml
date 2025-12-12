@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Ballast Curve R104 11.25°</en>
+		<de>TrixBrix Ausgleichskurve R104 11.25°</de>
+		<fr>TrixBrix Virage de Correction R104 11.25°</fr>
+		<nl>TrixBrix Bocht R104 Ballast 11.25°</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Ballast-Curve-R104/94</ImageURL>
+	<SortingKey>TrixBrix - C104B</SortingKey>
+
+	<SnapMargin>
+		<left>0.625</left>
+		<right>0.0</right>
+		<top>0.125</top>
+		<bottom>0.0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-10.5</x>
+				<y>-0.875</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>168.75</angleToPrev>
+			<angleToNext>191.25</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>10.0027403</x>
+				<y>1.166000201</y>
+			</position>
+			<angle>11.25</angle>
+			<angleToPrev>191.25</angleToPrev>
+			<angleToNext>168.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+	
+	<hull>
+		<point>
+			<x>0</x>
+			<y>-2</y>
+		</point>
+		<point>
+			<x>90</x>
+			<y>2</y>
+		</point>
+		<point>
+			<x>180</x>
+			<y>17</y>
+		</point>
+		<point>
+			<x>164</x>
+			<y>82</y>
+		</point>
+		<point>
+			<x>0</x>
+			<y>64</y>
+		</point>
+	</hull>
+</part>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Dual Gauge Turnout R36 Left</en>
+		<de>TrixBrix Doppelspur Abzweigung R36 links</de>
+		<nl>TrixBrix Smalspoor naar Dubbelspoor R36 Links</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - Z61</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>2.75</x>
+				<y>-9.5</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>33.75</angleToPrev>
+			<angleToNext>180</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>2.75</x>
+				<y>10.5</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180</angleToPrev>
+			<angleToNext>146.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-4.25</x>
+				<y>-9.5</y>
+			</position>
+			<angle>236.25</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>33.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-4</x>
+			<y>23</y>
+		</point>
+		<point>
+			<x>39</x>
+			<y>-5</y>
+		</point>
+		<point>
+			<x>108</x>
+			<y>9</y>
+		</point>
+		<point>
+			<x>108</x>
+			<y>177</y>
+		</point>
+		<point>
+			<x>44</x>
+			<y>177</y>
+		</point>
+	</hull>
+</part>

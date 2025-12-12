@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Crossing Right 33.75°</en>
+		<de>TrixBrix Schmalspur Kreuzung rechts 33.75°</de>
+		<nl>TrixBrix Smalspoor kruising 33,75 graden Rechts</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - Z22</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>33.75</angleToNext>		
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>6</x>
+				<y>-8</y>
+			</position>
+			<angle>-56.25</angle>
+			<angleToPrev>33.75</angleToPrev>
+			<angleToNext>146.25</angleToNext>		
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0</x>
+				<y>8</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>33.75</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-6</x>
+				<y>8</y>
+			</position>
+			<angle>123.75</angle>
+			<angleToPrev>33.75</angleToPrev>
+			<angleToNext>146.25</angleToNext>		
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>140</x>
+			<y>25</y>
+		</point>
+		<point>
+			<x>98</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>43</x>
+			<y>10</y>
+		</point>
+		<point>
+			<x>38</x>
+			<y>64</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>131</y>
+		</point>
+		<point>
+			<x>36</x>
+			<y>159</y>
+		</point>
+		<point>
+			<x>92</x>
+			<y>144</y>
+		</point>
+		<point>
+			<x>98</x>
+			<y>90</y>
+		</point>
+	</hull>
+</part>

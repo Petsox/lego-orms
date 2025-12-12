@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Thomas Hess (rumpelmuck, scorpy63)</Author>
+	<ImageURL>http://img.lugnet.com/display.cgi?set/universal/lego369.jpg</ImageURL>
+	<Description>
+		<de>Küstenwache</de>
+		<en>Coastguard</en>
+		<fr>Garde côtière</fr>
+	</Description>
+	<OldNameList>
+		<OldName>369.SET</OldName>
+	</OldNameList>
+	<SortingKey>Vintage</SortingKey>
+	<!-- The margin of this part in stud for snaping on the grid, relative to the bitmap -->
+	<SnapMargin>
+		<left>0</left>
+		<right>0.5</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+</part>

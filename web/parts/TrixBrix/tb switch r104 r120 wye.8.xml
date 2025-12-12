@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wye-Switch R104-R120 left</en>
+		<de>TrixBrix Y-Weiche R104-R120 links</de>
+		<fr>TrixBrix Aiguillage R104-R120 gauche</fr>
+		<nl>TrixBrix Y Wissel R104-R120 links</nl>
+	</Description>
+	<SortingKey>TrixBrix - X53</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+        <!-- peak -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0.2</x>
+				<y>15.875</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- R104 branch left -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4.278205084</x>
+				<y>-14.31460643</y>
+			</position>
+			<angle>253.125</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- R120 branch right -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.288900845</x>
+				<y>-15.18328541</y>
+			</position>
+			<angle>285</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- switch motor -->
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-6.8</x>
+				<y>12.375</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-2</x>
+			<y>22</y>
+		</point>
+		<point>
+			<x>69</x>
+			<y>-3</y>
+		</point>
+		<point>
+			<x>133</x>
+			<y>14</y>
+		</point>
+		<point>
+			<x>108</x>
+			<y>136</y>
+		</point>
+		<point>
+			<x>99</x>
+			<y>261</y>
+		</point>
+		<point>
+			<x>36</x>
+			<y>261</y>
+		</point>
+		<point>
+			<x>2</x>
+			<y>241</y>
+		</point>
+		<point>
+			<x>2</x>
+			<y>216</y>
+		</point>
+		<point>
+			<x>33</x>
+			<y>216</y>
+		</point>
+		<point>
+			<x>23</x>
+			<y>126</y>
+		</point>
+	</hull>
+</part>

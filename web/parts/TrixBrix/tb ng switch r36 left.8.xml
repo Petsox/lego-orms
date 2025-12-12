@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Switch R36 Left</en>
+		<de>TrixBrix Schmalspur Linksweiche R36</de>
+		<nl>TrixBrix Smalspoor Wissel R36 Links</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Narrow-Left-Switch-R36/179</ImageURL>
+	<SortingKey>TrixBrix - Z31A</SortingKey>
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0.75</x>
+				<y>-12</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>33.75</angleToPrev>
+			<angleToNext>180</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0.75</x>
+				<y>12</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180</angleToPrev>
+			<angleToNext>146.25</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>-5.25</x>
+				<y>-8</y>
+			</position>
+			<angle>-123.75</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>33.75</angleToNext>		
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>6.75</x>
+				<y>8.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+	<hull>
+		<point>
+			<x>-4</x>
+			<y>46</y>
+		</point>
+		<point>
+			<x>43</x>
+			<y>14</y>
+		</point>
+		<point>
+			<x>43</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>92</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>124</x>
+			<y>155</y>
+		</point>
+		<point>
+			<x>124</x>
+			<y>180</y>
+		</point>
+		<point>
+			<x>92</x>
+			<y>200</y>
+		</point>
+		<point>
+			<x>43</x>
+			<y>200</y>
+		</point>
+	</hull>
+</part>

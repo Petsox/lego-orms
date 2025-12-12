@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Crossover R104 Middle Section</en>
+		<de>TrixBrix Weichenkreuzung R104 Mittelsektion</de>
+		<fr>TrixBrix Croisement d'aiguillage R104 partie centre</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F30</SortingKey>
+	
+	<SnapMargin>
+		<left>0.25</left>
+		<right>0.25</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_sw_r104_d3_offset</type>
+			<position>
+				<x>0</x>
+				<y>-6.25</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>90</angleToPrev>
+			<angleToNext>90</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2.5_side</type>
+			<position>
+				<x>8</x>
+				<y>-0.25</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>90</angleToPrev>
+			<angleToNext>74.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_left</type>
+			<position>
+				<x>4</x>
+				<y>5.75</y>
+			</position>
+			<angle>74.25</angle>
+			<angleToPrev>74.25</angleToPrev>
+			<angleToNext>31.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_right</type>
+			<position>
+				<x>-4</x>
+				<y>5.75</y>
+			</position>
+			<angle>105.75</angle>
+			<angleToPrev>31.5</angleToPrev>
+			<angleToNext>74.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2.5_side</type>
+			<position>
+				<x>-8</x>
+				<y>-0.25</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>74.25</angleToPrev>
+			<angleToNext>90</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+		</connexion>
+	</ConnexionList>
+</part>

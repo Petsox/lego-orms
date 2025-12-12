@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right switch R40 detached part straight standard</en>
+		<de>TrixBrix Rechtsweiche R40 Herzstück gerade standard</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - D51</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<!-- straight start -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_straight</type>
+			<position>
+				<x>-3</x>
+				<y>7</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+
+		<!-- straight end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-3</x>
+				<y>-9</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+
+		<!-- turn start -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_turn</type>
+			<position>
+				<x>0.0448187</x>
+				<y>7.692662705</y>
+			</position>
+			<angle>112.5</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+
+		<!-- turn end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>3.741215508</x>
+				<y>0.777190679</y>
+			</position>
+			<angle>-56.25</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

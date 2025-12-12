@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Triple Switch R104 Detach 1</en>
+		<de>TrixBrix Drillingsweiche R104 Herzstück</de>
+		<fr>TrixBrix Aiguillage triple R104 partie croisement</fr>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - F11</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>-18</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_right</type>
+			<position>
+				<x>4</x>
+				<y>-6</y>
+			</position>
+			<angle>-74.25</angle>
+			<angleToPrev>168.75</angleToPrev>
+			<angleToNext>191.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_right</type>
+			<position>
+				<x>1</x>
+				<y>6</y>
+			</position>
+			<angle>99</angle>
+			<angleToPrev>191.25</angleToPrev>
+			<angleToNext>168.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_middle</type>
+			<position>
+				<x>0</x>
+				<y>6</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d1_triple_left</type>
+			<position>
+				<x>-1</x>
+				<y>6</y>
+			</position>
+			<angle>81</angle>
+			<angleToPrev>191.25</angleToPrev>
+			<angleToNext>168.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-3</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_sw_r104_d2_left</type>
+			<position>
+				<x>-4</x>
+				<y>-6</y>
+			</position>
+			<angle>-105.75</angle>
+			<angleToPrev>168.75</angleToPrev>
+			<angleToNext>191.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>3</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

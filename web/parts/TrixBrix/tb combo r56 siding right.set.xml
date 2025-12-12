@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R56 with Siding Curves</en>
+		<de>TrixBrix Rechtsweiche R56 mit Parallelkurven</de>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Right-Switch-R56/298</ImageURL>
+	<SortingKey>TrixBrix - D84</SortingKey>
+
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R56 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-3.460569E-05</angle>
+		</SubPart>
+		<SubPart id="TB CT R56SC.8">
+			<position>
+				<x>7.395264</x>
+				<y>-19.52708</y>
+			</position>
+			<angle>15.94536</angle>
+		</SubPart>
+		<SubPart id="TB CT R56SC.8">
+			<position>
+				<x>10.99997</x>
+				<y>-32.68748</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">1</nextIndex>
+		<nextIndex from="1">6</nextIndex>
+		<nextIndex from="6">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

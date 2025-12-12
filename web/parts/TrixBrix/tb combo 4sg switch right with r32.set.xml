@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix 4 Stud Gap Switch right with R32 curve</en>
+		<de>TrixBrix Weiche rechts (4 Noppen Gleisabstand) mit R32 Kurve</de>
+		<nl>TrixBrix Wissel rechts (4 noppen tussenruimte) med bocht R32</nl>
+	</Description>
+	<SortingKey>TrixBrix - Y34</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB CT R32.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB 4 STUD GAP SWITCH RIGHT.8">
+			<position>
+				<x>-6.1875</x>
+				<y>18.5625</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">2</nextIndex>
+		<nextIndex from="2">3</nextIndex>
+		<nextIndex from="3">0</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

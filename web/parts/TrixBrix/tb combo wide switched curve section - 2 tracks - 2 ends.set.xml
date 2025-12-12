@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wide Switched Parallel Curve Section</en>
+		<de>TrixBrix Weite parallele Kurvensektion mit Weichen</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - E60</SortingKey>
+	<CanUngroup>true</CanUngroup>
+
+	<SubPartList>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-45</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>16.83975</x>
+				<y>-11.18814</y>
+			</position>
+			<angle>-33.74999</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>-9.850403</x>
+				<y>-12.02626</y>
+			</position>
+			<angle>-45</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>9.584198</x>
+				<y>-24.96474</y>
+			</position>
+			<angle>-33.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>31.18802</x>
+				<y>-33.84793</y>
+			</position>
+			<angle>-22.50001</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-37.75635</x>
+				<y>112.4778</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 RIGHT.8">
+			<position>
+				<x>-49.94385</x>
+				<y>98.66774</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 LEFT.8">
+			<position>
+				<x>-36.31566</x>
+				<y>59.81721</y>
+			</position>
+			<angle>112.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-25.30051</x>
+				<y>30.88823</y>
+			</position>
+			<angle>-67.50001</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>-45.41002</x>
+				<y>78.26912</y>
+			</position>
+			<angle>-67.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>-47.95964</x>
+				<y>45.19392</y>
+			</position>
+			<angle>-78.74999</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>-39.04117</x>
+				<y>23.59552</y>
+			</position>
+			<angle>-67.49999</angle>
+		</SubPart>
+		<SubPart id="TB CT R120.8">
+			<position>
+				<x>-26.0735</x>
+				<y>4.174866</y>
+			</position>
+			<angle>-56.24999</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-52.88135</x>
+				<y>68.35524</y>
+			</position>
+			<angle>-90.00001</angle>
+		</SubPart>
+		<SubPart id="TB ST2.8">
+			<position>
+				<x>-51.56294</x>
+				<y>57.83507</y>
+			</position>
+			<angle>101.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>-14.08508</x>
+				<y>14.06348</y>
+			</position>
+			<angle>-56.25001</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-37.75635</x>
+				<y>96.4778</y>
+			</position>
+			<angle>90.00001</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>-37.75635</x>
+				<y>84.4778</y>
+			</position>
+			<angle>-90.00001</angle>
+		</SubPart>
+		<SubPart id="TB RC2.8">
+			<position>
+				<x>-53.75635</x>
+				<y>119.7915</y>
+			</position>
+			<angle>90.00001</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 RIGHT.8">
+			<position>
+				<x>45.44366</x>
+				<y>-22.05759</y>
+			</position>
+			<angle>157.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R104.8">
+			<position>
+				<x>54.5033</x>
+				<y>-38.7016</y>
+			</position>
+			<angle>-11.25001</angle>
+		</SubPart>
+		<SubPart id="TB ST2.8">
+			<position>
+				<x>43.60092</x>
+				<y>-37.32878</y>
+			</position>
+			<angle>-11.25</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 LEFT.8">
+			<position>
+				<x>84.30859</x>
+				<y>-35.7097</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>64.03497</x>
+				<y>-31.17587</y>
+			</position>
+			<angle>517.5</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>98.24365</x>
+				<y>-23.5222</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>82.24365</x>
+				<y>-23.5222</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB ST8.8">
+			<position>
+				<x>70.24365</x>
+				<y>-23.5222</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB RC2.8">
+			<position>
+				<x>105.5574</x>
+				<y>-39.5222</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="11">39</nextIndex>
+		<nextIndex from="39">52</nextIndex>
+		<nextIndex from="52">59</nextIndex>
+		<nextIndex from="59">11</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Compact Switch Set - 2 Left + 1 Right Curved Switches 45d R40</en>
+	</Description>
+	<SortingKey>TrixBrix - D36</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Compact-Switch-Set-2-Left-1-Right-Curved-Switches-45-deg.-R40/116</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R40 CURVED 45D LEFT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-45</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R40 CURVED 45D RIGHT.8">
+			<position>
+				<x>-18.19598</x>
+				<y>-14.44437</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>-13.13348</x>
+				<y>-1.256866</y>
+			</position>
+			<angle>-4.088113E-06</angle>
+		</SubPart>
+		<SubPart id="TB 2867.8">
+			<position>
+				<x>-18.44353</x>
+				<y>-32.13185</y>
+			</position>
+			<angle>-4.088113E-06</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>21.3194</x>
+				<y>-1.750015</y>
+			</position>
+			<angle>-135</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>17.91815</x>
+				<y>-5.151199</y>
+			</position>
+			<angle>-135</angle>
+		</SubPart>
+		<SubPart id="TB ST3.8">
+			<position>
+				<x>19.61874</x>
+				<y>-3.450607</y>
+			</position>
+			<angle>45</angle>
+		</SubPart>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>-7.660873</x>
+				<y>-28.84386</y>
+			</position>
+			<angle>22.5</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>-32.72104</x>
+				<y>-33.50687</y>
+			</position>
+			<angle>-4.088113E-06</angle>
+		</SubPart>
+		<SubPart id="TB RC1.8">
+			<position>
+				<x>-27.91104</x>
+				<y>-33.50685</y>
+			</position>
+			<angle>-4.088113E-06</angle>
+		</SubPart>
+		<SubPart id="TB ST3.8">
+			<position>
+				<x>-30.31606</x>
+				<y>-33.50687</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB 2865.8">
+			<position>
+				<x>-25.63348</x>
+				<y>-1.506866</y>
+			</position>
+			<angle>-4.088113E-06</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R40 CURVED 45D LEFT.8">
+			<position>
+				<x>6.627411</x>
+				<y>-16</y>
+			</position>
+			<angle>-45</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">3</nextIndex>
+		<nextIndex from="3">10</nextIndex>
+		<nextIndex from="10">18</nextIndex>
+		<nextIndex from="18">24</nextIndex>
+		<nextIndex from="24">0</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

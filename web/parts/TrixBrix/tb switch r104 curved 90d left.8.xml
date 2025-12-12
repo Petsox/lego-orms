@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch Curved 90° R104</en>
+		<de>TrixBrix Linke Bogenweiche 90° R104</de>
+		<fr>TrixBrix Aiguillage Virage gauche 90° R104</fr>
+		<nl>TrixBrix Wissel in 90 graden bocht R104 Links</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Left-Switch-Curved-90-deg.-R104/818</ImageURL>
+	<SortingKey>TrixBrix - E31</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+        <!-- peak-end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>8.375</x>
+				<y>33.125</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- outer turn end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-3.905188508</x>
+				<y>-31.90026063</y>
+			</position>
+			<angle>241.875</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- inner turn end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-9.152160321</x>
+				<y>-24.65430423</y>
+			</position>
+			<angle>236.25</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+        <!-- switch motor -->
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>1.375</x>
+				<y>28.625</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>199</x>
+			<y>538</y>
+		</point>
+		<point>
+			<x>133</x>
+			<y>538</y>
+		</point>
+		<point>
+			<x>133</x>
+			<y>510</y>
+		</point>
+		<point>
+			<x>101</x>
+			<y>484</y>
+		</point>
+		<point>
+			<x>133</x>
+			<y>484</y>
+		</point>
+		<point>
+			<x>81</x>
+			<y>251</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>91</y>
+		</point>
+		<point>
+			<x>50</x>
+			<y>51</y>
+		</point>
+		<point>
+			<x>35</x>
+			<y>24</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>146</x>
+			<y>100</y>
+		</point>
+		<point>
+			<x>178</x>
+			<y>208</y>
+		</point>
+		<point>
+			<x>199</x>
+			<y>348</y>
+		</point>
+	</hull>
+</part>

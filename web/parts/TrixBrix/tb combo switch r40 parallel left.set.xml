@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch R40 with parallel adapters</en>
+		<de>TrixBrix Linksweiche R40 mit Adaptern für Parallelgleis</de>
+		<fr>TrixBrix Aiguillage gauche R40 avec adapteurs parallel</fr>
+		<nl>TrixBrix Wissel R40 Links met parallel adapters</nl>
+	</Description>
+	<SortingKey>TrixBrix - D02b</SortingKey>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R40 LEFT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CONNECTOR R40 LEFT.8">
+			<position>
+				<x>-4.9375</x>
+				<y>-8.0625</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>-8.436523</x>
+				<y>-12.99266</y>
+			</position>
+			<angle>236.25</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">2</nextIndex>
+		<nextIndex from="2">6</nextIndex>
+		<nextIndex from="6">0</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

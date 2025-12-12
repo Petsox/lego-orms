@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix R120 Siding Curve 1.875° left</en>
+		<de>TrixBrix R120 Parallelgleiskurve 1.875° links</de>
+	</Description>
+	<SortingKey>TrixBrix - G01</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0.0</top>
+		<bottom>0.0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<!-- southeast -->
+		<connexion>
+			<type>trixbrix_sw_r120_left</type>
+			<position>
+				<x>1.231615539</x>
+				<y>3.467264164</y>
+			</position>
+			<angle>71.25</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+        <!-- northwest -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-0.91056287</x>
+				<y>-3.470316044</y>
+			</position>
+			<angle>-106.875</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

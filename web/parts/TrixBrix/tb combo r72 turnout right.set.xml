@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch R72 with Turnout Curve</en>
+		<de>TrixBrix Rechtsweiche R72 mit Abzweigungskurve</de>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Right-Switch-R72/374</ImageURL>
+	<SortingKey>TrixBrix - D96</SortingKey>
+	<CanUngroup>true</CanUngroup>
+
+	<SubPartList>
+		<SubPart id="TB SWITCH R72 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB CT R72 HALF.8">
+			<position>
+				<x>6.292007</x>
+				<y>-19.20226</y>
+			</position>
+			<angle>298.125</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>12.36929</x>
+				<y>-28.20906</y>
+			</position>
+			<angle>-56.25002</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>22.25906</x>
+				<y>-38.06723</y>
+			</position>
+			<angle>-45.00001</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>33.90674</x>
+				<y>-45.78038</y>
+			</position>
+			<angle>-33.75001</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>46.86459</x>
+				<y>-51.05214</y>
+			</position>
+			<angle>-22.50003</angle>
+		</SubPart>
+		<SubPart id="TB CT R72.8">
+			<position>
+				<x>60.74918</x>
+				<y>-53.67982</y>
+			</position>
+			<angle>-11.25002</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">1</nextIndex>
+		<nextIndex from="1">15</nextIndex>
+		<nextIndex from="15">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

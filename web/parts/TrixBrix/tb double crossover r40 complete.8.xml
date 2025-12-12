@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Double Crossover R40</en>
+		<de>TrixBrix Weichenkreuzung R40</de>
+		<fr>TrixBrix Croisement d'aiguillage R40</fr>
+		<nl>TrixBrix Dubbele Kruiswissel R40</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Double-Crossover/58</ImageURL>
+	<SortingKey>TrixBrix - D72</SortingKey>
+	
+	<SnapMargin>
+		<left>4.125</left>
+		<right>4.125</right>
+		<top>0.4375</top>
+		<bottom>0.4375</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-1</x>
+				<y>-20.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>1</x>
+				<y>-20.5</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-1</x>
+				<y>20.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>1</x>
+				<y>20.5</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>8</x>
+				<y>24</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>0.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-8</x>
+				<y>24</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>0.0</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-8</x>
+				<y>-24</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>180.0</angleToPrev>
+			<angleToNext>0.00</angleToNext>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>8</x>
+				<y>-24</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>0.00</angleToPrev>
+			<angleToNext>180.0</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Crossing 90° (short)</en>
+		<de>TrixBrix Kreuzung 90° (kurz)</de>
+		<fr>TrixBrix Croisement 90° (courte)</fr>
+		<nl>TrixBrix Kruising 90 graden (korte versie)</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Crossing-90-deg.-short-version/72</ImageURL>
+	<SortingKey>TrixBrix - X01</SortingKey>
+
+	<SnapMargin>
+		<left>0.625</left>
+		<right>0.625</right>
+		<top>0.625</top>
+		<bottom>0.625</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>-4</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>0</x>
+				<y>4</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

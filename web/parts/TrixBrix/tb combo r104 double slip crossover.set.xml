@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>Trixbrix Double Slip Crossover R104</en>
+		<nl>Trixbrix Engels Kruiswissel R104</nl>
+	</Description>
+	<SortingKey>TrixBrix - F72</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R104 DSLIP MIDDLE.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>11.25</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP MIDDLE.8">
+			<position>
+				<x>15.99998</x>
+				<y>0</y>
+			</position>
+			<angle>-11.24999</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP DETACH LEFT.8">
+			<position>
+				<x>17.87498</x>
+				<y>11.875</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP DETACH RIGHT.8">
+			<position>
+				<x>-2.062485</x>
+				<y>12.0625</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP MIDDLE.8">
+			<position>
+				<x>15.99998</x>
+				<y>-40</y>
+			</position>
+			<angle>191.25</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP MIDDLE.8">
+			<position>
+				<x>-3.051758E-05</x>
+				<y>-40</y>
+			</position>
+			<angle>168.75</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP DETACH LEFT.8">
+			<position>
+				<x>-1.875031</x>
+				<y>-51.875</y>
+			</position>
+			<angle>-1.730285E-05</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP DETACH RIGHT.8">
+			<position>
+				<x>18.06248</x>
+				<y>-52.0625</y>
+			</position>
+			<angle>-1.730285E-05</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP CO ADAPTER BOTH.8">
+			<position>
+				<x>7.999985</x>
+				<y>-11.3125</y>
+			</position>
+			<angle>0</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R104 DSLIP CO ADAPTER BOTH.8">
+			<position>
+				<x>7.999985</x>
+				<y>-28.6875</y>
+			</position>
+			<angle>180</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="4">5</nextIndex>
+		<nextIndex from="5">9</nextIndex>
+		<nextIndex from="9">10</nextIndex>
+		<nextIndex from="10">18</nextIndex>
+		<nextIndex from="18">19</nextIndex>
+		<nextIndex from="19">23</nextIndex>
+		<nextIndex from="23">24</nextIndex>
+		<nextIndex from="24">28</nextIndex>
+		<nextIndex from="28">29</nextIndex>
+		<nextIndex from="29">35</nextIndex>
+		<nextIndex from="35">36</nextIndex>
+		<nextIndex from="36">4</nextIndex>
+		<nextIndex from="6">7</nextIndex>
+		<nextIndex from="7">11</nextIndex>
+		<nextIndex from="11">12</nextIndex>
+		<nextIndex from="12">20</nextIndex>
+		<nextIndex from="20">21</nextIndex>
+		<nextIndex from="21">25</nextIndex>
+		<nextIndex from="25">26</nextIndex>
+		<nextIndex from="26">6</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

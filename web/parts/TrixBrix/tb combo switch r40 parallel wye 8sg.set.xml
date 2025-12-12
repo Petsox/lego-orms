@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wye Switch R40 - 8 Stud Gap - parallel track assembly</en>
+		<de>TrixBrix Y-Weiche R40 - 8 Noppen Gleisabstand - Parallelgleis</de>
+	</Description>
+	<SortingKey>TrixBrix - D05b</SortingKey>
+
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB CT R56 HALF.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>461.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>2.094177</x>
+				<y>-8.661682</y>
+			</position>
+			<angle>90</angle>
+		</SubPart>
+		<SubPart id="TB CT R40 HALF.8">
+			<position>
+				<x>-13.45862</x>
+				<y>-9.01561</y>
+			</position>
+			<angle>618.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R56 HALF.8">
+			<position>
+				<x>-11.36725</x>
+				<y>-0.1832733</y>
+			</position>
+			<angle>247.5</angle>
+		</SubPart>
+		<SubPart id="TB SWITCH R40 WYE 8SG.8">
+			<position>
+				<x>-5.405823</x>
+				<y>13.58832</y>
+			</position>
+			<angle>360</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="2">5</nextIndex>
+		<nextIndex from="5">8</nextIndex>
+		<nextIndex from="8">2</nextIndex>
+		<nextIndex from="11">11</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

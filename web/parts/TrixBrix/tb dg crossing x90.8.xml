@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Dual Gauge Crossing 90°</en>
+		<de>TrixBrix Doppelspur Kreuzung 90°</de>
+		<nl>TrixBrix Dubbelspoor kruising 90 graden</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Dual-Gauge-Crossing-90-deg./224</ImageURL>
+	<SortingKey>TrixBrix - Z82</SortingKey>
+
+	<SnapMargin>
+		<left>0.5</left>
+		<right>0.5</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+	
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>		
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0</x>
+				<y>-4</y>
+			</position>
+			<angle>-90</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>		
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>		
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_ng</type>
+			<position>
+				<x>0</x>
+				<y>4</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>90.0</angleToPrev>
+			<angleToNext>90.0</angleToNext>		
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

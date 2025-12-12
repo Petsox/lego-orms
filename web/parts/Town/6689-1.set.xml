@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Marc Raps</Author>
+	<Description>
+		<en>Post Station</en>
+		<fr>Bureau de poste</fr>
+	</Description>
+	<OldNameList>
+	    <OldName>6689.set</OldName>
+	</OldNameList>	
+	<ImageURL>http://media.peeron.com/pics/inv/setpics/6689-1.1105127510.jpg</ImageURL>
+	<SortingKey>Legoland</SortingKey>
+</part>

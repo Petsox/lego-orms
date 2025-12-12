@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Wye Switch R104 adapter R104Y 6.75°</en>
+		<de>TrixBrix Y-Weiche R104 Adapter R104Y 6,75°</de>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Wye-Switch-R104/247</ImageURL>
+	<SortingKey>TrixBrix - E13</SortingKey>
+
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-6.25</x>
+				<y>0.375</y>
+			</position>
+			<angle>180</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>6.198889336</x>
+				<y>-0.345880477</y>
+			</position>
+			<angle>-6.75</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

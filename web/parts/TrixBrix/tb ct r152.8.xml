@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Curved Track R152 5.625°</en>
+		<de>TrixBrix Kurve R152 5.625°</de>
+		<fr>TrixBrix Virage R152 5.625°</fr>
+		<nl>TrixBrix Bocht R152 5.625°</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/Curved-Track-R152/319</ImageURL>
+	<SortingKey>TrixBrix - C152</SortingKey>
+
+	<SnapMargin>
+		<left>0.625</left>
+		<right>0.125</right>
+		<top>0.0</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-7.5</x>
+				<y>-0.375</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>168.75</angleToPrev>
+			<angleToNext>191.25</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>7.39860533</x>
+				<y>0.356921546</y>
+			</position>
+			<angle>5.625</angle>
+			<angleToPrev>191.25</angleToPrev>
+			<angleToNext>168.75</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

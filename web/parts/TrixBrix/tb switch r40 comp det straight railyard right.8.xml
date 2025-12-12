@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right switch R40 detached part railyard short</en>
+		<de>TrixBrix Rechtsweiche R40 Herzstück Railyard kurz</de>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<SortingKey>TrixBrix - D52</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>0</right>
+		<top>0.5</top>
+		<bottom>0.5</bottom>
+	</SnapMargin>
+
+	<ConnexionList>
+		<!-- straight start -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_straight</type>
+			<position>
+				<x>-3</x>
+				<y>5.422197212</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+
+		<!-- straight end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-2.969828204</x>
+				<y>-7.422197212</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+
+		<!-- turn start -->
+		<connexion>
+			<type>trixbrix_sw_r40_right_turn</type>
+			<position>
+				<x>0.0448187</x>
+				<y>6.114859917</y>
+			</position>
+			<angle>112.5</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+
+		<!-- turn end -->
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>3.741215508</x>
+				<y>-0.800612109</y>
+			</position>
+			<angle>-56.25</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+</part>

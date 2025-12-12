@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix 2 Stud Gap Switch left</en>
+		<de>TrixBrix Weiche links (2 Noppen Gleisabstand)</de>
+		<nl>TrixBrix Wissel links (2 noppen tussenruimte)</nl>
+	</Description>
+	<ImageURL>https://trixbrix.eu/en_US/p/2-Stud-Gap-Switch-Left/393</ImageURL>
+	<SortingKey>TrixBrix - Y20</SortingKey>
+	<SnapMargin>
+		<left>1.25</left>
+		<right>0</right>
+		<top>0.625</top>
+		<bottom>0.625</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>-2.375</x>
+				<y>12.75</y>
+			</position>
+			<angle>180</angle>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.625</x>
+				<y>16</y>
+			</position>
+			<angle>90</angle>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-4.696345653</x>
+				<y>-15.70770407</y>
+			</position>
+			<angle>-99.35749565</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>4.625</x>
+				<y>-8</y>
+			</position>
+			<angle>-90</angle>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>-2</x>
+			<y>7</y>
+		</point>
+		<point>
+			<x>63</x>
+			<y>-4</y>
+		</point>
+		<point>
+			<x>79</x>
+			<y>65</y>
+		</point>
+		<point>
+			<x>138</x>
+			<y>65</y>
+		</point>
+		<point>
+			<x>138</x>
+			<y>266</y>
+		</point>
+		<point>
+			<x>78</x>
+			<y>266</y>
+		</point>
+		<point>
+			<x>41</x>
+			<y>246</y>
+		</point>
+		<point>
+			<x>41</x>
+			<y>221</y>
+		</point>
+		<point>
+			<x>70</x>
+			<y>221</y>
+		</point>
+		<point>
+			<x>2</x>
+			<y>49</y>
+		</point>
+	</hull>
+</part>

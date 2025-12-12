@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Left Switch R148 with Turnout Curve</en>
+		<de>TrixBrix Linksweiche R148 mit Abzweigungskurve</de>
+	</Description>
+	<SortingKey>TrixBrix - H31</SortingKey>
+
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB SWITCH R148 LEFT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>-90</angle>
+		</SubPart>
+		<SubPart id="TB CT R148TC.8">
+			<position>
+				<x>-5.736404</x>
+				<y>-27.94138</y>
+			</position>
+			<angle>67.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-17.3515</x>
+				<y>-51.61272</y>
+			</position>
+			<angle>416.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-10.51375</x>
+				<y>-38.82101</y>
+			</position>
+			<angle>421.875</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-34.61198</x>
+				<y>-74.88449</y>
+			</position>
+			<angle>765</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-25.41008</x>
+				<y>-63.67278</y>
+			</position>
+			<angle>770.625</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-56.0808</x>
+				<y>-94.34172</y>
+			</position>
+			<angle>753.75</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-44.86851</x>
+				<y>-85.14069</y>
+			</position>
+			<angle>759.375</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-80.93346</x>
+				<y>-109.2364</y>
+			</position>
+			<angle>1102.5</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-68.14128</x>
+				<y>-102.3997</y>
+			</position>
+			<angle>1108.125</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-108.2142</x>
+				<y>-118.9969</y>
+			</position>
+			<angle>1091.25</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-94.33414</x>
+				<y>-114.7869</y>
+			</position>
+			<angle>1096.875</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-136.8749</x>
+				<y>-123.2473</y>
+			</position>
+			<angle>1440</angle>
+		</SubPart>
+		<SubPart id="TB CT R148.8">
+			<position>
+				<x>-122.4402</x>
+				<y>-121.8262</y>
+			</position>
+			<angle>1445.625</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">1</nextIndex>
+		<nextIndex from="1">26</nextIndex>
+		<nextIndex from="26">0</nextIndex>
+		<nextIndex from="3">3</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

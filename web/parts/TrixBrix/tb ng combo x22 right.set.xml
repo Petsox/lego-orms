@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<group>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Narrow Crossing Right 22.5° with Ballast Curves</en>
+	</Description>
+	<SortingKey>TrixBrix - Z26</SortingKey>
+	<ImageURL>https://www.trixbrix.eu/</ImageURL>
+	<CanUngroup>true</CanUngroup>
+	<SubPartList>
+		<SubPart id="TB NG CROSSING X22.5 RIGHT.8">
+			<position>
+				<x>0</x>
+				<y>0</y>
+			</position>
+			<angle>810</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R84.8">
+			<position>
+				<x>35.75012</x>
+				<y>11.31238</y>
+			</position>
+			<angle>900</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R84.8">
+			<position>
+				<x>-35.75</x>
+				<y>-11.31253</y>
+			</position>
+			<angle>1080</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R84BC RIGHT.8">
+			<position>
+				<x>-19.74982</x>
+				<y>-8.195313</y>
+			</position>
+			<angle>1012.5</angle>
+		</SubPart>
+		<SubPart id="TB NG CT R84BC RIGHT.8">
+			<position>
+				<x>19.74979</x>
+				<y>8.195313</y>
+			</position>
+			<angle>1192.5</angle>
+		</SubPart>
+	</SubPartList>
+	<GroupConnectionPreferenceList>
+		<nextIndex from="0">2</nextIndex>
+		<nextIndex from="2">4</nextIndex>
+		<nextIndex from="4">0</nextIndex>
+	</GroupConnectionPreferenceList>
+</group>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Crossing 22.5° R104</en>
+		<de>TrixBrix Kreuzung rechts 22.5° R104</de>
+		<fr>TrixBrix Croisement droite 22.5° R104</fr>
+		<nl>TrixBrix Kruising 22.5 graden R104 Rechts</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Right-Crossing-22-deg.-R104/137</ImageURL>
+	<SortingKey>TrixBrix - X41</SortingKey>
+	
+	<SnapMargin>
+		<left>2.125</left>
+		<right>2.125</right>
+		<top>0</top>
+		<bottom>0</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-20</x>
+				<y>0</y>
+			</position>
+			<angle>180</angle>
+			<angleToPrev>22.5</angleToPrev>
+			<angleToNext>157.5</angleToNext>
+			<nextConnexionPreference>2</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>20</x>	<!-- x = connection0.X + radius * sin(33.75) = -16 + 40*sin(33.75) -->
+				<y>8</y>	<!-- y = connection0.Y - radius * (1 - cos(33.75)) = 3 - 40*(1 - cos(33.75)) -->
+			</position>
+			<angle>22.5</angle>
+			<angleToPrev>157.5</angleToPrev>
+			<angleToNext>22.5</angleToNext>
+			<nextConnexionPreference>3</nextConnexionPreference>
+			<electricPlug>2</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>20</x>
+				<y>0</y>
+			</position>
+			<angle>0</angle>
+			<angleToPrev>22.5</angleToPrev>
+			<angleToNext>157.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-20</x>
+				<y>-8</y>
+			</position>
+			<angle>202.5</angle>
+			<angleToPrev>157.5</angleToPrev>
+			<angleToNext>22.5</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>-2</electricPlug>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>20</x>
+			<y>-2</y>
+		</point>
+		<point>
+			<x>180</x>
+			<y>58</y>
+		</point>
+		<point>
+			<x>338</x>
+			<y>62</y>
+		</point>
+		<point>
+			<x>338</x>
+			<y>124</y>
+		</point>
+		<point>
+			<x>349</x>
+			<y>129</y>
+		</point>
+		<point>
+			<x>325</x>
+			<y>189</y>
+		</point>
+		<point>
+			<x>166</x>
+			<y>129</y>
+		</point>
+		<point>
+			<x>8</x>
+			<y>126</y>
+		</point>
+		<point>
+			<x>8</x>
+			<y>64</y>
+		</point>
+		<point>
+			<x>-4</x>
+			<y>58</y>
+		</point>
+	</hull>
+</part>

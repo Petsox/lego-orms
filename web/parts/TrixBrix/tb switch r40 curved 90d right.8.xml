@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<part>
+	<Author>Dr. Matthias Runte, www.mattzobricks.com</Author>
+	<Description>
+		<en>TrixBrix Right Switch Curved 90° R40</en>
+		<de>TrixBrix Rechte Bogenweiche 90° R40</de>
+		<fr>TrixBrix Aiguillage Virage droite 90° R40</fr>
+		<nl>TrixBrix Wissel in 90 graden bocht R40 Rechts</nl>
+	</Description>
+	<ImageURL>https://www.trixbrix.eu/en_US/p/Right-Switch-Curved-90-deg.-R40/106</ImageURL>
+	<SortingKey>TrixBrix - D20</SortingKey>
+	
+	<SnapMargin>
+		<left>0</left>
+		<right>2.75</right>
+		<top>0.625</top>
+		<bottom>0.75</bottom>
+	</SnapMargin>
+	<ConnexionList>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-5.3125</x>
+				<y>16</y>
+			</position>
+			<angle>90</angle>
+			<angleToPrev>-146.25</angleToPrev>
+			<angleToNext>146.25</angleToNext>
+			<nextConnexionPreference>1</nextConnexionPreference>
+			<electricPlug>1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>-2.2676813</x>
+				<y>-15.30733729</y>
+			</position>
+			<angle>-67.5</angle>
+			<angleToPrev>146.25</angleToPrev>
+			<angleToNext>67.5</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>1</type>
+			<position>
+				<x>6.403228753</x>
+				<y>-12.28427125</y>
+			</position>
+			<angle>-45</angle>
+			<angleToPrev>67.5</angleToPrev>
+			<angleToNext>146.25</angleToNext>
+			<nextConnexionPreference>0</nextConnexionPreference>
+			<electricPlug>-1</electricPlug>
+		</connexion>
+		<connexion>
+			<type>trixbrix_switchmotor</type>
+			<position>
+				<x>1.6875</x>
+				<y>12.5</y>
+			</position>
+			<angle>0</angle>
+		</connexion>
+	</ConnexionList>
+
+	<hull>
+		<point>
+			<x>24</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>39</x>
+			<y>0</y>
+		</point>
+		<point>
+			<x>93</x>
+			<y>23</y>
+		</point>
+		<point>
+			<x>106</x>
+			<y>11</y>
+		</point>
+		<point>
+			<x>149</x>
+			<y>54</y>
+		</point>
+		<point>
+			<x>149</x>
+			<y>59</y>
+		</point>
+		<point>
+			<x>98</x>
+			<y>127</y>
+		</point>
+		<point>
+			<x>59</x>
+			<y>222</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>222</y>
+		</point>
+		<point>
+			<x>96</x>
+			<y>246</y>
+		</point>
+		<point>
+			<x>64</x>
+			<y>266</y>
+		</point>
+		<point>
+			<x>0</x>
+			<y>266</y>
+		</point>
+		<point>
+			<x>0</x>
+			<y>108</y>
+		</point>
+		<point>
+			<x>6</x>
+			<y>58</y>
+		</point>
+	</hull>
+</part>
