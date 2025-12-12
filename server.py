@@ -155,7 +155,7 @@ def api_switch_auto_calibrate(switch_id):
 
 @app.route("/")
 def index():
-    return send_from_directory("static", "index.html")
+    return app.send_static_file("index.html")
 
 # -----------------------------------
 # LAUNCH
