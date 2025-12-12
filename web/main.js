@@ -116,6 +116,25 @@ function renderItem(item) {
 }
 
 // -------------------------------------------------------
+// SLIDER VALUE BINDING
+// -------------------------------------------------------
+
+function bindSliderValue(sliderId, labelId) {
+  const slider = document.getElementById(sliderId);
+  const label = document.getElementById(labelId);
+
+  if (!slider || !label) return;
+
+  // Initial value
+  label.textContent = slider.value;
+
+  // Live update
+  slider.addEventListener("input", () => {
+    label.textContent = slider.value;
+  });
+}
+
+// -------------------------------------------------------
 // SWITCH OVERLAYS
 // -------------------------------------------------------
 function renderSwitches(switches) {
@@ -207,7 +226,12 @@ let activeSwitch = null;
 async function openCalibration(sw) {
   activeSwitch = sw;
   document.getElementById("cal-id").textContent = sw.id;
+
   await loadCalibration(sw);
+
+  bindSliderValue("cal-a0", "cal-a0-val");
+  bindSliderValue("cal-a1", "cal-a1-val");
+
   document.getElementById("cal-panel").classList.add("show");
 }
 
@@ -251,7 +275,7 @@ function closeCalibration() {
 // -------------------------------------------------------
 
 async function loadCalibration(sw) {
-  const cfg = await fetch("/api/switch_config").then(r => r.json());
+  const cfg = await fetch("/api/switch_config").then((r) => r.json());
   const entry = cfg.switches?.[sw.id];
 
   if (!entry) return;
@@ -259,6 +283,12 @@ async function loadCalibration(sw) {
   document.getElementById("cal-channel").value = entry.channel;
   document.getElementById("cal-a0").value = entry.angle0;
   document.getElementById("cal-a1").value = entry.angle1;
+
+  document.getElementById("cal-a0-val").textContent =
+    document.getElementById("cal-a0").value;
+
+  document.getElementById("cal-a1-val").textContent =
+    document.getElementById("cal-a1").value;
 }
 
 // -------------------------------------------------------

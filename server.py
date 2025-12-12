@@ -1,12 +1,14 @@
 from flask import Flask, jsonify, request
 from layout_loader import load_layout
 from parts_mapper import build_parts_map
+from adafruit_servokit import ServoKit
 import json, os
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 
 LAYOUT = load_layout("Layout.bbm")
 PARTS = build_parts_map()
+kit = ServoKit(channels=16)
 
 CONFIG_FILE = "switch_config.json"
 if not os.path.exists(CONFIG_FILE):
@@ -61,11 +63,48 @@ def api_update_switch_config():
     return jsonify({"status": "ok"})
 
 @app.route("/api/switch/<sid>/toggle")
-def toggle_switch(sid):
-    cfg = json.load(open(CONFIG_FILE))
-    cfg[sid] = 1 - cfg.get(sid, 0)
-    json.dump(cfg, open(CONFIG_FILE, "w"), indent=2)
-    return {"id": sid, "state": cfg[sid]}
+def api_toggle_switch(sid):
+    sid = str(sid)
+
+    # Load config
+    with open("switch_config.json", "r") as f:
+        cfg = json.load(f)
+
+    if "switches" not in cfg or sid not in cfg["switches"]:
+        return jsonify({"error": "Switch not configured"}), 400
+
+    sw = cfg["switches"][sid]
+
+    channel = int(sw["channel"])
+    angle0 = int(sw.get("angle0", 65))
+    angle1 = int(sw.get("angle1", 105))
+    state = int(sw.get("state", 0))
+
+    # Toggle state
+    new_state = 1 - state
+    angle = angle1 if new_state else angle0
+
+    print(
+        f"SERVO MOVE → switch={sid}, channel={channel}, angle={angle}"
+    )
+
+    # 🔥 ACTUAL SERVO COMMAND
+    kit.servo[channel].angle = angle
+
+    # Save new state
+    sw["state"] = new_state
+    cfg["switches"][sid] = sw
+
+    with open("switch_config.json", "w") as f:
+        json.dump(cfg, f, indent=2)
+
+    return jsonify({
+        "id": sid,
+        "state": new_state,
+        "channel": channel,
+        "angle": angle
+    })
+
 
 if __name__ == "__main__":
     print("Server running on :80")
