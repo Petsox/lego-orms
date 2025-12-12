@@ -150,7 +150,19 @@ function renderItems(items, root) {
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
-      const meta = PART_META[partId];
+
+      const partId = item.part.match(/\d+/)?.[0];
+      const meta = partId ? PART_META[partId] : null;
+
+      if (meta && meta.origin) {
+        img.setAttribute("x", -meta.origin[0]);
+        img.setAttribute("y", -meta.origin[1]);
+      } else {
+        // fallback
+        img.setAttribute("x", -item.w / 2);
+        img.setAttribute("y", -item.h / 2);
+      }
+
       img.setAttribute("x", -meta.origin[0]);
       img.setAttribute("y", -meta.origin[1]);
       img.setAttribute("width", item.w);
