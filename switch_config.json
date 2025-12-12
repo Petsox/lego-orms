@@ -1,0 +1,7 @@
+{
+    "switches": [
+        { "id": 0, "name": "Main Yard" },
+        { "id": 1, "name": "Outer Loop" },
+        { "id": 2, "name": "Siding A" }
+    ]
+}
