@@ -133,7 +133,13 @@ function renderSwitches(switches) {
 
     g.appendChild(dot);
 
-    g.addEventListener("click", () => openCalibration(sw));
+    g.addEventListener("click", (e) => {
+      if (e.shiftKey) {
+        openCalibration(sw);
+      } else {
+        toggleSwitch(sw.id, g.querySelector("circle"));
+      }
+    });
 
     svg.appendChild(g);
   });
@@ -161,36 +167,35 @@ async function toggleSwitch(id, indicator) {
 // -------------------------------------------------------
 
 function autoFit(root, items) {
-    const padding = 40;
+  const padding = 40;
 
-    let minX = Infinity, minY = Infinity;
-    let maxX = -Infinity, maxY = -Infinity;
+  let minX = Infinity,
+    minY = Infinity;
+  let maxX = -Infinity,
+    maxY = -Infinity;
 
-    items.forEach(i => {
-        minX = Math.min(minX, i.x - i.w / 2);
-        minY = Math.min(minY, i.y - i.h / 2);
-        maxX = Math.max(maxX, i.x + i.w / 2);
-        maxY = Math.max(maxY, i.y + i.h / 2);
-    });
+  items.forEach((i) => {
+    minX = Math.min(minX, i.x - i.w / 2);
+    minY = Math.min(minY, i.y - i.h / 2);
+    maxX = Math.max(maxX, i.x + i.w / 2);
+    maxY = Math.max(maxY, i.y + i.h / 2);
+  });
 
-    const layoutW = maxX - minX;
-    const layoutH = maxY - minY;
+  const layoutW = maxX - minX;
+  const layoutH = maxY - minY;
 
-    const svgW = svg.clientWidth;
-    const svgH = svg.clientHeight;
+  const svgW = svg.clientWidth;
+  const svgH = svg.clientHeight;
 
-    const scale = Math.min(
-        (svgW - padding * 2) / layoutW,
-        (svgH - padding * 2) / layoutH
-    );
+  const scale = Math.min(
+    (svgW - padding * 2) / layoutW,
+    (svgH - padding * 2) / layoutH
+  );
 
-    const tx = (svgW - layoutW * scale) / 2 - minX * scale;
-    const ty = (svgH - layoutH * scale) / 2 - minY * scale;
+  const tx = (svgW - layoutW * scale) / 2 - minX * scale;
+  const ty = (svgH - layoutH * scale) / 2 - minY * scale;
 
-    root.setAttribute(
-        "transform",
-        `translate(${tx},${ty}) scale(${scale})`
-    );
+  root.setAttribute("transform", `translate(${tx},${ty}) scale(${scale})`);
 }
 
 // -------------------------------------------------------
@@ -199,37 +204,61 @@ function autoFit(root, items) {
 
 let activeSwitch = null;
 
-function openCalibration(sw) {
-    activeSwitch = sw;
-    document.getElementById("cal-id").textContent = sw.id;
-    document.getElementById("cal-panel").classList.add("show");
+async function openCalibration(sw) {
+  activeSwitch = sw;
+  document.getElementById("cal-id").textContent = sw.id;
+  await loadCalibration(sw);
+  document.getElementById("cal-panel").classList.add("show");
 }
 
 async function testServo(state) {
-    await fetch(`/api/switch/${activeSwitch.id}/toggle`);
+  await fetch(`/api/switch/${activeSwitch.id}/toggle`);
 }
 
 async function saveCalibration() {
-    const channel = document.getElementById("cal-channel").value;
-    const a0 = document.getElementById("cal-a0").value;
-    const a1 = document.getElementById("cal-a1").value;
+  if (!activeSwitch) return;
 
-    await fetch("/api/update_switch_config", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            id: activeSwitch.id,
-            channel,
-            angle0: a0,
-            angle1: a1
-        })
-    });
+  const channel = parseInt(document.getElementById("cal-channel").value, 10);
+  const angle0 = parseInt(document.getElementById("cal-a0").value, 10);
+  const angle1 = parseInt(document.getElementById("cal-a1").value, 10);
 
-    closeCalibration();
+  const res = await fetch("/api/update_switch_config", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id: activeSwitch.id,
+      channel,
+      angle0,
+      angle1,
+    }),
+  });
+
+  if (!res.ok) {
+    alert("Failed to save calibration");
+    return;
+  }
+
+  console.log("Calibration saved for switch", activeSwitch.id);
+  closeCalibration();
 }
 
 function closeCalibration() {
-    document.getElementById("cal-panel").classList.remove("show");
+  document.getElementById("cal-panel").classList.remove("show");
+}
+
+// -------------------------------------------------------
+// LOAD SWITCH CALIBRATION DATA
+// -------------------------------------------------------
+
+async function loadCalibration(sw) {
+  const cfg = await fetch("/api/switch_config").then((r) => r.json());
+  const entry = cfg.switches?.[sw.id];
+
+  if (!entry) return;
+
+  document.getElementById("cal-channel").value = entry.channel;
+  document.getElementById("cal-a0").value = entry.angle0;
+  document.getElementById("cal-a1").value = entry.angle1;
 }
 
 // -------------------------------------------------------

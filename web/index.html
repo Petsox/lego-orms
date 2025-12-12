@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Train Switch Control</title>
-  <link rel="stylesheet" href="css.css">
-</head>
-<body>
-  <h1>Train Switch Control</h1>
-  <svg id="canvas">
-    <defs>
+  <head>
+    <title>Train Switch Control</title>
+    <link rel="stylesheet" href="css.css" />
+  </head>
+  <body>
+    <h1>Train Switch Control</h1>
+    <svg id="canvas">
+      <defs>
         <filter id="shadow">
-            <feDropShadow dx="0" dy="1" stdDeviation="1" flood-opacity="0.35"/>
+          <feDropShadow dx="0" dy="1" stdDeviation="1" flood-opacity="0.35" />
         </filter>
-    </defs>
-  </svg>
-  <div id="cal-panel">
-  <h3>Switch <span id="cal-id"></span></h3>
+      </defs>
+    </svg>
+    <div id="cal-panel">
+      <h3>Switch <span id="cal-id"></span></h3>
 
-  Servo channel (0–15):
-  <input id="cal-channel" type="number" min="0" max="15"><br>
+      Servo channel (0–15):
+      <input id="cal-channel" type="number" min="0" max="15" /><br />
 
-  Angle 0:
-  <input id="cal-a0" type="range" min="0" max="180"><br>
+      Angle 0:
+      <input id="cal-a0" type="range" min="58" max="100" step="1" /><br />
 
-  Angle 1:
-  <input id="cal-a1" type="range" min="0" max="180"><br>
+      Angle 1:
+      <input id="cal-a1" type="range" min="58" max="100" step="1" /><br />
 
-  <div class="cal-buttons">
-    <button onclick="testServo(0)">Test 0</button>
-    <button onclick="testServo(1)">Test 1</button>
-    <button onclick="saveCalibration()">Save</button>
-    <button onclick="closeCalibration()">Close</button>
-  </div>
-</div>
-
-  <script src="main.js"></script>
-</body>
+      <div class="cal-buttons">
+        <button onclick="testServo(0)">Test 0</button>
+        <button onclick="testServo(1)">Test 1</button>
+        <button onclick="saveCalibration()">Save</button>
+        <button onclick="closeCalibration()">Close</button>
+      </div>
+    </div>
+    <div id="hint">Tip: Hold <b>Shift</b> and click a switch to calibrate</div>
+    <script src="main.js"></script>
+  </body>
 </html>
