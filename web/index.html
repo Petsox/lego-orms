@@ -6,7 +6,13 @@
 </head>
 <body>
   <h1>Train Switch Control</h1>
-  <svg id="canvas"></svg>
+  <svg id="canvas">
+    <defs>
+        <filter id="shadow">
+            <feDropShadow dx="0" dy="1" stdDeviation="1" flood-opacity="0.35"/>
+        </filter>
+    </defs>
+  </svg>
   <script src="main.js"></script>
 </body>
 </html>
