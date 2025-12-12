@@ -13,6 +13,26 @@
         </filter>
     </defs>
   </svg>
+  <div id="cal-panel">
+  <h3>Switch <span id="cal-id"></span></h3>
+
+  Servo channel (0–15):
+  <input id="cal-channel" type="number" min="0" max="15"><br>
+
+  Angle 0:
+  <input id="cal-a0" type="range" min="0" max="180"><br>
+
+  Angle 1:
+  <input id="cal-a1" type="range" min="0" max="180"><br>
+
+  <div class="cal-buttons">
+    <button onclick="testServo(0)">Test 0</button>
+    <button onclick="testServo(1)">Test 1</button>
+    <button onclick="saveCalibration()">Save</button>
+    <button onclick="closeCalibration()">Close</button>
+  </div>
+</div>
+
   <script src="main.js"></script>
 </body>
 </html>
