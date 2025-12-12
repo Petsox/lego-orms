@@ -24,6 +24,11 @@ def api_layout():
 def api_parts():
     return jsonify(PARTS)
 
+@app.route("/api/switch_config")
+def api_switch_config():
+    with open("switch_config.json", "r") as f:
+        return jsonify(json.load(f))
+
 @app.route("/api/switch/<sid>/toggle")
 def toggle_switch(sid):
     cfg = json.load(open(CONFIG_FILE))

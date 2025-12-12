@@ -251,7 +251,7 @@ function closeCalibration() {
 // -------------------------------------------------------
 
 async function loadCalibration(sw) {
-  const cfg = await fetch("/api/switch_config").then((r) => r.json());
+  const cfg = await fetch("/api/switch_config").then(r => r.json());
   const entry = cfg.switches?.[sw.id];
 
   if (!entry) return;
