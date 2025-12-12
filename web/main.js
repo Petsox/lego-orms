@@ -5,7 +5,7 @@
 const svg = document.getElementById("canvas");
 
 function el(name) {
-    return document.createElementNS("http://www.w3.org/2000/svg", name);
+  return document.createElementNS("http://www.w3.org/2000/svg", name);
 }
 
 let PART_IMAGES = {};
@@ -16,16 +16,16 @@ let activeSwitch = null;
 // LOADERS
 // -------------------------------------------------------
 async function loadParts() {
-    const res = await fetch("/api/parts");
-    PART_IMAGES = await res.json();
-    console.log("Loaded part images:", Object.keys(PART_IMAGES).length);
+  const res = await fetch("/api/parts");
+  PART_IMAGES = await res.json();
+  console.log("Loaded part images:", Object.keys(PART_IMAGES).length);
 }
 
 async function loadLayout() {
-    const res = await fetch("/api/layout");
-    const data = await res.json();
-    LAYOUT = data.items ? data : data.layout;
-    console.log("Layout loaded:", LAYOUT);
+  const res = await fetch("/api/layout");
+  const data = await res.json();
+  LAYOUT = data.items ? data : data.layout;
+  console.log("Layout loaded:", LAYOUT);
 }
 
 // -------------------------------------------------------
@@ -33,200 +33,201 @@ async function loadLayout() {
 // -------------------------------------------------------
 
 const SWITCH_PART_IDS = new Set([
-    "2861", // Left switch
-    "2859", // Right switch
-    "7996", // Double crossover / special switch
+  "2861", // Left switch
+  "2859", // Right switch
+  "7996", // Double crossover / special switch
 ]);
 
 function isSwitchPart(item) {
-    if (!item || !item.part) return false;
+  if (!item || !item.part) return false;
 
-    const name = item.part.toUpperCase();
+  const name = item.part.toUpperCase();
 
-    // Keyword-based detection
-    if (
-        name.includes("SWITCH") ||
-        name.includes("POINT") ||
-        name.includes("TURNOUT") ||
-        name.includes("SLIP")
-    ) {
-        return true;
-    }
+  // Keyword-based detection
+  if (
+    name.includes("SWITCH") ||
+    name.includes("POINT") ||
+    name.includes("TURNOUT") ||
+    name.includes("SLIP")
+  ) {
+    return true;
+  }
 
-    // Part-number-based detection (BlueBrick reality)
-    // Extract numeric ID from part name if present
-    const match = name.match(/\b\d{4}\b/);
-    if (match && SWITCH_PART_IDS.has(match[0])) {
-        return true;
-    }
+  // Part-number-based detection (BlueBrick reality)
+  // Extract numeric ID from part name if present
+  const match = name.match(/\b\d{4}\b/);
+  if (match && SWITCH_PART_IDS.has(match[0])) {
+    return true;
+  }
 
-    return false;
+  return false;
 }
 
 // -------------------------------------------------------
 // RENDER ENTRY POINT
 // -------------------------------------------------------
 async function init() {
-    console.log("Renderer starting…");
+  console.log("Renderer starting…");
 
-    await loadParts();
-    await loadLayout();
+  await loadParts();
+  await loadLayout();
 
-    svg.innerHTML = "";
+  svg.innerHTML = "";
 
-    const root = el("g");
-    svg.appendChild(root);
+  const root = el("g");
+  svg.appendChild(root);
 
-    renderItems(LAYOUT.items, root);
-    renderSwitches(LAYOUT.items, root);
+  renderItems(LAYOUT.items, root);
+  renderSwitches(LAYOUT.items, root);
 
-    autoFit(root, LAYOUT.items);
+  autoFit(root, LAYOUT.items);
 }
 
 // -------------------------------------------------------
 // AUTO CENTER + SCALE
 // -------------------------------------------------------
 function autoFit(root, items) {
-    const pad = 40;
-    let minX = Infinity, minY = Infinity;
-    let maxX = -Infinity, maxY = -Infinity;
+  const pad = 40;
+  let minX = Infinity,
+    minY = Infinity;
+  let maxX = -Infinity,
+    maxY = -Infinity;
 
-    items.forEach(i => {
-        minX = Math.min(minX, i.x);
-        minY = Math.min(minY, i.y);
-        maxX = Math.max(maxX, i.x + i.w);
-        maxY = Math.max(maxY, i.y + i.h);
-    });
+  items.forEach((i) => {
+    minX = Math.min(minX, i.x);
+    minY = Math.min(minY, i.y);
+    maxX = Math.max(maxX, i.x + i.w);
+    maxY = Math.max(maxY, i.y + i.h);
+  });
 
-    const layoutW = maxX - minX;
-    const layoutH = maxY - minY;
+  const layoutW = maxX - minX;
+  const layoutH = maxY - minY;
 
-    const svgW = svg.clientWidth;
-    const svgH = svg.clientHeight;
+  const svgW = svg.clientWidth;
+  const svgH = svg.clientHeight;
 
-    const scale = Math.min(
-        (svgW - pad * 2) / layoutW,
-        (svgH - pad * 2) / layoutH
-    );
+  const scale = Math.min(
+    (svgW - pad * 2) / layoutW,
+    (svgH - pad * 2) / layoutH
+  );
 
-    const tx = (svgW - layoutW * scale) / 2 - minX * scale;
-    const ty = (svgH - layoutH * scale) / 2 - minY * scale;
+  const tx = (svgW - layoutW * scale) / 2 - minX * scale;
+  const ty = (svgH - layoutH * scale) / 2 - minY * scale;
 
-    root.setAttribute("transform", `translate(${tx},${ty}) scale(${scale})`);
+  root.setAttribute("transform", `translate(${tx},${ty}) scale(${scale})`);
 }
 
 // -------------------------------------------------------
 // ITEMS
 // -------------------------------------------------------
 function normalizePartName(name) {
-    return name
-        .toUpperCase()
-        .replace(/^TB\s+/, "")
-        .replace(/^TS\s+/, "")
-        .trim();
+  return name
+    .toUpperCase()
+    .replace(/^TB\s+/, "")
+    .replace(/^TS\s+/, "")
+    .trim();
 }
 
 function renderItems(items, root) {
-    items.forEach(item => {
-        const g = el("g");
-        g.setAttribute(
-            "transform",
-            `translate(${item.x},${item.y}) rotate(${item.rot})`
-        );
+  items.forEach((item) => {
+    const g = el("g");
+    g.setAttribute(
+      "transform",
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
+    );
 
-        const key = normalizePartName(item.part);
-        const imgURL = PART_IMAGES[key];
+    const key = normalizePartName(item.part);
+    const imgURL = PART_IMAGES[key];
 
-        if (imgURL) {
-            const img = el("image");
-            img.setAttribute("href", imgURL);
-            img.setAttribute("x", -item.w / 2);
-            img.setAttribute("y", -item.h / 2);
-            img.setAttribute("width", item.w);
-            img.setAttribute("height", item.h);
-            img.setAttribute("filter", "url(#shadow)");
-            g.appendChild(img);
-        } else {
-            const r = el("rect");
-            r.setAttribute("x", -item.w / 2);
-            r.setAttribute("y", -item.h / 2);
-            r.setAttribute("width", item.w);
-            r.setAttribute("height", item.h);
-            r.setAttribute("fill", "#777");
-            g.appendChild(r);
-        }
+    if (imgURL) {
+      const img = el("image");
+      img.setAttribute("href", imgURL);
+      const meta = PART_META[partId];
+      img.setAttribute("x", -meta.origin[0]);
+      img.setAttribute("y", -meta.origin[1]);
+      img.setAttribute("width", item.w);
+      img.setAttribute("height", item.h);
+      img.setAttribute("filter", "url(#shadow)");
+      g.appendChild(img);
+    } else {
+      const r = el("rect");
+      r.setAttribute("x", -item.w / 2);
+      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("width", item.w);
+      r.setAttribute("height", item.h);
+      r.setAttribute("fill", "#777");
+      g.appendChild(r);
+    }
 
-        root.appendChild(g);
-    });
+    root.appendChild(g);
+  });
 }
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
 // -------------------------------------------------------
 function switchButtonOffset(item) {
-    let dx = 0, dy = 0;
-    const n = item.part.toUpperCase();
+  let dx = 0,
+    dy = 0;
+  const n = item.part.toUpperCase();
 
-    if (n.includes("LEFT")) dx = -item.w * 0.25;
-    if (n.includes("RIGHT")) dx = item.w * 0.25;
-    if (n.includes("CURVE")) dy = -item.h * 0.15;
+  if (n.includes("LEFT")) dx = -item.w * 0.25;
+  if (n.includes("RIGHT")) dx = item.w * 0.25;
+  if (n.includes("CURVE")) dy = -item.h * 0.15;
 
-    return { dx, dy };
+  return { dx, dy };
 }
 
 function renderSwitches(items, root) {
-    items.forEach(item => {
-        if (!isSwitchPart(item)) return;
+  items.forEach((item) => {
+    if (!isSwitchPart(item)) return;
 
-        const { dx, dy } = switchButtonOffset(item);
+    const { dx, dy } = switchButtonOffset(item);
 
-        const g = el("g");
-        g.setAttribute(
-            "transform",
-            `translate(${item.x + dx},${item.y + dy}) rotate(${item.rot})`
-        );
-        g.style.cursor = "pointer";
+    const g = el("g");
+    g.setAttribute(
+      "transform",
+      `translate(${item.x + dx},${item.y + dy}) rotate(${item.rot})`
+    );
+    g.style.cursor = "pointer";
 
-        const dot = el("circle");
-        dot.setAttribute("r", 6);
-        dot.setAttribute("fill", "#2ecc71");
-        dot.setAttribute("stroke", "#111");
-        dot.setAttribute("stroke-width", "2");
-        g.appendChild(dot);
+    const dot = el("circle");
+    dot.setAttribute("r", 6);
+    dot.setAttribute("fill", "#2ecc71");
+    dot.setAttribute("stroke", "#111");
+    dot.setAttribute("stroke-width", "2");
+    g.appendChild(dot);
 
-        g.addEventListener("click", e => {
-            if (e.shiftKey) {
-                openCalibration(item);
-            } else {
-                toggleSwitch(item.id, dot);
-            }
-        });
-
-        root.appendChild(g);
+    g.addEventListener("click", (e) => {
+      if (e.shiftKey) {
+        openCalibration(item);
+      } else {
+        toggleSwitch(item.id, dot);
+      }
     });
+
+    root.appendChild(g);
+  });
 }
 
 // -------------------------------------------------------
 // SWITCH CONTROL
 // -------------------------------------------------------
 async function toggleSwitch(id, indicator) {
-    const res = await fetch(`/api/switch/${id}/toggle`);
-    const data = await res.json();
+  const res = await fetch(`/api/switch/${id}/toggle`);
+  const data = await res.json();
 
-    indicator.setAttribute(
-        "fill",
-        data.state === 1 ? "#f1c40f" : "#2ecc71"
-    );
+  indicator.setAttribute("fill", data.state === 1 ? "#f1c40f" : "#2ecc71");
 }
 
 // -------------------------------------------------------
 // CALIBRATION UI (unchanged logic)
 // -------------------------------------------------------
 async function openCalibration(item) {
-    activeSwitch = item;
-    document.getElementById("cal-id").textContent = item.id;
-    await loadCalibration(item);
-    document.getElementById("cal-panel").classList.add("show");
+  activeSwitch = item;
+  document.getElementById("cal-id").textContent = item.id;
+  await loadCalibration(item);
+  document.getElementById("cal-panel").classList.add("show");
 }
 
 window.onload = init;
