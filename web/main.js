@@ -183,7 +183,7 @@ function renderItems(items, root) {
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
       img.setAttribute("filter", "url(#shadow)");
-      img.setAttribute("preserveAspectRatio", "none");
+      img.setAttribute("preserveAspectRatio", "xMidYMid meet");
       g.appendChild(img);
     } else {
       const r = el("rect");
