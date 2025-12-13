@@ -4,7 +4,7 @@ import json
 
 PIXELS_PER_STUD = 8
 
-PARTS_DIR = "web/res/parts_xml"   # adjust if needed
+PARTS_DIR = "web/parts"   # adjust if needed
 OUT_FILE = "web/res/part_origin.json"
 
 
@@ -33,26 +33,28 @@ def parse_part_origin(xml_path):
         "y": oy * PIXELS_PER_STUD
     }
 
-
 def build_origin_table():
     table = {}
 
-    for fname in os.listdir(PARTS_DIR):
-        if not fname.endswith(".xml"):
-            continue
+    for root_dir, _, files in os.walk(PARTS_DIR):
+        for fname in files:
+            if not fname.endswith(".xml"):
+                continue
 
-        part_id = fname.split(".")[0]  # "2859.8.xml" → "2859"
-        path = os.path.join(PARTS_DIR, fname)
+            # "2859.8.xml" → "2859"
+            part_id = fname.split(".")[0]
+            path = os.path.join(root_dir, fname)
 
-        try:
-            table[part_id] = parse_part_origin(path)
-        except Exception as e:
-            print(f"Failed to parse {fname}: {e}")
+            try:
+                table[part_id] = parse_part_origin(path)
+            except Exception as e:
+                print(f"Failed to parse {path}: {e}")
 
     with open(OUT_FILE, "w") as f:
         json.dump(table, f, indent=2)
 
     print(f"Wrote {OUT_FILE} with {len(table)} entries")
+
 
 
 if __name__ == "__main__":
