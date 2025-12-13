@@ -9,7 +9,6 @@ function el(name) {
 }
 
 let PART_IMAGES = {};
-let PART_META = {};
 let PART_IMAGE_SIZE = {};
 let PART_ORIGIN = {};
 let LAYOUT = null;
@@ -59,12 +58,6 @@ async function loadLayout() {
   const data = await res.json();
   LAYOUT = data.items ? data : data.layout;
   console.log("Layout loaded:", LAYOUT);
-}
-
-async function loadPartMeta() {
-  const res = await fetch("/api/part_meta");
-  PART_META = await res.json();
-  console.log("Loaded part meta:", PART_META);
 }
 
 async function loadCalibration(item) {
@@ -133,7 +126,6 @@ async function init() {
   console.log("Renderer starting…");
 
   await loadParts();
-  await loadPartMeta();
   await loadLayout();
 
   svg.innerHTML = "";

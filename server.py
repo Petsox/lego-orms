@@ -2,14 +2,12 @@ from flask import Flask, jsonify, request
 from layout_loader import load_layout
 from parts_mapper import build_parts_map
 from adafruit_servokit import ServoKit
-from part_meta import build_part_meta
 import json, os
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 
 LAYOUT = load_layout("Layout.bbm")
 PARTS = build_parts_map()
-PART_META = build_part_meta()
 kit = ServoKit(channels=16)
 
 CONFIG_FILE = "switch_config.json"
@@ -27,10 +25,6 @@ def api_layout():
 @app.route("/api/parts")
 def api_parts():
     return jsonify(PARTS)
-
-@app.route("/api/part_meta")
-def api_part_meta():
-    return jsonify(PART_META)
 
 @app.route("/api/switch_config")
 def api_switch_config():
