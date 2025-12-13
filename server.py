@@ -42,8 +42,10 @@ def api_switch_config():
 def api_render_debug():
     data = request.json
     if data:
-        log_render_item(data)
+        with open("render_debug.jsonl", "a") as f:
+            f.write(json.dumps(data) + "\n")
     return {"ok": True}
+
 
 @app.route("/api/update_switch_config", methods=["POST"])
 def api_update_switch_config():

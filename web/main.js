@@ -14,6 +14,19 @@ let PART_IMAGE_SIZE = {};
 let LAYOUT = null;
 let activeSwitch = null;
 
+function logRenderDebugSafe(payload) {
+  try {
+    fetch("/api/render_debug", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  } catch (_) {
+    // never crash rendering
+  }
+}
+
+
 // -------------------------------------------------------
 // LOADERS
 // -------------------------------------------------------
@@ -176,35 +189,17 @@ function normalizePartName(name) {
     .trim();
 }
 
-function logRenderDebug(item, key, imgSize, transform) {
-  fetch("/api/render_debug", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      part_raw: item.part,
-      part_key: key,
-      x: item.x,
-      y: item.y,
-      rot: item.rot,
-      w: item.w,
-      h: item.h,
-      image_size: imgSize || null,
-      transform,
-    }),
-  }).catch(() => {});
-}
-
 /**
  * Render all parts in the SVG root.
  * Uses BlueBrick absolute pixel coordinates and native image sizes.
  */
 function renderItems(items, root) {
-  items.forEach((item) => {
+  items.forEach((item, index) => {
     const key = normalizePartName(item.part);
-    const imgURL = PART_IMAGES[key];
+    const imgURL = PART_IMAGES[key] || null;
 
-    // Create a group with transform for position + rotation only
     const g = el("g");
+
     const transform = `translate(${item.x},${item.y}) rotate(${item.rot})`;
     g.setAttribute("transform", transform);
 
@@ -212,19 +207,17 @@ function renderItems(items, root) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      // Draw at the raw image origin (top-left) — this matches BlueBrick.
-      // BlueBrick .bbm coordinates are already aligned to the image's origin.
-      img.setAttribute("x", "0");
-      img.setAttribute("y", "0");
+      // Explicit centering using layout dimensions
+      img.setAttribute("x", -item.w / 2);
+      img.setAttribute("y", -item.h / 2);
+      img.setAttribute("width", item.w);
+      img.setAttribute("height", item.h);
 
-      // Use native image pixel size (SVG will render at actual GIF image size)
-      // No scaling is applied here.
       g.appendChild(img);
     } else {
-      // Fallback if image missing: draw a simple rect
       const r = el("rect");
-      r.setAttribute("x", "0");
-      r.setAttribute("y", "0");
+      r.setAttribute("x", -item.w / 2);
+      r.setAttribute("y", -item.h / 2);
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
@@ -232,9 +225,22 @@ function renderItems(items, root) {
     }
 
     root.appendChild(g);
+
+    // 🔍 LOG EVERYTHING WE KNOW (safe)
+    logRenderDebugSafe({
+      index,
+      part_raw: item.part,
+      part_key: key,
+      x: item.x,
+      y: item.y,
+      rot: item.rot,
+      w: item.w,
+      h: item.h,
+      has_image: !!imgURL,
+      transform
+    });
   });
 }
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
