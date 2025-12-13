@@ -181,7 +181,7 @@ function renderItems(items, root) {
       img.setAttribute("y", -item.h / 2);
 
       img.setAttribute("width", item.w);
-      img.setAttribute("height", item.w);
+      img.setAttribute("height", item.h);
       img.setAttribute("filter", "url(#shadow)");
       g.appendChild(img);
     } else {
