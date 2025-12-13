@@ -165,48 +165,27 @@ function normalizePartName(name) {
     .trim();
 }
 
-function renderLayout(root) {
-  LAYOUT.items.forEach(item => {
-    const imgURL = PART_IMAGES[normalizePartName(item.part)];
-    if (!imgURL) return;
+function renderLayout(layout) {
+  const panel = document.getElementById("panel");
+  panel.innerHTML = "";
 
-    const g = el("g");
+  layout.parts.forEach(part => {
+    const el = document.createElement("img");
 
-    // Position ONLY
-    g.setAttribute(
-      "transform",
-      `translate(${item.x},${item.y})`
-    );
+    el.src = part.image;
+    el.className = "part";
 
-    const img = el("image");
-    img.setAttribute("href", imgURL);
+    el.style.left = `${part.x}px`;
+    el.style.top = `${part.y}px`;
+    el.style.width = `${part.width}px`;
+    el.style.height = `${part.height}px`;
 
-    const w = item.w;
-    const h = item.h;
+    const deg = (part.orientation || 0) / 10;
+    el.style.transform = `rotate(${deg}deg)`;
 
-    // Center image
-    img.setAttribute("x", -w / 2);
-    img.setAttribute("y", -h / 2);
-    img.setAttribute("width", w);
-    img.setAttribute("height", h);
-
-    // 🔑 PREVENT SVG SHRINKING
-    img.setAttribute("preserveAspectRatio", "none");
-
-    // 🔑 ROTATE IMAGE PIXELS
-    const angle = bbOrientationToDegrees(item.orientation);
-    if (angle !== 0) {
-      img.setAttribute(
-        "transform",
-        `rotate(${angle})`
-      );
-    }
-
-    g.appendChild(img);
-    root.appendChild(g);
+    panel.appendChild(el);
   });
 }
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)

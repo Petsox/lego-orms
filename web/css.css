@@ -11,22 +11,37 @@ h1 {
   font-size: 1.3rem;
 }
 
-image {
-  image-rendering: crisp-edges;
-}
+/* ===== PANEL ===== */
 
-svg {
-  width: 100%;
-  height: calc(100vh - 52px);
-  touch-action: manipulation;
+#panel {
+  position: relative;
+  width: 800px;           /* match Layout.bbm export scale */
+  height: 450px;
+  margin: 0 auto;
   background:
     linear-gradient(#2a2a2a 1px, transparent 1px),
     linear-gradient(90deg, #2a2a2a 1px, transparent 1px),
     #1f2326;
   background-size: 40px 40px;
+  overflow: hidden;
 }
 
-/* Calibration panel */
+/* ===== PARTS ===== */
+
+.part {
+  position: absolute;
+  transform-origin: center center;
+  image-rendering: crisp-edges;
+  user-select: none;
+}
+
+/* optional hover debugging */
+.part:hover {
+  outline: 1px solid rgba(0, 255, 255, 0.5);
+}
+
+/* ===== CALIBRATION PANEL ===== */
+
 #cal-panel {
   position: fixed;
   left: 0;

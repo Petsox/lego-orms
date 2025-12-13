@@ -6,13 +6,11 @@
   </head>
   <body>
     <h1>Train Switch Control</h1>
-    <svg id="canvas">
-      <defs>
-        <filter id="shadow">
-          <feDropShadow dx="0" dy="1" stdDeviation="1" flood-opacity="0.35" />
-        </filter>
-      </defs>
-    </svg>
+
+    <!-- PANEL -->
+    <div id="panel"></div>
+
+    <!-- CALIBRATION PANEL (unchanged) -->
     <div id="cal-panel">
       <h3>Switch <span id="cal-id"></span></h3>
 
@@ -32,7 +30,11 @@
         <button onclick="closeCalibration()">Close</button>
       </div>
     </div>
-    <div id="hint">Tip: Hold <b>Shift</b> and click a switch to calibrate</div>
+
+    <div id="hint">
+      Tip: Hold <b>Shift</b> and click a switch to calibrate
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
