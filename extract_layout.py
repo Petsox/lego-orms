@@ -7,13 +7,6 @@ BBM_FILE = os.path.join(BASE_DIR, "Layout.bbm")
 OUT_FILE = os.path.join(BASE_DIR, "web", "res", "layout.json")
 
 
-def bb_orientation_to_deg(o):
-    try:
-        return (int(o) / 7) % 360
-    except Exception:
-        return 0
-
-
 def extract_layout():
     tree = ET.parse(BBM_FILE)
     root = tree.getroot()
@@ -32,28 +25,17 @@ def extract_layout():
 
             x = float(da.findtext("X"))
             y = float(da.findtext("Y"))
-
-            active_conn = int(
-                brick.findtext("ActiveConnectionPointIndex", "0")
-            )
-
-            connections = []
-            conns = brick.find("Connexions")
-            if conns is not None:
-                for c in conns.findall("Connexion"):
-                    linked = c.findtext("LinkedTo")
-                    if linked:
-                        connections.append(int(linked))
+            w = float(da.findtext("Width"))
+            h = float(da.findtext("Height"))
 
             items.append({
                 "id": brick_id,
                 "part": part,
                 "x": x,
                 "y": y,
-                "orientation": orientation,
-                "rotation_deg": bb_orientation_to_deg(orientation),
-                "active_connection": active_conn,
-                "connections": connections
+                "w": w,
+                "h": h,
+                "orientation": orientation
             })
 
         except Exception as e:

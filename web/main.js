@@ -9,7 +9,6 @@ function el(name) {
 }
 
 let PART_IMAGES = {};
-let PART_GEOMETRY = {};
 let LAYOUT = null;
 let activeSwitch = null;
 
@@ -32,7 +31,6 @@ async function loadParts() {
   console.log("Loaded part images:", Object.keys(PART_IMAGES).length);
 }
 
-
 async function loadLayout() {
   const res = await fetch("/res/layout.json");
   if (!res.ok) {
@@ -40,15 +38,6 @@ async function loadLayout() {
   }
   LAYOUT = await res.json();
   console.log("Layout loaded:", LAYOUT.items.length, "items");
-}
-
-async function loadPartGeometry() {
-  const res = await fetch("/res/part_geometry.json");
-  if (!res.ok) {
-    throw new Error("Failed to load part_geometry.json");
-  }
-  PART_GEOMETRY = await res.json();
-  console.log("Loaded part geometry:", Object.keys(PART_GEOMETRY).length);
 }
 
 async function loadCalibration(item) {
@@ -117,7 +106,6 @@ async function init() {
   console.log("Renderer starting…");
 
   await loadParts();
-  await loadPartGeometry();
   await loadLayout();
 
   svg.innerHTML = "";
@@ -141,13 +129,12 @@ function autoFit(root, items) {
     maxY = -Infinity;
 
   items.forEach((i) => {
-    const geo = PART_GEOMETRY[i.part];
-    if (!geo) return;
-
-    minX = Math.min(minX, i.x - geo.origin.x);
-    minY = Math.min(minY, i.y - geo.origin.y);
-    maxX = Math.max(maxX, i.x + (geo.width - geo.origin.x));
-    maxY = Math.max(maxY, i.y + (geo.height - geo.origin.y));
+    items.forEach((i) => {
+      minX = Math.min(minX, i.x - i.w / 2);
+      minY = Math.min(minY, i.y - i.h / 2);
+      maxX = Math.max(maxX, i.x + i.w / 2);
+      maxY = Math.max(maxY, i.y + i.h / 2);
+    });
   });
 
   const layoutW = maxX - minX;
@@ -180,10 +167,8 @@ function normalizePartName(name) {
 
 function renderLayout(root) {
   LAYOUT.items.forEach((item) => {
-    const geo = PART_GEOMETRY[item.part];
     const imgURL = PART_IMAGES[normalizePartName(item.part)];
-
-    if (!geo || !imgURL) return;
+    if (!imgURL) return;
 
     const angle = bbOrientationToDegrees(item.orientation);
 
@@ -196,10 +181,10 @@ function renderLayout(root) {
     const img = el("image");
     img.setAttribute("href", imgURL);
 
-    img.setAttribute("x", -geo.origin.x);
-    img.setAttribute("y", -geo.origin.y);
-    img.setAttribute("width", geo.width);
-    img.setAttribute("height", geo.height);
+    img.setAttribute("x", -item.w / 2);
+    img.setAttribute("y", -item.h / 2);
+    img.setAttribute("width", item.w);
+    img.setAttribute("height", item.h);
 
     g.appendChild(img);
     root.appendChild(g);
