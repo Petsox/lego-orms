@@ -194,39 +194,37 @@ function logRenderDebug(item, key, imgSize, transform) {
   }).catch(() => {});
 }
 
+/**
+ * Render all parts in the SVG root.
+ * Uses BlueBrick absolute pixel coordinates and native image sizes.
+ */
 function renderItems(items, root) {
   items.forEach((item) => {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
 
+    // Create a group with transform for position + rotation only
     const g = el("g");
-    g.setAttribute(
-      "transform",
-      `translate(${item.x},${item.y}) rotate(${item.rot})`
-    );
+    const transform = `translate(${item.x},${item.y}) rotate(${item.rot})`;
+    g.setAttribute("transform", transform);
 
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      logRenderDebug(item, key, PART_IMAGE_SIZE?.[key] ?? null, transform);
+      // Draw at the raw image origin (top-left) — this matches BlueBrick.
+      // BlueBrick .bbm coordinates are already aligned to the image's origin.
+      img.setAttribute("x", "0");
+      img.setAttribute("y", "0");
 
-      // IMPORTANT:
-      // BlueBrick coordinates are image-origin based (top-left)
-      // Images are already the correct pixel size
-      img.setAttribute("x", 0);
-      img.setAttribute("y", 0);
-
-      // DO NOT set width/height unless you want scaling
-      // Let the image render at its native size
-
-      img.setAttribute("filter", "url(#shadow)");
+      // Use native image pixel size (SVG will render at actual GIF image size)
+      // No scaling is applied here.
       g.appendChild(img);
     } else {
-      // Fallback for missing images
+      // Fallback if image missing: draw a simple rect
       const r = el("rect");
-      r.setAttribute("x", 0);
-      r.setAttribute("y", 0);
+      r.setAttribute("x", "0");
+      r.setAttribute("y", "0");
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
@@ -236,6 +234,7 @@ function renderItems(items, root) {
     root.appendChild(g);
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
