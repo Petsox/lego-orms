@@ -1,2 +1,0 @@
-version=1.0
-This part package is released with BlueBrick.
