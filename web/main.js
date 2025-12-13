@@ -9,17 +9,9 @@ function el(name) {
 }
 
 let PART_IMAGES = {};
-let PART_IMAGE_SIZE = {};
-let PART_ORIGIN = {};
+let PART_GEOMETRY = {};
 let LAYOUT = null;
 let activeSwitch = null;
-let PART_GEOMETRY = {};
-
-async function loadPartGeometry() {
-  const res = await fetch("/res/part_geometry.json");
-  PART_GEOMETRY = await res.json();
-  console.log("Loaded part geometry:", PART_GEOMETRY);
-}
 
 function bbOrientationToDegrees(o) {
   // BlueBrick orientation units: 0–2520, where 630 = 90°
@@ -51,10 +43,21 @@ async function loadParts() {
 }
 
 async function loadLayout() {
-  const res = await fetch("/api/layout");
-  const data = await res.json();
-  LAYOUT = data.items ? data : data.layout;
-  console.log("Layout loaded:", LAYOUT);
+  const res = await fetch("/res/layout.json");
+  if (!res.ok) {
+    throw new Error("Failed to load layout.json");
+  }
+  LAYOUT = await res.json();
+  console.log("Layout loaded:", LAYOUT.items.length, "items");
+}
+
+async function loadPartGeometry() {
+  const res = await fetch("/res/part_geometry.json");
+  if (!res.ok) {
+    throw new Error("Failed to load part_geometry.json");
+  }
+  PART_GEOMETRY = await res.json();
+  console.log("Loaded part geometry:", Object.keys(PART_GEOMETRY).length);
 }
 
 async function loadCalibration(item) {
@@ -123,6 +126,7 @@ async function init() {
   console.log("Renderer starting…");
 
   await loadParts();
+  await loadPartGeometry();
   await loadLayout();
 
   svg.innerHTML = "";
@@ -130,9 +134,8 @@ async function init() {
   const root = el("g");
   svg.appendChild(root);
 
-  renderItems(LAYOUT.items, root);
+  renderLayout(root);
   renderSwitches(LAYOUT.items, root);
-
   autoFit(root, LAYOUT.items);
 }
 
@@ -147,10 +150,13 @@ function autoFit(root, items) {
     maxY = -Infinity;
 
   items.forEach((i) => {
-    minX = Math.min(minX, i.x);
-    minY = Math.min(minY, i.y);
-    maxX = Math.max(maxX, i.x + i.w);
-    maxY = Math.max(maxY, i.y + i.h);
+    const geo = PART_GEOMETRY[i.part];
+    if (!geo) return;
+
+    minX = Math.min(minX, i.x - geo.origin.x);
+    minY = Math.min(minY, i.y - geo.origin.y);
+    maxX = Math.max(maxX, i.x + (geo.width - geo.origin.x));
+    maxY = Math.max(maxY, i.y + (geo.height - geo.origin.y));
   });
 
   const layoutW = maxX - minX;
@@ -181,15 +187,14 @@ function normalizePartName(name) {
     .trim();
 }
 
-function renderItems(items, root) {
-  items.forEach(item => {
-    const partKey = item.part.trim();
-    const geo = PART_GEOMETRY[partKey];
-    const imgURL = PART_IMAGES[normalizePartName(partKey)];
+function renderLayout(root) {
+  LAYOUT.items.forEach((item) => {
+    const geo = PART_GEOMETRY[item.part];
+    const imgURL = PART_IMAGES[normalizePartName(item.part)];
 
     if (!geo || !imgURL) return;
 
-    const angle = bbOrientationToDegrees(item.rot);
+    const angle = bbOrientationToDegrees(item.orientation);
 
     const g = el("g");
     g.setAttribute(
@@ -200,7 +205,6 @@ function renderItems(items, root) {
     const img = el("image");
     img.setAttribute("href", imgURL);
 
-    // Use XML geometry — NOT image dimensions
     img.setAttribute("x", -geo.origin.x);
     img.setAttribute("y", -geo.origin.y);
     img.setAttribute("width", geo.width);
@@ -210,10 +214,6 @@ function renderItems(items, root) {
     root.appendChild(g);
   });
 }
-
-
-
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
@@ -239,7 +239,9 @@ function renderSwitches(items, root) {
     const g = el("g");
     g.setAttribute(
       "transform",
-      `translate(${item.x + dx},${item.y + dy}) rotate(${item.rot})`
+      `translate(${item.x + dx},${item.y + dy}) rotate(${bbOrientationToDegrees(
+        item.orientation
+      )})`
     );
     g.style.cursor = "pointer";
 
