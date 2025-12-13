@@ -17,16 +17,9 @@ let activeSwitch = null;
 const PIXELS_PER_STUD = 8;
 const GLOBAL_SCALE = 0.4; // tweak this
 
-function logRenderDebugSafe(payload) {
-  try {
-    fetch("/api/render_debug", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-  } catch (_) {
-    // never crash rendering
-  }
+function bbOrientationToDegrees(o) {
+  // BlueBrick orientation units: 0–2520, where 630 = 90°
+  return (o / 7) % 360;
 }
 
 // -------------------------------------------------------
@@ -200,10 +193,11 @@ function renderItems(items, root) {
       // INNER group: rotation only
       const gr = el("g");
 
-      // Rotate around (0,0) — the image center
+      const angle = bbOrientationToDegrees(item.rot);
+
       gr.setAttribute(
         "transform",
-        `rotate(${item.rot} 0 0)`
+        `rotate(${angle} 0 0)`
       );
 
       const img = el("image");
@@ -217,20 +211,12 @@ function renderItems(items, root) {
 
       gr.appendChild(img);
       g.appendChild(gr);
-    } else {
-      // Fallback box
-      const r = el("rect");
-      r.setAttribute("x", -item.w / 2);
-      r.setAttribute("y", -item.h / 2);
-      r.setAttribute("width", item.w);
-      r.setAttribute("height", item.h);
-      r.setAttribute("fill", "#777");
-      g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
+
 
 
 
