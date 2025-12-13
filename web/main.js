@@ -189,40 +189,44 @@ function renderItems(items, root) {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
 
+    // Outer group: position
     const g = el("g");
-
-    // Simple, stable transform
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y}) rotate(${item.rot})`
+      `translate(${item.x},${item.y})`
     );
 
     if (imgURL) {
+      // Inner group: rotation around image center
+      const gr = el("g");
+
+      // Image centered at (0,0)
+      const x = -item.w / 2;
+      const y = -item.h / 2;
+      const cx = 0;
+      const cy = 0;
+
+      // SVG transform rotates PIXELS correctly
+      gr.setAttribute(
+        "transform",
+        `rotate(${item.rot} ${cx} ${cy})`
+      );
+
       const img = el("image");
       img.setAttribute("href", imgURL);
-
-      // CENTER the image using layout dimensions
-      img.setAttribute("x", -item.w / 2);
-      img.setAttribute("y", -item.h / 2);
+      img.setAttribute("x", x);
+      img.setAttribute("y", y);
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
-      img.setAttribute("transform", `rotate(${item.rot})`);
-      g.appendChild(img);
-    } else {
-      // Fallback box
-      const r = el("rect");
-      r.setAttribute("x", -item.w / 2);
-      r.setAttribute("y", -item.h / 2);
-      r.setAttribute("width", item.w);
-      r.setAttribute("height", item.h);
-      r.setAttribute("fill", "#777");
-      r.setAttribute("transform", `rotate(${item.rot})`);
-      g.appendChild(r);
+
+      gr.appendChild(img);
+      g.appendChild(gr);
     }
 
     root.appendChild(g);
   });
 }
+
 
 
 // -------------------------------------------------------
