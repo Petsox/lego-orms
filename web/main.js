@@ -35,6 +35,32 @@ async function loadPartMeta() {
   console.log("Loaded part meta:", PART_META);
 }
 
+async function loadCalibration(item) {
+    try {
+        const res = await fetch("/api/switch_config");
+        if (!res.ok) return;
+
+        const cfg = await res.json();
+        const sw = cfg.switches?.[item.id];
+        if (!sw) return;
+
+        // Populate UI fields
+        document.getElementById("cal-channel").value = sw.channel ?? 0;
+        document.getElementById("cal-a0").value = sw.angle0 ?? 65;
+        document.getElementById("cal-a1").value = sw.angle1 ?? 105;
+
+        // Update visible values
+        document.getElementById("cal-a0-val").textContent =
+            document.getElementById("cal-a0").value;
+        document.getElementById("cal-a1-val").textContent =
+            document.getElementById("cal-a1").value;
+
+    } catch (err) {
+        console.error("Failed to load calibration:", err);
+    }
+}
+
+
 // -------------------------------------------------------
 // SWITCH DETECTION (ROBUST)
 // -------------------------------------------------------
