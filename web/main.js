@@ -14,7 +14,7 @@ let activeSwitch = null;
 
 function bbOrientationToDegrees(o) {
   // BlueBrick orientation units: 0–2520, where 630 = 90°
-  return (o / 2520) * 360;
+  return o
 }
 
 // -------------------------------------------------------
