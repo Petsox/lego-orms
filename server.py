@@ -3,6 +3,7 @@ from layout_loader import load_layout
 from parts_mapper import build_parts_map
 from adafruit_servokit import ServoKit
 from part_meta import build_part_meta
+from renderer_debug import log_render_item
 import json, os
 
 app = Flask(__name__, static_folder="web", static_url_path="")
@@ -36,6 +37,13 @@ def api_part_meta():
 def api_switch_config():
     with open("switch_config.json", "r") as f:
         return jsonify(json.load(f))
+    
+@app.route("/api/render_debug", methods=["POST"])
+def api_render_debug():
+    data = request.json
+    if data:
+        log_render_item(data)
+    return {"ok": True}
 
 @app.route("/api/update_switch_config", methods=["POST"])
 def api_update_switch_config():
