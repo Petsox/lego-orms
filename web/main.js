@@ -170,17 +170,15 @@ function renderLayout(root) {
     const imgURL = PART_IMAGES[normalizePartName(item.part)];
     if (!imgURL) return;
 
-    const angle = bbOrientationToDegrees(item.orientation);
-
     const g = el("g");
-    g.setAttribute(
-      "transform",
-      `translate(${item.x},${item.y}) rotate(${angle})`
-    );
+
+    // IMPORTANT: NO ROTATION
+    g.setAttribute("transform", `translate(${item.x},${item.y})`);
 
     const img = el("image");
     img.setAttribute("href", imgURL);
 
+    // DisplayArea is already rotated & axis-aligned
     img.setAttribute("x", -item.w / 2);
     img.setAttribute("y", -item.h / 2);
     img.setAttribute("width", item.w);
@@ -213,12 +211,7 @@ function renderSwitches(items, root) {
     const { dx, dy } = switchButtonOffset(item);
 
     const g = el("g");
-    g.setAttribute(
-      "transform",
-      `translate(${item.x + dx},${item.y + dy}) rotate(${bbOrientationToDegrees(
-        item.orientation
-      )})`
-    );
+    g.setAttribute("transform", `translate(${item.x + dx},${item.y + dy})`);
     g.style.cursor = "pointer";
 
     const dot = el("circle");
