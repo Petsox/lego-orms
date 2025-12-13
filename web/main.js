@@ -274,14 +274,32 @@ async function toggleSwitch(id, indicator) {
 // -------------------------------------------------------
 // CALIBRATION UI (unchanged logic)
 // -------------------------------------------------------
+
+function bindSlider(sliderId, labelId) {
+    const slider = document.getElementById(sliderId);
+    const label = document.getElementById(labelId);
+
+    if (!slider || !label) return;
+
+    label.textContent = slider.value;
+
+    slider.oninput = () => {
+        label.textContent = slider.value;
+    };
+}
+
 async function openCalibration(item) {
   activeSwitch = item;
   document.getElementById("cal-id").textContent = item.id;
   await loadCalibration(item);
+
+    bindSlider("cal-a0", "cal-a0-val");
+    bindSlider("cal-a1", "cal-a1-val");
+
   document.getElementById("cal-panel").classList.add("show");
 }
 
-async function testservo(state) {
+async function testServo(state) {
     if (!activeSwitch) return;
 
     try {
