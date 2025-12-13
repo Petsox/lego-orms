@@ -194,7 +194,7 @@ function renderItems(items, root) {
     // Simple, stable transform
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y}))`
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
     );
 
     if (imgURL) {
