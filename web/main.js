@@ -13,9 +13,13 @@ let PART_IMAGE_SIZE = {};
 let PART_ORIGIN = {};
 let LAYOUT = null;
 let activeSwitch = null;
+let PART_GEOMETRY = {};
 
-const PIXELS_PER_STUD = 8;
-const GLOBAL_SCALE = 0.4; // tweak this
+async function loadPartGeometry() {
+  const res = await fetch("/res/part_geometry.json");
+  PART_GEOMETRY = await res.json();
+  console.log("Loaded part geometry:", PART_GEOMETRY);
+}
 
 function bbOrientationToDegrees(o) {
   // BlueBrick orientation units: 0–2520, where 630 = 90°
@@ -178,44 +182,35 @@ function normalizePartName(name) {
 }
 
 function renderItems(items, root) {
-  items.forEach((item) => {
-    const key = normalizePartName(item.part);
-    const imgURL = PART_IMAGES[key];
+  items.forEach(item => {
+    const partKey = item.part.trim();
+    const geo = PART_GEOMETRY[partKey];
+    const imgURL = PART_IMAGES[normalizePartName(partKey)];
 
-    // OUTER group: translation only
+    if (!geo || !imgURL) return;
+
+    const angle = bbOrientationToDegrees(item.rot);
+
     const g = el("g");
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y})`
+      `translate(${item.x},${item.y}) rotate(${angle})`
     );
 
-    if (imgURL) {
-      // INNER group: rotation only
-      const gr = el("g");
+    const img = el("image");
+    img.setAttribute("href", imgURL);
 
-      const angle = bbOrientationToDegrees(item.rot);
+    // Use XML geometry — NOT image dimensions
+    img.setAttribute("x", -geo.origin.x);
+    img.setAttribute("y", -geo.origin.y);
+    img.setAttribute("width", geo.width);
+    img.setAttribute("height", geo.height);
 
-      gr.setAttribute(
-        "transform",
-        `rotate(${angle} 0 0)`
-      );
-
-      const img = el("image");
-      img.setAttribute("href", imgURL);
-
-      // Center image at (0,0)
-      img.setAttribute("x", -item.w / 2);
-      img.setAttribute("y", -item.h / 2);
-      img.setAttribute("width", item.w);
-      img.setAttribute("height", item.h);
-
-      gr.appendChild(img);
-      g.appendChild(gr);
-    }
-
+    g.appendChild(img);
     root.appendChild(g);
   });
 }
+
 
 
 
