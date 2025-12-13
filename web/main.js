@@ -189,6 +189,14 @@ function renderItems(items, root) {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
 
+    const g = el("g");
+
+    // Simple, stable transform
+    g.setAttribute(
+      "transform",
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
+    );
+
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
@@ -198,13 +206,7 @@ function renderItems(items, root) {
       img.setAttribute("y", -item.h / 2);
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
-
-      // Simple, stable transform
-      img.setAttribute(
-        "transform",
-        `translate(${item.x},${item.y}) rotate(${item.rot})`
-      );
-
+      img.setAttribute("transform", `rotate(${item.rot})`);
       g.appendChild(img);
     } else {
       // Fallback box
@@ -214,12 +216,14 @@ function renderItems(items, root) {
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
+      r.setAttribute("transform", `rotate(${item.rot})`);
       g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
