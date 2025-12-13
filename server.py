@@ -1,14 +1,57 @@
 from flask import Flask, jsonify, request, send_from_directory
 from adafruit_servokit import ServoKit
+from bbm_switch_extractor import extract_switches_from_bbm
 import json, os
 
-app = Flask(__name__, static_folder="web", static_url_path="")
+SWITCH_CONFIG_FILE = "switch_config.json"
+LAYOUT_BBM = "Layout.bbm"
+CONFIG_FILE = "switch_config.json"
 
 kit = ServoKit(channels=16)
 
-CONFIG_FILE = "switch_config.json"
 if not os.path.exists(CONFIG_FILE):
     json.dump({}, open(CONFIG_FILE, "w"))
+
+def load_switch_config():
+    if not os.path.exists(SWITCH_CONFIG_FILE):
+        return {"switches": {}}
+
+    with open(SWITCH_CONFIG_FILE, "r") as f:
+        return json.load(f)
+
+
+def save_switch_config(cfg):
+    with open(SWITCH_CONFIG_FILE, "w") as f:
+        json.dump(cfg, f, indent=2)
+
+
+def ensure_switches_from_layout():
+    cfg = load_switch_config()
+    switches = cfg.setdefault("switches", {})
+
+    layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
+    changed = False
+
+    for sw in layout_switches:
+        sid = str(sw["id"])
+
+        if sid not in switches:
+            switches[sid] = {
+                "name": sw["name"],
+                "channel": None,
+                "angle0": 65,
+                "angle1": 105,
+                "state": 0
+            }
+            changed = True
+
+    if changed:
+        save_switch_config(cfg)
+
+    return cfg
+
+app = Flask(__name__, static_folder="web", static_url_path="")
+ensure_switches_from_layout()
 
 @app.route("/")
 def root():
@@ -23,6 +66,11 @@ def api_switch_config():
 def serve_res(filename):
     return send_from_directory("web/res", filename)
     
+@app.route("/api/switches")
+def get_switches():
+    cfg = load_switch_config()
+    return jsonify(cfg["switches"])
+
 @app.route("/api/update_switch_config", methods=["POST"])
 def api_update_switch_config():
     data = request.json
