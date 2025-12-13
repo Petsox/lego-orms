@@ -15,11 +15,10 @@ svg {
   width: 100%;
   height: calc(100vh - 52px);
   touch-action: manipulation;
-  height: 100dvh;
-  min-height: 400px;
-  display: block;
-  background: linear-gradient(#2a2a2a 1px, transparent 1px),
-    linear-gradient(90deg, #2a2a2a 1px, transparent 1px), #1f2326;
+  background:
+    linear-gradient(#2a2a2a 1px, transparent 1px),
+    linear-gradient(90deg, #2a2a2a 1px, transparent 1px),
+    #1f2326;
   background-size: 40px 40px;
 }
 
