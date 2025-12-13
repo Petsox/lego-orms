@@ -10,6 +10,7 @@ function el(name) {
 
 let PART_IMAGES = {};
 let PART_META = {};
+let PART_IMAGE_SIZE = {};
 let LAYOUT = null;
 let activeSwitch = null;
 
@@ -18,9 +19,25 @@ let activeSwitch = null;
 // -------------------------------------------------------
 async function loadParts() {
   const res = await fetch("/api/parts");
-  PART_IMAGES = await res.json();
+  const parts = await res.json();
+
+  for (const [key, url] of Object.entries(parts)) {
+    PART_IMAGES[key] = url;
+
+    // Load image to get intrinsic size
+    const img = new Image();
+    img.src = url;
+    await img.decode();
+
+    PART_IMAGE_SIZE[key] = {
+      w: img.naturalWidth,
+      h: img.naturalHeight,
+    };
+  }
+
   console.log("Loaded part images:", Object.keys(PART_IMAGES).length);
 }
+
 
 async function loadLayout() {
   const res = await fetch("/api/layout");
@@ -164,39 +181,57 @@ function normalizePartName(name) {
 
 function renderItems(items, root) {
   items.forEach((item) => {
-    const g = el("g");
-    g.setAttribute(
-      "transform",
-      `translate(${item.x},${item.y}) rotate(${item.rot})`
-    );
-
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
+    const imgSize = PART_IMAGE_SIZE[key];
 
-    if (imgURL) {
+    const g = el("g");
+
+    if (imgURL && imgSize) {
+      // Compute scale from layout size → image pixel size
+      const scaleX = item.w / imgSize.w;
+      const scaleY = item.h / imgSize.h;
+
+      // Sanity check (they SHOULD be equal)
+      const scale = (scaleX + scaleY) / 2;
+
+      g.setAttribute(
+        "transform",
+        `translate(${item.x},${item.y}) rotate(${item.rot}) scale(${scale})`
+      );
+
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      img.setAttribute("x", -item.w / 2);
-      img.setAttribute("y", -item.h / 2);
-
-      img.setAttribute("width", item.w);
-      img.setAttribute("height", item.h);
+      // Render image at native pixel size
+      img.setAttribute("x", -imgSize.w / 2);
+      img.setAttribute("y", -imgSize.h / 2);
+      img.setAttribute("width", imgSize.w);
+      img.setAttribute("height", imgSize.h);
       img.setAttribute("filter", "url(#shadow)");
+
       g.appendChild(img);
     } else {
+      // Fallback (missing image)
+      g.setAttribute(
+        "transform",
+        `translate(${item.x},${item.y}) rotate(${item.rot})`
+      );
+
       const r = el("rect");
       r.setAttribute("x", -item.w / 2);
       r.setAttribute("y", -item.h / 2);
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
+
       g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
