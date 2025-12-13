@@ -18,21 +18,17 @@ let activeSwitch = null;
 const PIXELS_PER_STUD = 8;
 const GLOBAL_SCALE = 0.85; // tweak this
 
-const px = item.x * PIXELS_PER_STUD * GLOBAL_SCALE;
-const py = item.y * PIXELS_PER_STUD * GLOBAL_SCALE;
-
 function logRenderDebugSafe(payload) {
   try {
     fetch("/api/render_debug", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
   } catch (_) {
     // never crash rendering
   }
 }
-
 
 // -------------------------------------------------------
 // LOADERS
@@ -141,12 +137,11 @@ async function init() {
   await loadLayout();
 
   fetch("/res/part_origin.json")
-  .then(r => r.json())
-  .then(data => {
-    PART_ORIGIN = data;
-    console.log("Loaded part origins:", PART_ORIGIN);
-  });
-
+    .then((r) => r.json())
+    .then((data) => {
+      PART_ORIGIN = data;
+      console.log("Loaded part origins:", PART_ORIGIN);
+    });
 
   svg.innerHTML = "";
 
@@ -210,6 +205,9 @@ function renderItems(items, root) {
     const imgURL = PART_IMAGES[key];
     const origin = PART_ORIGIN[key] || { x: 0, y: 0 };
 
+    const px = item.x * PIXELS_PER_STUD * GLOBAL_SCALE;
+    const py = item.y * PIXELS_PER_STUD * GLOBAL_SCALE;
+
     const g = el("g");
 
     // Apply origin offset BEFORE rotation
@@ -231,8 +229,6 @@ function renderItems(items, root) {
     root.appendChild(g);
   });
 }
-
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
