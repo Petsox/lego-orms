@@ -6,11 +6,13 @@
   </head>
   <body>
     <h1>Train Switch Control</h1>
-    <svg
-      id="canvas"
-      viewBox="0 0 1000 1000"
-      preserveAspectRatio="xMidYMid meet"
-    ></svg>
+    <svg id="canvas">
+      <defs>
+        <filter id="shadow">
+          <feDropShadow dx="0" dy="1" stdDeviation="1" flood-opacity="0.35" />
+        </filter>
+      </defs>
+    </svg>
     <div id="cal-panel">
       <h3>Switch <span id="cal-id"></span></h3>
 
