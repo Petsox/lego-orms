@@ -166,43 +166,30 @@ function normalizePartName(name) {
 }
 
 function renderLayout(root) {
-  LAYOUT.items.forEach(item => {
+  LAYOUT.items.forEach((item) => {
     const imgURL = PART_IMAGES[normalizePartName(item.part)];
     if (!imgURL) return;
 
-    const g = el("g");
+    const angle = bbOrientationToDegrees(item.orientation);
 
-    // Placement only (no rotation here)
+    const g = el("g");
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y})`
+      `translate(${item.x},${item.y}) rotate(${angle})`
     );
 
     const img = el("image");
     img.setAttribute("href", imgURL);
 
-    const w = item.w;
-    const h = item.h;
-
-    // Center image
-    img.setAttribute("x", -w / 2);
-    img.setAttribute("y", -h / 2);
-    img.setAttribute("width", w);
-    img.setAttribute("height", h);
-
-    // 🔑 Rotate IMAGE CONTENT if vertical
-    if (h > w) {
-      img.setAttribute(
-        "transform",
-        `rotate(90)`
-      );
-    }
+    img.setAttribute("x", -item.w / 2);
+    img.setAttribute("y", -item.h / 2);
+    img.setAttribute("width", item.w);
+    img.setAttribute("height", item.h);
 
     g.appendChild(img);
     root.appendChild(g);
   });
 }
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
@@ -226,7 +213,12 @@ function renderSwitches(items, root) {
     const { dx, dy } = switchButtonOffset(item);
 
     const g = el("g");
-    g.setAttribute("transform", `translate(${item.x + dx},${item.y + dy})`);
+    g.setAttribute(
+      "transform",
+      `translate(${item.x + dx},${item.y + dy}) rotate(${bbOrientationToDegrees(
+        item.orientation
+      )})`
+    );
     g.style.cursor = "pointer";
 
     const dot = el("circle");
