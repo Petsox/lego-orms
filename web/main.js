@@ -216,18 +216,18 @@ function renderItems(items, root) {
       img.setAttribute("href", imgURL);
 
       // CENTER the image using layout dimensions
-      img.setAttribute("x", -item.w / 2);
-      img.setAttribute("y", -item.h / 2);
+      img.setAttribute("x", x);
+      img.setAttribute("y", y);
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
-      
+
       gr.appendChild(img);
       g.appendChild(gr);
     } else {
       // Fallback box
       const r = el("rect");
-      r.setAttribute("x", -item.w / 2);
-      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("x", x);
+      r.setAttribute("y", y);
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
