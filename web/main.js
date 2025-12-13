@@ -166,28 +166,43 @@ function normalizePartName(name) {
 }
 
 function renderLayout(root) {
-  LAYOUT.items.forEach((item) => {
+  LAYOUT.items.forEach(item => {
     const imgURL = PART_IMAGES[normalizePartName(item.part)];
     if (!imgURL) return;
 
     const g = el("g");
 
-    // IMPORTANT: NO ROTATION
-    g.setAttribute("transform", `translate(${item.x},${item.y})`);
+    // Placement only (no rotation here)
+    g.setAttribute(
+      "transform",
+      `translate(${item.x},${item.y})`
+    );
 
     const img = el("image");
     img.setAttribute("href", imgURL);
 
-    // DisplayArea is already rotated & axis-aligned
-    img.setAttribute("x", -item.w / 2);
-    img.setAttribute("y", -item.h / 2);
-    img.setAttribute("width", item.w);
-    img.setAttribute("height", item.h);
+    const w = item.w;
+    const h = item.h;
+
+    // Center image
+    img.setAttribute("x", -w / 2);
+    img.setAttribute("y", -h / 2);
+    img.setAttribute("width", w);
+    img.setAttribute("height", h);
+
+    // 🔑 Rotate IMAGE CONTENT if vertical
+    if (h > w) {
+      img.setAttribute(
+        "transform",
+        `rotate(90)`
+      );
+    }
 
     g.appendChild(img);
     root.appendChild(g);
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
