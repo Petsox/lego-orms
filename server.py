@@ -7,7 +7,6 @@ LAYOUT_BBM = "Layout.bbm"
 LAYOUT_JSON = "web/res/layout.json"
 EXTRACT_SCRIPT = "extract_layout.py"
 
-
 def ensure_layout_json():
     if not os.path.exists(LAYOUT_BBM):
         print("⚠️ Layout.bbm not found")
@@ -30,15 +29,17 @@ def ensure_layout_json():
             capture_output=True,
             text=True
         )
-        
+
         if result.returncode != 0:
             print("❌ Layout extraction failed:")
             print(result.stderr)
         else:
             print("✅ Layout extracted successfully")
-        
+
     else:
         print("✅ layout.json is up to date")
+
+ensure_layout_json()
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 
