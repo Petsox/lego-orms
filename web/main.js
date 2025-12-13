@@ -12,9 +12,14 @@ let PART_IMAGES = {};
 let PART_META = {};
 let PART_IMAGE_SIZE = {};
 let PART_ORIGIN = {};
-const PIXELS_PER_STUD = 8;
 let LAYOUT = null;
 let activeSwitch = null;
+
+const PIXELS_PER_STUD = 8;
+const GLOBAL_SCALE = 0.85; // tweak this
+
+const px = item.x * PIXELS_PER_STUD * GLOBAL_SCALE;
+const py = item.y * PIXELS_PER_STUD * GLOBAL_SCALE;
 
 function logRenderDebugSafe(payload) {
   try {
@@ -204,10 +209,6 @@ function renderItems(items, root) {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
     const origin = PART_ORIGIN[key] || { x: 0, y: 0 };
-
-    // Convert layout units (studs) → pixels
-    const px = item.x * 8;
-    const py = item.y * 8;
 
     const g = el("g");
 
