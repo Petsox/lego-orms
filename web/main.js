@@ -183,53 +183,43 @@ function renderItems(items, root) {
   items.forEach((item) => {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
-    const imgSize = PART_IMAGE_SIZE[key];
 
     const g = el("g");
+    g.setAttribute(
+      "transform",
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
+    );
 
-    if (imgURL && imgSize) {
-      // Scale from layout units → image pixels
-      const scaleX = item.w / imgSize.w;
-      const scaleY = item.h / imgSize.h;
-      const scale = (scaleX + scaleY) / 2;
-
-      // IMPORTANT: no centering
-      g.setAttribute(
-        "transform",
-        `translate(${item.x},${item.y}) rotate(${item.rot}) scale(${scale})`
-      );
-
+    if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      // Draw image from its native origin (top-left)
+      // IMPORTANT:
+      // BlueBrick coordinates are image-origin based (top-left)
+      // Images are already the correct pixel size
       img.setAttribute("x", 0);
       img.setAttribute("y", 0);
-      img.setAttribute("width", imgSize.w);
-      img.setAttribute("height", imgSize.h);
-      img.setAttribute("filter", "url(#shadow)");
 
+      // DO NOT set width/height unless you want scaling
+      // Let the image render at its native size
+
+      img.setAttribute("filter", "url(#shadow)");
       g.appendChild(img);
     } else {
-      // Fallback
-      g.setAttribute(
-        "transform",
-        `translate(${item.x},${item.y}) rotate(${item.rot})`
-      );
-
+      // Fallback for missing images
       const r = el("rect");
       r.setAttribute("x", 0);
       r.setAttribute("y", 0);
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
-
       g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
+
 
 
 
