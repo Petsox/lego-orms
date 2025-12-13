@@ -180,6 +180,8 @@ function renderItems(items, root) {
       img.setAttribute("x", -item.w / 2);
       img.setAttribute("y", -item.h / 2);
 
+      img.setAttribute("width", item.w);
+      img.setAttribute("height", item.w);
       img.setAttribute("filter", "url(#shadow)");
       g.appendChild(img);
     } else {
