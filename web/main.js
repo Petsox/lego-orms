@@ -189,32 +189,37 @@ function renderItems(items, root) {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
 
-    const g = el("g");
-    g.setAttribute("transform", `translate(${item.x},${item.y})`);
-
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      // Center image using layout bounding box
+      // CENTER the image using layout dimensions
       img.setAttribute("x", -item.w / 2);
       img.setAttribute("y", -item.h / 2);
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
 
-      // 🔑 THIS IS THE FIX
-      img.setAttribute("transform-box", "fill-box");
-      img.setAttribute("transform-origin", "center");
-      img.setAttribute("transform", `rotate(${item.rot})`);
+      // Simple, stable transform
+      img.setAttribute(
+        "transform",
+        `translate(${item.x},${item.y}) rotate(${item.rot})`
+      );
 
       g.appendChild(img);
+    } else {
+      // Fallback box
+      const r = el("rect");
+      r.setAttribute("x", -item.w / 2);
+      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("width", item.w);
+      r.setAttribute("height", item.h);
+      r.setAttribute("fill", "#777");
+      g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
-
-
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
