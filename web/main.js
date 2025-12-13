@@ -281,4 +281,59 @@ async function openCalibration(item) {
   document.getElementById("cal-panel").classList.add("show");
 }
 
+async function testservo(state) {
+    if (!activeSwitch) return;
+
+    try {
+        await fetch(`/api/switch/${activeSwitch.id}/toggle`);
+    } catch (err) {
+        console.error("Test servo failed:", err);
+    }
+}
+
+async function saveCalibration() {
+    if (!activeSwitch) return;
+
+    const channel = parseInt(
+        document.getElementById("cal-channel").value,
+        10
+    );
+    const angle0 = parseInt(
+        document.getElementById("cal-a0").value,
+        10
+    );
+    const angle1 = parseInt(
+        document.getElementById("cal-a1").value,
+        10
+    );
+
+    try {
+        const res = await fetch("/api/update_switch_config", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                id: activeSwitch.id,
+                channel,
+                angle0,
+                angle1
+            })
+        });
+
+        if (!res.ok) {
+            console.error("Save calibration failed");
+            return;
+        }
+
+        closeCalibration();
+    } catch (err) {
+        console.error("Save calibration error:", err);
+    }
+}
+
+function closeCalibration() {
+    document.getElementById("cal-panel").classList.remove("show");
+    activeSwitch = null;
+}
+
+
 window.onload = init;
