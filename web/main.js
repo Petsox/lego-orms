@@ -16,7 +16,7 @@ let LAYOUT = null;
 let activeSwitch = null;
 
 const PIXELS_PER_STUD = 8;
-const GLOBAL_SCALE = 0.85; // tweak this
+const GLOBAL_SCALE = 0.4; // tweak this
 
 function logRenderDebugSafe(payload) {
   try {
@@ -136,13 +136,6 @@ async function init() {
   await loadPartMeta();
   await loadLayout();
 
-  fetch("/res/part_origin.json")
-    .then((r) => r.json())
-    .then((data) => {
-      PART_ORIGIN = data;
-      console.log("Loaded part origins:", PART_ORIGIN);
-    });
-
   svg.innerHTML = "";
 
   const root = el("g");
@@ -203,32 +196,41 @@ function renderItems(items, root) {
   items.forEach((item) => {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
-    const origin = PART_ORIGIN[key] || { x: 0, y: 0 };
-
-    const px = item.x * PIXELS_PER_STUD * GLOBAL_SCALE;
-    const py = item.y * PIXELS_PER_STUD * GLOBAL_SCALE;
 
     const g = el("g");
 
-    // Apply origin offset BEFORE rotation
-    const transform =
-      `translate(${px},${py}) ` +
-      `rotate(${item.rot}) ` +
-      `translate(${-origin.x},${-origin.y})`;
-
-    g.setAttribute("transform", transform);
+    // Simple, stable transform
+    g.setAttribute(
+      "transform",
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
+    );
 
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
-      img.setAttribute("x", 0);
-      img.setAttribute("y", 0);
+
+      // CENTER the image using layout dimensions
+      img.setAttribute("x", -item.w / 2);
+      img.setAttribute("y", -item.h / 2);
+      img.setAttribute("width", item.w);
+      img.setAttribute("height", item.h);
+
       g.appendChild(img);
+    } else {
+      // Fallback box
+      const r = el("rect");
+      r.setAttribute("x", -item.w / 2);
+      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("width", item.w);
+      r.setAttribute("height", item.h);
+      r.setAttribute("fill", "#777");
+      g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
