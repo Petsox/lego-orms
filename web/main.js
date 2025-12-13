@@ -188,13 +188,12 @@ function renderItems(items, root) {
     const g = el("g");
 
     if (imgURL && imgSize) {
-      // Compute scale from layout size → image pixel size
+      // Scale from layout units → image pixels
       const scaleX = item.w / imgSize.w;
       const scaleY = item.h / imgSize.h;
-
-      // Sanity check (they SHOULD be equal)
       const scale = (scaleX + scaleY) / 2;
 
+      // IMPORTANT: no centering
       g.setAttribute(
         "transform",
         `translate(${item.x},${item.y}) rotate(${item.rot}) scale(${scale})`
@@ -203,24 +202,24 @@ function renderItems(items, root) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      // Render image at native pixel size
-      img.setAttribute("x", -imgSize.w / 2);
-      img.setAttribute("y", -imgSize.h / 2);
+      // Draw image from its native origin (top-left)
+      img.setAttribute("x", 0);
+      img.setAttribute("y", 0);
       img.setAttribute("width", imgSize.w);
       img.setAttribute("height", imgSize.h);
       img.setAttribute("filter", "url(#shadow)");
 
       g.appendChild(img);
     } else {
-      // Fallback (missing image)
+      // Fallback
       g.setAttribute(
         "transform",
         `translate(${item.x},${item.y}) rotate(${item.rot})`
       );
 
       const r = el("rect");
-      r.setAttribute("x", -item.w / 2);
-      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("x", 0);
+      r.setAttribute("y", 0);
       r.setAttribute("width", item.w);
       r.setAttribute("height", item.h);
       r.setAttribute("fill", "#777");
@@ -231,6 +230,7 @@ function renderItems(items, root) {
     root.appendChild(g);
   });
 }
+
 
 
 // -------------------------------------------------------
