@@ -11,6 +11,7 @@ function el(name) {
 let PART_IMAGES = {};
 let PART_META = {};
 let PART_IMAGE_SIZE = {};
+let PART_ORIGIN = {};
 const PIXELS_PER_STUD = 8;
 let LAYOUT = null;
 let activeSwitch = null;
@@ -134,6 +135,14 @@ async function init() {
   await loadPartMeta();
   await loadLayout();
 
+  fetch("/res/part_origin.json")
+  .then(r => r.json())
+  .then(data => {
+    PART_ORIGIN = data;
+    console.log("Loaded part origins:", PART_ORIGIN);
+  });
+
+
   svg.innerHTML = "";
 
   const root = el("g");
@@ -190,62 +199,38 @@ function normalizePartName(name) {
     .trim();
 }
 
-/**
- * Render all parts in the SVG root.
- * Uses BlueBrick absolute pixel coordinates and native image sizes.
- */
 function renderItems(items, root) {
   items.forEach((item) => {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
+    const origin = PART_ORIGIN[key] || { x: 0, y: 0 };
 
     // Convert layout units (studs) → pixels
-    const px = item.x * PIXELS_PER_STUD;
-    const py = item.y * PIXELS_PER_STUD;
+    const px = item.x * 8;
+    const py = item.y * 8;
 
     const g = el("g");
 
-    // Rotate around the layout anchor point
-    const transform = `translate(${px},${py}) rotate(${item.rot})`;
+    // Apply origin offset BEFORE rotation
+    const transform =
+      `translate(${px},${py}) ` +
+      `rotate(${item.rot}) ` +
+      `translate(${-origin.x},${-origin.y})`;
+
     g.setAttribute("transform", transform);
 
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
-
-      // Anchor image so that its STUD-ORIGIN aligns to (0,0)
-      // For now, assume origin is image center (works for most rails)
-      img.setAttribute("x", "-50%");
-      img.setAttribute("y", "-50%");
-      img.setAttribute("width", "100%");
-      img.setAttribute("height", "100%");
-
+      img.setAttribute("x", 0);
+      img.setAttribute("y", 0);
       g.appendChild(img);
-    } else {
-      // Fallback visual
-      const r = el("circle");
-      r.setAttribute("r", 5);
-      r.setAttribute("fill", "red");
-      g.appendChild(r);
     }
 
     root.appendChild(g);
-
-    // 🔍 Log real data (safe)
-    fetch("/api/render_debug", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        part: item.part,
-        x: item.x,
-        y: item.y,
-        px,
-        py,
-        rot: item.rot
-      })
-    }).catch(() => {});
   });
 }
+
 
 
 // -------------------------------------------------------
