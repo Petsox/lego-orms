@@ -36,28 +36,30 @@ async function loadPartMeta() {
 }
 
 async function loadCalibration(item) {
-  try {
-    const res = await fetch("/api/switch_config");
-    if (!res.ok) return;
+    try {
+        const res = await fetch("/api/switch_config");
+        if (!res.ok) return;
 
-    const cfg = await res.json();
-    const sw = cfg.switches?.[item.id];
-    if (!sw) return;
+        const cfg = await res.json();
+        const sw = cfg.switches?.[item.id];
+        if (!sw) return;
 
-    // Populate UI fields
-    document.getElementById("cal-channel").value = sw.channel ?? 0;
-    document.getElementById("cal-a0").value = sw.angle0 ?? 65;
-    document.getElementById("cal-a1").value = sw.angle1 ?? 105;
+        // Populate UI fields
+        document.getElementById("cal-channel").value = sw.channel ?? 0;
+        document.getElementById("cal-a0").value = sw.angle0 ?? 65;
+        document.getElementById("cal-a1").value = sw.angle1 ?? 105;
 
-    // Update visible values
-    document.getElementById("cal-a0-val").textContent =
-      document.getElementById("cal-a0").value;
-    document.getElementById("cal-a1-val").textContent =
-      document.getElementById("cal-a1").value;
-  } catch (err) {
-    console.error("Failed to load calibration:", err);
-  }
+        // Update visible values
+        document.getElementById("cal-a0-val").textContent =
+            document.getElementById("cal-a0").value;
+        document.getElementById("cal-a1-val").textContent =
+            document.getElementById("cal-a1").value;
+
+    } catch (err) {
+        console.error("Failed to load calibration:", err);
+    }
 }
+
 
 // -------------------------------------------------------
 // SWITCH DETECTION (ROBUST)
@@ -165,7 +167,7 @@ function renderItems(items, root) {
     const g = el("g");
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y})`
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
     );
 
     const key = normalizePartName(item.part);
@@ -177,11 +179,6 @@ function renderItems(items, root) {
 
       img.setAttribute("x", -item.w / 2);
       img.setAttribute("y", -item.h / 2);
-
-      img.setAttribute(
-        "transform",
-        `rotate(${item.rot})`
-      );
 
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
@@ -279,16 +276,16 @@ async function toggleSwitch(id, indicator) {
 // -------------------------------------------------------
 
 function bindSlider(sliderId, labelId) {
-  const slider = document.getElementById(sliderId);
-  const label = document.getElementById(labelId);
+    const slider = document.getElementById(sliderId);
+    const label = document.getElementById(labelId);
 
-  if (!slider || !label) return;
+    if (!slider || !label) return;
 
-  label.textContent = slider.value;
-
-  slider.oninput = () => {
     label.textContent = slider.value;
-  };
+
+    slider.oninput = () => {
+        label.textContent = slider.value;
+    };
 }
 
 async function openCalibration(item) {
@@ -296,55 +293,65 @@ async function openCalibration(item) {
   document.getElementById("cal-id").textContent = item.id;
   await loadCalibration(item);
 
-  bindSlider("cal-a0", "cal-a0-val");
-  bindSlider("cal-a1", "cal-a1-val");
+    bindSlider("cal-a0", "cal-a0-val");
+    bindSlider("cal-a1", "cal-a1-val");
 
   document.getElementById("cal-panel").classList.add("show");
 }
 
 async function testServo(state) {
-  if (!activeSwitch) return;
+    if (!activeSwitch) return;
 
-  try {
-    await fetch(`/api/switch/${activeSwitch.id}/toggle`);
-  } catch (err) {
-    console.error("Test servo failed:", err);
-  }
+    try {
+        await fetch(`/api/switch/${activeSwitch.id}/toggle`);
+    } catch (err) {
+        console.error("Test servo failed:", err);
+    }
 }
 
 async function saveCalibration() {
-  if (!activeSwitch) return;
+    if (!activeSwitch) return;
 
-  const channel = parseInt(document.getElementById("cal-channel").value, 10);
-  const angle0 = parseInt(document.getElementById("cal-a0").value, 10);
-  const angle1 = parseInt(document.getElementById("cal-a1").value, 10);
+    const channel = parseInt(
+        document.getElementById("cal-channel").value,
+        10
+    );
+    const angle0 = parseInt(
+        document.getElementById("cal-a0").value,
+        10
+    );
+    const angle1 = parseInt(
+        document.getElementById("cal-a1").value,
+        10
+    );
 
-  try {
-    const res = await fetch("/api/update_switch_config", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: activeSwitch.id,
-        channel,
-        angle0,
-        angle1,
-      }),
-    });
+    try {
+        const res = await fetch("/api/update_switch_config", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                id: activeSwitch.id,
+                channel,
+                angle0,
+                angle1
+            })
+        });
 
-    if (!res.ok) {
-      console.error("Save calibration failed");
-      return;
+        if (!res.ok) {
+            console.error("Save calibration failed");
+            return;
+        }
+
+        closeCalibration();
+    } catch (err) {
+        console.error("Save calibration error:", err);
     }
-
-    closeCalibration();
-  } catch (err) {
-    console.error("Save calibration error:", err);
-  }
 }
 
 function closeCalibration() {
-  document.getElementById("cal-panel").classList.remove("show");
-  activeSwitch = null;
+    document.getElementById("cal-panel").classList.remove("show");
+    activeSwitch = null;
 }
+
 
 window.onload = init;
