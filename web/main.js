@@ -189,15 +189,15 @@ function renderItems(items, root) {
     const key = normalizePartName(item.part);
     const imgURL = PART_IMAGES[key];
 
-    // Outer group: position
     const g = el("g");
+
+    // Simple, stable transform
     g.setAttribute(
       "transform",
-      `translate(${item.x},${item.y})`
+      `translate(${item.x},${item.y}) rotate(${item.rot})`
     );
 
     if (imgURL) {
-      // Inner group: rotation around image center
       const gr = el("g");
 
       // Image centered at (0,0)
@@ -211,22 +211,32 @@ function renderItems(items, root) {
         "transform",
         `rotate(${item.rot} ${cx} ${cy})`
       );
-
+      
       const img = el("image");
       img.setAttribute("href", imgURL);
-      img.setAttribute("x", x);
-      img.setAttribute("y", y);
+
+      // CENTER the image using layout dimensions
+      img.setAttribute("x", -item.w / 2);
+      img.setAttribute("y", -item.h / 2);
       img.setAttribute("width", item.w);
       img.setAttribute("height", item.h);
-
+      
       gr.appendChild(img);
       g.appendChild(gr);
+    } else {
+      // Fallback box
+      const r = el("rect");
+      r.setAttribute("x", -item.w / 2);
+      r.setAttribute("y", -item.h / 2);
+      r.setAttribute("width", item.w);
+      r.setAttribute("height", item.h);
+      r.setAttribute("fill", "#777");
+      g.appendChild(r);
     }
 
     root.appendChild(g);
   });
 }
-
 
 
 // -------------------------------------------------------
