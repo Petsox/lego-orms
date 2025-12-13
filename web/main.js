@@ -10,7 +10,7 @@ let activeSwitch = null;
 // -------------------------------------------------------
 
 async function loadSwitchesFromLayout() {
-  const res = await fetch("/api/switches_from_layout");
+  const res = await fetch("/api/switches");
   if (!res.ok) throw new Error("Failed to load switches from layout");
 
   SWITCHES = await res.json();
