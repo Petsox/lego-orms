@@ -176,6 +176,24 @@ function normalizePartName(name) {
     .trim();
 }
 
+function logRenderDebug(item, key, imgSize, transform) {
+  fetch("/api/render_debug", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      part_raw: item.part,
+      part_key: key,
+      x: item.x,
+      y: item.y,
+      rot: item.rot,
+      w: item.w,
+      h: item.h,
+      image_size: imgSize || null,
+      transform,
+    }),
+  }).catch(() => {});
+}
+
 function renderItems(items, root) {
   items.forEach((item) => {
     const key = normalizePartName(item.part);
@@ -187,11 +205,11 @@ function renderItems(items, root) {
       `translate(${item.x},${item.y}) rotate(${item.rot})`
     );
 
-    logRenderDebug(item, key, imgSize, transform);
-
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
+
+      logRenderDebug(item, key, imgSize, transform);
 
       // IMPORTANT:
       // BlueBrick coordinates are image-origin based (top-left)
@@ -217,24 +235,6 @@ function renderItems(items, root) {
 
     root.appendChild(g);
   });
-}
-
-function logRenderDebug(item, key, imgSize, transform) {
-  fetch("/api/render_debug", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      part_raw: item.part,
-      part_key: key,
-      x: item.x,
-      y: item.y,
-      rot: item.rot,
-      w: item.w,
-      h: item.h,
-      image_size: imgSize || null,
-      transform,
-    }),
-  }).catch(() => {});
 }
 
 // -------------------------------------------------------
