@@ -11,6 +11,10 @@ h1 {
   font-size: 1.3rem;
 }
 
+image {
+  image-rendering: crisp-edges;
+}
+
 svg {
   width: 100%;
   height: calc(100vh - 52px);
