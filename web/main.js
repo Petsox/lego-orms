@@ -11,6 +11,7 @@ function el(name) {
 let PART_IMAGES = {};
 let PART_META = {};
 let PART_IMAGE_SIZE = {};
+const PIXELS_PER_STUD = 8;
 let LAYOUT = null;
 let activeSwitch = null;
 
@@ -194,53 +195,58 @@ function normalizePartName(name) {
  * Uses BlueBrick absolute pixel coordinates and native image sizes.
  */
 function renderItems(items, root) {
-  items.forEach((item, index) => {
+  items.forEach((item) => {
     const key = normalizePartName(item.part);
-    const imgURL = PART_IMAGES[key] || null;
+    const imgURL = PART_IMAGES[key];
+
+    // Convert layout units (studs) → pixels
+    const px = item.x * PIXELS_PER_STUD;
+    const py = item.y * PIXELS_PER_STUD;
 
     const g = el("g");
 
-    const transform = `translate(${item.x},${item.y}) rotate(${item.rot})`;
+    // Rotate around the layout anchor point
+    const transform = `translate(${px},${py}) rotate(${item.rot})`;
     g.setAttribute("transform", transform);
 
     if (imgURL) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      // Explicit centering using layout dimensions
-      img.setAttribute("x", -item.w / 2);
-      img.setAttribute("y", -item.h / 2);
-      img.setAttribute("width", item.w);
-      img.setAttribute("height", item.h);
+      // Anchor image so that its STUD-ORIGIN aligns to (0,0)
+      // For now, assume origin is image center (works for most rails)
+      img.setAttribute("x", "-50%");
+      img.setAttribute("y", "-50%");
+      img.setAttribute("width", "100%");
+      img.setAttribute("height", "100%");
 
       g.appendChild(img);
     } else {
-      const r = el("rect");
-      r.setAttribute("x", -item.w / 2);
-      r.setAttribute("y", -item.h / 2);
-      r.setAttribute("width", item.w);
-      r.setAttribute("height", item.h);
-      r.setAttribute("fill", "#777");
+      // Fallback visual
+      const r = el("circle");
+      r.setAttribute("r", 5);
+      r.setAttribute("fill", "red");
       g.appendChild(r);
     }
 
     root.appendChild(g);
 
-    // 🔍 LOG EVERYTHING WE KNOW (safe)
-    logRenderDebugSafe({
-      index,
-      part_raw: item.part,
-      part_key: key,
-      x: item.x,
-      y: item.y,
-      rot: item.rot,
-      w: item.w,
-      h: item.h,
-      has_image: !!imgURL,
-      transform
-    });
+    // 🔍 Log real data (safe)
+    fetch("/api/render_debug", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        part: item.part,
+        x: item.x,
+        y: item.y,
+        px,
+        py,
+        rot: item.rot
+      })
+    }).catch(() => {});
   });
 }
+
 
 // -------------------------------------------------------
 // SWITCH OVERLAYS (IMPROVED)
