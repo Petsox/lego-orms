@@ -27,20 +27,11 @@ async function loadParts() {
 
   for (const [key, url] of Object.entries(parts)) {
     PART_IMAGES[key] = url;
-
-    // Load image to get intrinsic size
-    const img = new Image();
-    img.src = url;
-    await img.decode();
-
-    PART_IMAGE_SIZE[key] = {
-      w: img.naturalWidth,
-      h: img.naturalHeight,
-    };
   }
 
   console.log("Loaded part images:", Object.keys(PART_IMAGES).length);
 }
+
 
 async function loadLayout() {
   const res = await fetch("/res/layout.json");
