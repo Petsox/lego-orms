@@ -223,10 +223,26 @@ function renderSwitches(items, root) {
 // SWITCH CONTROL
 // -------------------------------------------------------
 async function toggleSwitch(id, indicator) {
-  const res = await fetch(`/api/switch/${id}/toggle`);
-  const data = await res.json();
+  try {
+    const res = await fetch(`/api/switch/${id}/toggle`);
 
-  indicator.setAttribute("fill", data.state === 1 ? "#f1c40f" : "#2ecc71");
+    if (!res.ok) {
+      console.warn("Switch toggle failed:", id);
+      indicator.setAttribute("fill", "#e74c3c"); // red = not configured
+      return; // DO NOT change color
+    }
+
+    const data = await res.json();
+
+    if (typeof data.state !== "number") {
+      console.warn("Invalid switch response:", data);
+      return; // DO NOT change color
+    }
+
+    indicator.setAttribute("fill", data.state === 1 ? "#f1c40f" : "#2ecc71");
+  } catch (err) {
+    console.error("Toggle error:", err);
+  }
 }
 
 // -------------------------------------------------------
