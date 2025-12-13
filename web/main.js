@@ -209,7 +209,7 @@ function renderItems(items, root) {
       const img = el("image");
       img.setAttribute("href", imgURL);
 
-      logRenderDebug(item, key, imgSize, transform);
+      logRenderDebug(item, key, PART_IMAGE_SIZE?.[key] ?? null, transform);
 
       // IMPORTANT:
       // BlueBrick coordinates are image-origin based (top-left)
