@@ -13,7 +13,13 @@ async function loadSwitchesFromLayout() {
   const res = await fetch("/api/switches");
   if (!res.ok) throw new Error("Failed to load switches from layout");
 
-  SWITCHES = await res.json();
+  const data = await res.json();
+
+  SWITCHES = Object.entries(data).map(([id, sw]) => ({
+    id,
+    ...sw,
+  }));
+
   console.log("Loaded switches:", SWITCHES.length);
 }
 

@@ -4,7 +4,8 @@ from bbm_switch_extractor import extract_switches_from_bbm
 import json, os
 
 SWITCH_CONFIG_FILE = "switch_config.json"
-LAYOUT_BBM = "Layout.bbm"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+LAYOUT_BBM = os.path.join(BASE_DIR, "Layout.bbm")
 CONFIG_FILE = "switch_config.json"
 
 kit = ServoKit(channels=16)
