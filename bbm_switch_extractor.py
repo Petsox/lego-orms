@@ -24,7 +24,8 @@ def extract_switches_from_bbm(path: str):
 
     switches = []
 
-    for part in root.iter("Part"):
+    # 🔑 Namespace-safe Part search
+    for part in root.findall(".//{*}Part"):
         part_id = part.get("id")
         partname = part.get("partname")
 

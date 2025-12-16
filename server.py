@@ -14,7 +14,9 @@ if not os.path.exists(SWITCH_CONFIG_FILE):
 
 def load_switch_config():
     if not os.path.exists(SWITCH_CONFIG_FILE):
-        return {"switches": {}}
+        with open(SWITCH_CONFIG_FILE, "w") as f:
+            json.dump({"switches": {}}, f, indent=2)
+
 
     with open(SWITCH_CONFIG_FILE, "r") as f:
         return json.load(f)
@@ -31,10 +33,6 @@ def ensure_switches_from_layout():
 
     layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
     changed = False
-
-
-    layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
-    print("Found switches in BBM:", layout_switches)    
 
     for sw in layout_switches:
         sid = str(sw["id"])
@@ -56,6 +54,9 @@ def ensure_switches_from_layout():
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 ensure_switches_from_layout()
+
+print("Switch config after merge:")
+print(json.dumps(load_switch_config(), indent=2))
 
 @app.route("/")
 def root():
