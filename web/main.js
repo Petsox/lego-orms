@@ -34,8 +34,15 @@ function renderSwitchButtons() {
   SWITCHES.forEach((sw) => {
     const btn = document.createElement("button");
     btn.className = "switch-btn";
-    btn.textContent = `Switch ${sw.id}`;
-    btn.title = sw.name;
+
+    // Prefer user_name, fallback to old text
+    btn.textContent =
+      sw.user_name && sw.user_name.trim() !== ""
+        ? sw.user_name
+        : `Switch ${sw.id}`;
+
+    // Keep technical name as tooltip (useful)
+    btn.title = sw.name || `Switch ${sw.id}`;
 
     btn.addEventListener("click", (e) => {
       if (e.shiftKey) {
@@ -105,10 +112,11 @@ function bindCalibrationSliders() {
   });
 }
 
-
 async function openCalibration(sw) {
   activeSwitch = sw;
-  document.getElementById("cal-id").textContent = sw.id;
+  document.getElementById("cal-user-name").value = sw.user_name || "";
+  document.getElementById("cal-id").textContent =
+    sw.id + (sw.name ? " (" + sw.name + ")" : "");
 
   try {
     const res = await fetch("/api/switch_config");
@@ -145,6 +153,7 @@ async function saveCalibration() {
   const channel = parseInt(document.getElementById("cal-channel").value, 10);
   const angle0 = parseInt(document.getElementById("cal-a0").value, 10);
   const angle1 = parseInt(document.getElementById("cal-a1").value, 10);
+  const userName = document.getElementById("cal-user-name").value || "";
 
   await fetch("/api/update_switch_config", {
     method: "POST",
@@ -154,6 +163,7 @@ async function saveCalibration() {
       channel,
       angle0,
       angle1,
+      user_name: userName,
     }),
   });
 
@@ -172,7 +182,7 @@ function closeCalibration() {
 async function init() {
   await loadSwitchesFromLayout();
   renderSwitchButtons();
-  bindCalibrationSliders()
+  bindCalibrationSliders();
 }
 
 window.onload = init;

@@ -13,6 +13,12 @@
     <div id="cal-panel">
       <h3>Switch <span id="cal-id"></span></h3>
 
+      <label>
+        Name:
+        <input id="cal-user-name" type="text" placeholder="Optional name" />
+      </label>
+      <br />
+      
       Servo channel (0–15):
       <input id="cal-channel" type="number" min="0" max="15" /><br />
 
@@ -30,9 +36,7 @@
       </div>
     </div>
 
-    <div id="hint">
-      Tip: Hold <b>Shift</b> and click a switch to calibrate
-    </div>
+    <div id="hint">Tip: Hold <b>Shift</b> and click a switch to calibrate</div>
 
     <script src="main.js"></script>
   </body>

@@ -40,6 +40,7 @@ def ensure_switches_from_layout():
         if sid not in switches:
             switches[sid] = {
                 "name": sw["name"],
+                "user_name": "",
                 "channel": None,
                 "angle0": 65,
                 "angle1": 105,
@@ -81,28 +82,32 @@ def api_update_switch_config():
 
     sid = str(data["id"])
     channel = int(data.get("channel", 0))
-    angle0 = int(data.get("angle0", 58))
-    angle1 = int(data.get("angle1", 100))
+    angle0 = int(data.get("angle0", 65))
+    angle1 = int(data.get("angle1", 105))
+    user_name = data.get("user_name", "").strip()
 
-    # Load config
-    with open("switch_config.json", "r") as f:
-        cfg = json.load(f)
+    cfg = load_switch_config()
 
-    # Normalize structure
-    if "switches" not in cfg or isinstance(cfg["switches"], list):
-        cfg["switches"] = {}
+    if "switches" not in cfg or sid not in cfg["switches"]:
+        return jsonify({"error": "Switch not found"}), 400
 
-    cfg["switches"][sid] = {
-        "channel": channel,
-        "angle0": angle0,
-        "angle1": angle1
-    }
+    sw = cfg["switches"][sid]
+    
+    if user_name is not None:
+        sw["user_name"] = user_name
 
-    # Save
-    with open("switch_config.json", "w") as f:
-        json.dump(cfg, f, indent=2)
+
+    # 🔑 MERGE instead of overwrite
+    sw["channel"] = channel
+    sw["angle0"] = angle0
+    sw["angle1"] = angle1
+    sw["user_name"] = user_name
+
+    cfg["switches"][sid] = sw
+    save_switch_config(cfg)
 
     return jsonify({"status": "ok"})
+
 
 @app.route("/api/switch/<sid>/toggle")
 def api_toggle_switch(sid):
