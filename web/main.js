@@ -48,9 +48,19 @@ function renderSwitchButtons() {
     btn.addEventListener("click", (e) => {
       if (e.shiftKey) {
         openCalibration(sw);
-      } else {
-        toggleSwitch(sw.id, btn);
+        return;
       }
+
+      // 🔴 Guard: channel not assigned
+      if (sw.channel === null || sw.channel === undefined) {
+        alert(
+          "This switch has no channel assigned yet.\n" +
+            "Please calibrate it before using it."
+        );
+        return;
+      }
+
+      toggleSwitch(sw.id, btn);
     });
 
     container.appendChild(btn);
@@ -265,7 +275,6 @@ async function saveCalibration() {
   renderSwitchButtons();
   closeCalibration();
 }
-
 
 function closeCalibration() {
   document.getElementById("cal-panel").classList.remove("show");
