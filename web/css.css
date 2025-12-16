@@ -13,19 +13,27 @@ h1 {
 
 /* ===== SWITCH BUTTONS ===== */
 
+/* Switch button grid */
 #switches {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 10px;
-  padding: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  padding: 12px;
 }
 
+/* Switch buttons */
 .switch-btn {
-  padding: 14px;
+  padding: 16px;
   font-size: 1rem;
+  min-height: 56px; /* thumb-friendly */
+  border-radius: 10px;
+  border: none;
+  background: #3a3a3a;
+  color: white;
   cursor: pointer;
 }
 
+/* State colors (if you use them) */
 .switch-btn.state-0 {
   background: #2ecc71;
 }
@@ -38,19 +46,23 @@ h1 {
   background: #e74c3c;
 }
 
-/* ===== PARTS ===== */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.1rem;
+    padding: 10px;
+  }
 
-.part {
-  position: absolute;
-  transform-origin: center center;
-  image-rendering: crisp-edges;
-  user-select: none;
+  #switches {
+    grid-template-columns: 1fr; /* single column */
+    gap: 14px;
+  }
+
+  .switch-btn {
+    font-size: 1.1rem;
+    padding: 18px;
+  }
 }
 
-/* optional hover debugging */
-.part:hover {
-  outline: 1px solid rgba(0, 255, 255, 0.5);
-}
 
 /* ===== CALIBRATION PANEL ===== */
 
@@ -98,4 +110,25 @@ h1 {
   right: 12px;
   font-size: 0.8rem;
   opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+  #cal-panel {
+    padding: 20px;
+  }
+
+  #cal-panel input[type="range"] {
+    height: 32px;
+  }
+
+  #cal-panel input[type="number"],
+  #cal-panel input[type="text"] {
+    font-size: 1.1rem;
+    padding: 10px;
+  }
+
+  .cal-buttons button {
+    padding: 14px;
+    font-size: 1.1rem;
+  }
 }
