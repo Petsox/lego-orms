@@ -101,41 +101,46 @@ def api_update_switch_config():
         return jsonify({"error": "Switch not found"}), 400
 
     # 🔴 Validate channel
-    if channel is None:
-        return jsonify({
-            "error": "Channel is required"
-        }), 400
+    if not hidden:
+        if channel is None:
+            return jsonify({
+                "error": "Channel is required"
+            }), 400
 
-    channel = int(channel)
+        channel = int(channel)
 
-    other_sid, other_sw = find_switch_using_channel(
-        cfg, channel, exclude_sid=sid
-    )
-
-    if other_sw:
-        other_name = (
-            other_sw.get("user_name")
-            or other_sw.get("name")
-            or f"Switch {other_sid}"
+        other_sid, other_sw = find_switch_using_channel(
+            cfg, channel, exclude_sid=sid
         )
 
-        return jsonify({
-            "error": "Channel already in use",
-            "message": f"Channel {channel} is already used by {other_name}"
-        }), 400
+        if other_sw:
+            other_name = (
+                other_sw.get("user_name")
+                or other_sw.get("name")
+                or f"Switch {other_sid}"
+            )
 
-    # ✅ Merge update
-    sw = cfg["switches"][sid]
-    sw["channel"] = channel
-    sw["angle0"] = angle0
-    sw["angle1"] = angle1
-    sw["user_name"] = user_name
-    sw["hidden"] = hidden
+            return jsonify({
+                "error": "Channel already in use",
+                "message": f"Channel {channel} is already used by {other_name}"
+            }), 400
 
-    cfg["switches"][sid] = sw
-    save_switch_config(cfg)
+        # ✅ Merge update
+        sw = cfg["switches"][sid]
+        
+        sw["user_name"] = user_name
+        sw["hidden"] = hidden
 
-    return jsonify({"status": "ok"})
+        # Only update channel/angles if not hidden
+        if not hidden:
+            sw["channel"] = channel
+            sw["angle0"] = angle0
+            sw["angle1"] = angle1   
+
+        cfg["switches"][sid] = sw
+        save_switch_config(cfg)
+
+        return jsonify({"status": "ok"})
 
 
 
