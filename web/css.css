@@ -63,7 +63,6 @@ h1 {
   }
 }
 
-
 /* ===== CALIBRATION PANEL ===== */
 
 #cal-panel {
@@ -117,6 +116,18 @@ h1 {
     padding: 20px;
   }
 
+  .cal-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between checkbox and text */
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  .cal-checkbox input[type="checkbox"] {
+    margin: 0; /* remove default weird spacing */
+  }
+
   #cal-panel input[type="range"] {
     height: 32px;
   }
@@ -139,7 +150,6 @@ h1 {
 #cal-panel.show ~ #show-hidden-btn {
   display: none;
 }
-
 
 #show-hidden-btn {
   position: fixed;
