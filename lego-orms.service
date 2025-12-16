@@ -1,0 +1,14 @@
+[Unit]
+Description=LEGO ORMS Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/petsox/Desktop/lego-orms/server.py
+WorkingDirectory=/home/petsox/Desktop/lego-orms
+Restart=always
+User=petsox
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

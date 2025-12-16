@@ -1,13 +1,22 @@
 from flask import Flask, jsonify, request, send_from_directory
 from adafruit_servokit import ServoKit
 from bbm_switch_extractor import extract_switches_from_bbm
-import json, os
+import json, os, wifi, sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LAYOUT_BBM = os.path.join(BASE_DIR, "Layout.bbm")
 SWITCH_CONFIG_FILE = os.path.join(BASE_DIR, "switch_config.json")
 
 kit = ServoKit(channels=16)
+
+try:
+    wifi_ok = wifi.ensure_wifi_config()
+    if not wifi_ok:
+        print("Wi-Fi configuration updated")
+except Exception as e:
+    print("Wi-Fi setup failed:", e)
+    # Optional: stop server if Wi-Fi is critical
+    # sys.exit(1)
 
 if not os.path.exists(SWITCH_CONFIG_FILE):
     json.dump({}, open(SWITCH_CONFIG_FILE, "w"))
