@@ -145,20 +145,20 @@ async function unhideSwitch(sw) {
     body: JSON.stringify({
       id: sw.id,
       hidden: false,
-      channel: sw.channel,
-      angle0: sw.angle0,
-      angle1: sw.angle1,
       user_name: sw.user_name || "",
     }),
   });
 
-  if (!res.ok) return;
+  if (!res.ok) {
+    console.error("Failed to unhide switch");
+    return;
+  }
 
   // Update frontend state
   sw.hidden = false;
 
   renderSwitchButtons();
-  openHiddenPanel(); // refresh list
+  openHiddenPanel(); // refresh hidden list
 }
 
 // -------------------------------------------------------
