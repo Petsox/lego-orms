@@ -135,6 +135,12 @@ h1 {
 
 /* ===== HIDDEN SWITCHES ===== */
 
+/* Hide the hidden-switches button when calibration is open */
+#cal-panel.show ~ #show-hidden-btn {
+  display: none;
+}
+
+
 #show-hidden-btn {
   position: fixed;
   bottom: 12px;

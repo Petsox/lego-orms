@@ -73,14 +73,16 @@ function openHiddenPanel() {
 
     const row = document.createElement("div");
 
-    const label = document.createElement("span");
-    label.textContent =
+    const btn = document.createElement("button");
+
+    // Determine display name (same logic as main buttons)
+    const switchLabel =
       sw.user_name && sw.user_name.trim() !== ""
         ? sw.user_name
         : sw.name || `Switch ${sw.id}`;
 
-    const btn = document.createElement("button");
-    btn.textContent = "Unhide";
+    btn.textContent = `Unhide ${switchLabel}`;
+
     btn.onclick = function () {
       unhideSwitch(sw);
     };
@@ -184,6 +186,7 @@ async function openCalibration(sw) {
   document.getElementById("cal-id").textContent =
     sw.id + (sw.name ? " (" + sw.name + ")" : "");
   document.getElementById("cal-hidden").checked = !!sw.hidden;
+  document.getElementById("show-hidden-btn").style.display = "none";
 
   try {
     const res = await fetch("/api/switch_config");
@@ -253,6 +256,7 @@ async function saveCalibration() {
 
 function closeCalibration() {
   document.getElementById("cal-panel").classList.remove("show");
+  document.getElementById("show-hidden-btn").style.display = "";
   activeSwitch = null;
 }
 
