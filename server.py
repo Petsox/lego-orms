@@ -55,9 +55,6 @@ def ensure_switches_from_layout():
 app = Flask(__name__, static_folder="web", static_url_path="")
 ensure_switches_from_layout()
 
-print("Switch config after merge:")
-print(json.dumps(load_switch_config(), indent=2))
-
 @app.route("/")
 def root():
     return app.send_static_file("index.html")
