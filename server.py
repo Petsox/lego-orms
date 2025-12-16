@@ -3,15 +3,14 @@ from adafruit_servokit import ServoKit
 from bbm_switch_extractor import extract_switches_from_bbm
 import json, os
 
-SWITCH_CONFIG_FILE = "switch_config.json"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LAYOUT_BBM = os.path.join(BASE_DIR, "Layout.bbm")
-CONFIG_FILE = "switch_config.json"
+SWITCH_CONFIG_FILE = os.path.join(BASE_DIR, "switch_config.json")
 
 kit = ServoKit(channels=16)
 
-if not os.path.exists(CONFIG_FILE):
-    json.dump({}, open(CONFIG_FILE, "w"))
+if not os.path.exists(SWITCH_CONFIG_FILE):
+    json.dump({}, open(SWITCH_CONFIG_FILE, "w"))
 
 def load_switch_config():
     if not os.path.exists(SWITCH_CONFIG_FILE):
@@ -33,6 +32,10 @@ def ensure_switches_from_layout():
     layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
     changed = False
 
+
+    layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
+    print("Found switches in BBM:", layout_switches)    
+
     for sw in layout_switches:
         sid = str(sw["id"])
 
@@ -45,7 +48,7 @@ def ensure_switches_from_layout():
                 "state": 0
             }
             changed = True
-
+            
     if changed:
         save_switch_config(cfg)
 
