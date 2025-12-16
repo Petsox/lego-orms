@@ -41,6 +41,7 @@ def ensure_switches_from_layout():
             switches[sid] = {
                 "name": sw["name"],
                 "user_name": "",
+                "hidden": False,
                 "channel": None,
                 "angle0": 65,
                 "angle1": 105,
@@ -85,6 +86,7 @@ def api_update_switch_config():
     angle0 = int(data.get("angle0", 65))
     angle1 = int(data.get("angle1", 105))
     user_name = data.get("user_name", "").strip()
+    hidden = bool(data.get("hidden", False))
 
     cfg = load_switch_config()
 
@@ -101,6 +103,7 @@ def api_update_switch_config():
     sw["channel"] = channel
     sw["angle0"] = angle0
     sw["angle1"] = angle1
+    sw["hidden"] = hidden
     sw["user_name"] = user_name
 
     cfg["switches"][sid] = sw

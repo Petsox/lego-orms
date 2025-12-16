@@ -18,8 +18,7 @@
         Name:
         <input id="cal-user-name" type="text" placeholder="Optional name" />
       </label>
-      <br />
-      
+
       Servo channel (0–15):
       <input id="cal-channel" type="number" min="0" max="15" /><br />
 
@@ -29,12 +28,25 @@
       Angle 1: <span id="cal-a1-val">105</span>
       <input id="cal-a1" type="range" min="58" max="105" step="1" /><br />
 
+      <label>
+        <input type="checkbox" id="cal-hidden" />
+        Hide this switch
+      </label>
+
       <div class="cal-buttons">
         <button onclick="testServo(0)">Test 0</button>
         <button onclick="testServo(1)">Test 1</button>
         <button onclick="saveCalibration()">Save</button>
         <button onclick="closeCalibration()">Close</button>
       </div>
+    </div>
+
+    <button id="show-hidden-btn">Hidden switches</button>
+
+    <div id="hidden-switches-panel">
+      <h3>Hidden switches</h3>
+      <div id="hidden-switches-list"></div>
+      <button onclick="closeHiddenPanel()">Close</button>
     </div>
 
     <div id="hint">Tip: Hold <b>Shift</b> and click a switch to calibrate</div>

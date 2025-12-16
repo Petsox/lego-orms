@@ -132,3 +132,35 @@ h1 {
     font-size: 1.1rem;
   }
 }
+
+/* ===== HIDDEN SWITCHES ===== */
+
+#show-hidden-btn {
+  position: fixed;
+  bottom: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  z-index: 20;
+}
+
+#hidden-switches-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  background: #2a2a2a;
+  padding: 16px;
+  transition: bottom 0.3s ease;
+  z-index: 30;
+}
+
+#hidden-switches-panel.show {
+  bottom: 0;
+}
+
+#hidden-switches-list button {
+  width: 100%;
+  margin: 6px 0;
+  padding: 12px;
+}

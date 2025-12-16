@@ -32,6 +32,7 @@ function renderSwitchButtons() {
   container.innerHTML = "";
 
   SWITCHES.forEach((sw) => {
+    if (sw.hidden) return;
     const btn = document.createElement("button");
     btn.className = "switch-btn";
 
@@ -54,6 +55,46 @@ function renderSwitchButtons() {
 
     container.appendChild(btn);
   });
+}
+
+//Render hidden switches
+document
+  .getElementById("show-hidden-btn")
+  .addEventListener("click", openHiddenPanel);
+
+function openHiddenPanel() {
+  const panel = document.getElementById("hidden-switches-panel");
+  const list = document.getElementById("hidden-switches-list");
+
+  list.innerHTML = "";
+
+  SWITCHES.forEach((sw) => {
+    if (!sw.hidden) return;
+
+    const row = document.createElement("div");
+
+    const label = document.createElement("span");
+    label.textContent =
+      sw.user_name && sw.user_name.trim() !== ""
+        ? sw.user_name
+        : sw.name || `Switch ${sw.id}`;
+
+    const btn = document.createElement("button");
+    btn.textContent = "Unhide";
+    btn.onclick = function () {
+      unhideSwitch(sw);
+    };
+
+    row.appendChild(label);
+    row.appendChild(btn);
+    list.appendChild(row);
+  });
+
+  panel.classList.add("show");
+}
+
+function closeHiddenPanel() {
+  document.getElementById("hidden-switches-panel").classList.remove("show");
 }
 
 // -------------------------------------------------------
@@ -80,6 +121,31 @@ function updateButtonState(button, state) {
 
   if (state === 0) button.classList.add("state-0");
   if (state === 1) button.classList.add("state-1");
+}
+
+// Unhide a switch
+
+async function unhideSwitch(sw) {
+  const res = await fetch("/api/update_switch_config", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id: sw.id,
+      hidden: false,
+      channel: sw.channel,
+      angle0: sw.angle0,
+      angle1: sw.angle1,
+      user_name: sw.user_name || "",
+    }),
+  });
+
+  if (!res.ok) return;
+
+  // Update frontend state
+  sw.hidden = false;
+
+  renderSwitchButtons();
+  openHiddenPanel(); // refresh list
 }
 
 // -------------------------------------------------------
@@ -117,6 +183,7 @@ async function openCalibration(sw) {
   document.getElementById("cal-user-name").value = sw.user_name || "";
   document.getElementById("cal-id").textContent =
     sw.id + (sw.name ? " (" + sw.name + ")" : "");
+  document.getElementById("cal-hidden").checked = !!sw.hidden;
 
   try {
     const res = await fetch("/api/switch_config");
@@ -154,6 +221,7 @@ async function saveCalibration() {
   const angle0 = parseInt(document.getElementById("cal-a0").value, 10);
   const angle1 = parseInt(document.getElementById("cal-a1").value, 10);
   const userName = document.getElementById("cal-user-name").value || "";
+  const hidden = document.getElementById("cal-hidden").checked;
 
   const res = await fetch("/api/update_switch_config", {
     method: "POST",
@@ -164,6 +232,7 @@ async function saveCalibration() {
       angle0,
       angle1,
       user_name: userName,
+      hidden: hidden,
     }),
   });
 
@@ -174,6 +243,7 @@ async function saveCalibration() {
 
   // ✅ UPDATE FRONTEND STATE IMMEDIATELY
   activeSwitch.user_name = userName;
+  activeSwitch.hidden = hidden;
 
   // Re-render buttons so label updates instantly
   renderSwitchButtons();
