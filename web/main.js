@@ -91,7 +91,7 @@ function openHiddenPanel() {
     const switchLabel =
       sw.user_name && sw.user_name.trim() !== ""
         ? sw.user_name
-        : sw.name || `Switch ${sw.id}`;
+        : sw.name || `Switch ${sw.name}`;
 
     btn.textContent = `Unhide ${switchLabel}`;
 
