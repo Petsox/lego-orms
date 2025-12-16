@@ -37,25 +37,10 @@ function renderSwitchButtons() {
     btn.className = "switch-btn";
 
     // Prefer user_name, fallback to old text
-    const label =
+    btn.textContent =
       sw.user_name && sw.user_name.trim() !== ""
         ? sw.user_name
         : `Switch ${sw.id}`;
-
-    btn.textContent = ""; // clear
-
-    const text = document.createElement("span");
-    text.textContent = label;
-
-    btn.appendChild(text);
-
-    // ⚠️ Not configured badge
-    if (sw.channel === null || sw.channel === undefined) {
-      const badge = document.createElement("span");
-      badge.className = "badge-unconfigured";
-      badge.textContent = "⚠️ Not configured";
-      btn.appendChild(badge);
-    }
 
     // Keep technical name as tooltip (useful)
     btn.title = sw.name || `Switch ${sw.id}`;
