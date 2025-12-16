@@ -89,12 +89,6 @@ def api_update_switch_config():
         return jsonify({"error": "Invalid request"}), 400
 
     sid = str(data["id"])
-    channel = data.get("channel")
-    angle0 = int(data.get("angle0", 65))
-    angle1 = int(data.get("angle1", 105))
-    user_name = (data.get("user_name") or "").strip()
-    hidden = bool(data.get("hidden", False))
-
     cfg = load_switch_config()
 
     if sid not in cfg.get("switches", {}):
@@ -102,12 +96,31 @@ def api_update_switch_config():
 
     sw = cfg["switches"][sid]
 
-    # 🔑 ONLY validate channel if NOT hiding
+    # Extract fields
+    hidden = bool(data.get("hidden", sw.get("hidden", False)))
+    user_name = (data.get("user_name") or sw.get("user_name") or "").strip()
+
+    channel = data.get("channel", sw.get("channel"))
+    angle0 = data.get("angle0", sw.get("angle0", 65))
+    angle1 = data.get("angle1", sw.get("angle1", 105))
+
+    # 🔑 VISIBILITY-ONLY UPDATE (hide / unhide)
+    visibility_only = (
+        "hidden" in data and
+        len(data.keys()) <= 3  # id + hidden (+ maybe user_name)
+    )
+
+    if visibility_only:
+        sw["hidden"] = hidden
+        sw["user_name"] = user_name
+        cfg["switches"][sid] = sw
+        save_switch_config(cfg)
+        return jsonify({"status": "ok"})
+
+    # 🔴 FULL VALIDATION (only for active switches)
     if not hidden:
         if channel is None:
-            return jsonify({
-                "error": "Channel is required"
-            }), 400
+            return jsonify({"error": "Channel is required"}), 400
 
         channel = int(channel)
 
@@ -126,20 +139,18 @@ def api_update_switch_config():
                 "message": f"Channel {channel} is already used by {other_name}"
             }), 400
 
-        # Only update channel/angles when active
         sw["channel"] = channel
-        sw["angle0"] = angle0
-        sw["angle1"] = angle1
+        sw["angle0"] = int(angle0)
+        sw["angle1"] = int(angle1)
 
-    # Always allowed
     sw["hidden"] = hidden
     sw["user_name"] = user_name
 
     cfg["switches"][sid] = sw
     save_switch_config(cfg)
 
-    # ✅ ALWAYS return a response
     return jsonify({"status": "ok"})
+
 
 @app.route("/api/switch/<sid>/toggle")
 def api_toggle_switch(sid):
