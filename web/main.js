@@ -79,6 +79,33 @@ function updateButtonState(button, state) {
 // CALIBRATION UI (UNCHANGED LOGIC)
 // -------------------------------------------------------
 
+function bindCalibrationSliders() {
+  const a0 = document.getElementById("cal-a0");
+  const a0Val = document.getElementById("cal-a0-val");
+
+  const a1 = document.getElementById("cal-a1");
+  const a1Val = document.getElementById("cal-a1-val");
+
+  if (!a0 || !a1 || !a0Val || !a1Val) {
+    console.warn("Calibration sliders not found");
+    return;
+  }
+
+  // Initial values
+  a0Val.textContent = a0.value;
+  a1Val.textContent = a1.value;
+
+  // Live update on move
+  a0.addEventListener("input", () => {
+    a0Val.textContent = a0.value;
+  });
+
+  a1.addEventListener("input", () => {
+    a1Val.textContent = a1.value;
+  });
+}
+
+
 async function openCalibration(sw) {
   activeSwitch = sw;
   document.getElementById("cal-id").textContent = sw.id;
@@ -145,6 +172,7 @@ function closeCalibration() {
 async function init() {
   await loadSwitchesFromLayout();
   renderSwitchButtons();
+  bindCalibrationSliders()
 }
 
 window.onload = init;
