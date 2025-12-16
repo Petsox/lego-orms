@@ -155,7 +155,7 @@ async function saveCalibration() {
   const angle1 = parseInt(document.getElementById("cal-a1").value, 10);
   const userName = document.getElementById("cal-user-name").value || "";
 
-  await fetch("/api/update_switch_config", {
+  const res = await fetch("/api/update_switch_config", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -166,6 +166,17 @@ async function saveCalibration() {
       user_name: userName,
     }),
   });
+
+  if (!res.ok) {
+    console.error("Failed to save calibration");
+    return;
+  }
+
+  // ✅ UPDATE FRONTEND STATE IMMEDIATELY
+  activeSwitch.user_name = userName;
+
+  // Re-render buttons so label updates instantly
+  renderSwitchButtons();
 
   closeCalibration();
 }
