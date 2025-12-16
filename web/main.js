@@ -63,6 +63,8 @@ document
   .addEventListener("click", openHiddenPanel);
 
 function openHiddenPanel() {
+  closeCalibration();
+
   const panel = document.getElementById("hidden-switches-panel");
   const list = document.getElementById("hidden-switches-list");
 
@@ -181,6 +183,8 @@ function bindCalibrationSliders() {
 }
 
 async function openCalibration(sw) {
+  closeHiddenPanel();
+
   activeSwitch = sw;
   document.getElementById("cal-user-name").value = sw.user_name || "";
   document.getElementById("cal-id").textContent =
