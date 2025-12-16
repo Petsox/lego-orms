@@ -99,7 +99,6 @@ function openHiddenPanel() {
       unhideSwitch(sw);
     };
 
-    row.appendChild(label);
     row.appendChild(btn);
     list.appendChild(row);
   });
