@@ -97,10 +97,12 @@ def api_update_switch_config():
 
     cfg = load_switch_config()
 
-    if "switches" not in cfg or sid not in cfg["switches"]:
+    if sid not in cfg.get("switches", {}):
         return jsonify({"error": "Switch not found"}), 400
 
-    # 🔴 Validate channel
+    sw = cfg["switches"][sid]
+
+    # 🔑 ONLY validate channel if NOT hiding
     if not hidden:
         if channel is None:
             return jsonify({
@@ -119,30 +121,25 @@ def api_update_switch_config():
                 or other_sw.get("name")
                 or f"Switch {other_sid}"
             )
-
             return jsonify({
                 "error": "Channel already in use",
                 "message": f"Channel {channel} is already used by {other_name}"
             }), 400
 
-        # ✅ Merge update
-        sw = cfg["switches"][sid]
-        
-        sw["user_name"] = user_name
-        sw["hidden"] = hidden
+        # Only update channel/angles when active
+        sw["channel"] = channel
+        sw["angle0"] = angle0
+        sw["angle1"] = angle1
 
-        # Only update channel/angles if not hidden
-        if not hidden:
-            sw["channel"] = channel
-            sw["angle0"] = angle0
-            sw["angle1"] = angle1   
+    # Always allowed
+    sw["hidden"] = hidden
+    sw["user_name"] = user_name
 
-        cfg["switches"][sid] = sw
-        save_switch_config(cfg)
+    cfg["switches"][sid] = sw
+    save_switch_config(cfg)
 
-        return jsonify({"status": "ok"})
-
-
+    # ✅ ALWAYS return a response
+    return jsonify({"status": "ok"})
 
 @app.route("/api/switch/<sid>/toggle")
 def api_toggle_switch(sid):
