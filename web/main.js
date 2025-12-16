@@ -244,19 +244,28 @@ async function saveCalibration() {
   });
 
   if (!res.ok) {
-    console.error("Failed to save calibration");
+    let msg = "The selected channel is not valid.";
+
+    try {
+      const err = await res.json();
+      msg = err.message || err.error || msg;
+    } catch (e) {}
+
+    alert(msg);
     return;
   }
 
   // ✅ UPDATE FRONTEND STATE IMMEDIATELY
   activeSwitch.user_name = userName;
   activeSwitch.hidden = hidden;
+  activeSwitch.channel = channel;
+  activeSwitch.angle0 = angle0;
+  activeSwitch.angle1 = angle1;
 
-  // Re-render buttons so label updates instantly
   renderSwitchButtons();
-
   closeCalibration();
 }
+
 
 function closeCalibration() {
   document.getElementById("cal-panel").classList.remove("show");

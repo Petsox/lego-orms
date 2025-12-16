@@ -26,6 +26,13 @@ def save_switch_config(cfg):
     with open(SWITCH_CONFIG_FILE, "w") as f:
         json.dump(cfg, f, indent=2)
 
+def find_switch_using_channel(cfg, channel, exclude_sid=None):
+    for sid, sw in cfg.get("switches", {}).items():
+        if sid == exclude_sid:
+            continue
+        if sw.get("channel") == channel:
+            return sid, sw
+    return None, None
 
 def ensure_switches_from_layout():
     cfg = load_switch_config()
@@ -82,10 +89,10 @@ def api_update_switch_config():
         return jsonify({"error": "Invalid request"}), 400
 
     sid = str(data["id"])
-    channel = int(data.get("channel", 0))
+    channel = data.get("channel")
     angle0 = int(data.get("angle0", 65))
     angle1 = int(data.get("angle1", 105))
-    user_name = data.get("user_name", "").strip()
+    user_name = (data.get("user_name") or "").strip()
     hidden = bool(data.get("hidden", False))
 
     cfg = load_switch_config()
@@ -93,23 +100,43 @@ def api_update_switch_config():
     if "switches" not in cfg or sid not in cfg["switches"]:
         return jsonify({"error": "Switch not found"}), 400
 
+    # 🔴 Validate channel
+    if channel is None:
+        return jsonify({
+            "error": "Channel is required"
+        }), 400
+
+    channel = int(channel)
+
+    other_sid, other_sw = find_switch_using_channel(
+        cfg, channel, exclude_sid=sid
+    )
+
+    if other_sw:
+        other_name = (
+            other_sw.get("user_name")
+            or other_sw.get("name")
+            or f"Switch {other_sid}"
+        )
+
+        return jsonify({
+            "error": "Channel already in use",
+            "message": f"Channel {channel} is already used by {other_name}"
+        }), 400
+
+    # ✅ Merge update
     sw = cfg["switches"][sid]
-    
-    if user_name is not None:
-        sw["user_name"] = user_name
-
-
-    # 🔑 MERGE instead of overwrite
     sw["channel"] = channel
     sw["angle0"] = angle0
     sw["angle1"] = angle1
-    sw["hidden"] = hidden
     sw["user_name"] = user_name
+    sw["hidden"] = hidden
 
     cfg["switches"][sid] = sw
     save_switch_config(cfg)
 
     return jsonify({"status": "ok"})
+
 
 
 @app.route("/api/switch/<sid>/toggle")
