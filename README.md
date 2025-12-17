@@ -117,6 +117,85 @@ http://<raspberry-pi-ip>/
 
 - Hidden switches remain fully configurable
 
+# 📡 Wi-Fi Configuration (AP + DHCP)
+
+LEGO-ORMS can run as a self-contained Wi-Fi access point with DHCP, allowing phones, tablets, or laptops to connect directly to the Raspberry Pi without an existing network.
+
+This is fully automated at server startup.
+
+## 🧾 wifi.ini
+
+Wi-Fi behavior is configured declaratively via `wifi.ini` in the project root.
+
+```ini
+[wifi]
+mode = ap
+country = CZ
+interface = wlan0
+
+[ap]
+ssid = LEGO-ORMS
+psk = changeThisNow
+channel = 6
+
+ip = 10.0.0.1
+netmask = 255.255.255.0
+dhcp_start = 10.0.0.10
+dhcp_end = 10.0.0.100
+lease_time = 12h
+```
+
+**Fields**
+
+- `mode`
+
+- - `ap` → Raspberry Pi acts as Wi-Fi access point (DHCP server)
+
+- `ssid` / `psk`
+
+- - Network name and password
+
+- `ip`
+
+- - IP address of the Pi in AP mode
+
+- `dhcp_start` / `dhcp_end`
+
+- - Address range handed out to clients
+
+## 📦 Required system packages
+
+Run once:
+
+```bash
+sudo apt update
+sudo apt install -y hostapd dnsmasq
+```
+
+Unmask services (required on Raspberry Pi OS):
+
+```bash
+sudo systemctl unmask hostapd dnsmasq
+```
+
+# 🚀 Automatic Startup (systemd)
+
+LEGO-ORMS is designed to run automatically at boot using systemd.
+
+## 📁 systemd service file
+
+edit `lego-orms.service` in main directory and copy it to `/etc/systemd/system/` like so:
+
+```bash
+sudo cp lego-orms.service /etc/systemd/system/
+```
+
+**⚠️ Important**
+
+- The service must run as root to manage Wi-Fi, networking, GPIO, and I²C
+
+- Do not specify a User= directive
+
 # 🙌 Acknowledgements
 
 [Alban Nanty](https://bluebrick.lswproject.com/) (BlueBrick layout creation studio)

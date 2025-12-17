@@ -6,174 +6,111 @@ import shutil
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WIFI_INI = os.path.join(BASE_DIR, "wifi.ini")
 
-WPA_CONF = "/etc/wpa_supplicant/wpa_supplicant.conf"
+HOSTAPD_CONF = "/etc/hostapd/hostapd.conf"
 DNSMASQ_CONF = "/etc/dnsmasq.d/lego-orms.conf"
-HOSTAPD_CONF = "/etc/hostapd/lego-orms.conf"
+
+
+def run(cmd):
+    subprocess.run(cmd, check=False)
 
 
 def ensure_wifi_config():
-    cfg = load_wifi_ini()
-    mode = cfg["wifi"]["mode"]
+    cfg = load_ini()
+    mode = cfg["wifi"]["mode"].strip().lower()
 
     print(f"[wifi] Mode: {mode}")
 
-    if mode == "client":
-        ensure_client_wifi(cfg)
-    elif mode == "ap":
-        ensure_ap_wifi(cfg)
+    if mode == "ap":
+        setup_ap(cfg)
     else:
-        raise RuntimeError("Invalid wifi mode in wifi.ini")
-
-    return True
+        print("[wifi] Client mode not implemented here")
 
 
-# -------------------------------------------------------
-# CLIENT MODE
-# -------------------------------------------------------
+def setup_ap(cfg):
+    print("[wifi] Setting up AP + DHCP")
 
-def ensure_client_wifi(cfg):
-    print("[wifi] Ensuring client Wi-Fi")
-    stop_ap_services()
+    # RELEASE wlan0 COMPLETELY
+    run(["systemctl", "stop", "NetworkManager"])
+    run(["systemctl", "stop", "wpa_supplicant"])
+    run(["systemctl", "stop", "wpa_supplicant@wlan0"])
+    run(["systemctl", "stop", "dhcpcd"])
 
-    desired = build_wpa_block(cfg["wifi"])
-
-    current = ""
-    if os.path.exists(WPA_CONF):
-        with open(WPA_CONF) as f:
-            current = f.read()
-
-    if desired in current:
-        print("[wifi] Client Wi-Fi OK")
-        return
-
-    backup(WPA_CONF)
-    with open(WPA_CONF, "w") as f:
-        f.write(desired + "\n")
-
-    subprocess.run(["wpa_cli", "-i", cfg["wifi"]["interface"], "reconfigure"], check=False)
-    print("[wifi] Client Wi-Fi updated")
-
-
-# -------------------------------------------------------
-# AP + DHCP MODE
-# -------------------------------------------------------
-
-def ensure_ap_wifi(cfg):
-    print("[wifi] Ensuring AP + DHCP")
-
-    stop_client_wifi()
+    run(["ip", "link", "set", "wlan0", "down"])
+    run(["ip", "link", "set", "wlan0", "up"])
 
     write_hostapd(cfg)
     write_dnsmasq(cfg)
-    configure_static_ip(cfg)
+    setup_ip_and_nat(cfg)
 
-    subprocess.run(["systemctl", "enable", "hostapd"], check=False)
-    subprocess.run(["systemctl", "enable", "dnsmasq"], check=False)
-    subprocess.run(["systemctl", "restart", "dnsmasq"], check=False)
-    subprocess.run(["systemctl", "restart", "hostapd"], check=False)
+    run(["systemctl", "unmask", "hostapd"])
+    run(["systemctl", "enable", "hostapd"])
+    run(["systemctl", "enable", "dnsmasq"])
 
-    print("[wifi] AP + DHCP active")
+    run(["systemctl", "restart", "dnsmasq"])
+    run(["systemctl", "restart", "hostapd"])
 
+    print("[wifi] AP ready")
 
-# -------------------------------------------------------
-# FILE GENERATORS
-# -------------------------------------------------------
 
 def write_hostapd(cfg):
     ap = cfg["ap"]
+    wifi = cfg["wifi"]
+
     content = f"""
-interface={cfg['wifi']['interface']}
+interface={wifi['interface']}
+driver=nl80211
 ssid={ap['ssid']}
-wpa_passphrase={ap['psk']}
-channel={ap['channel']}
-country_code={cfg['wifi']['country']}
 hw_mode=g
+channel={ap['channel']}
+country_code={wifi['country']}
+ieee80211n=1
+wmm_enabled=1
 wpa=2
+wpa_passphrase={ap['psk']}
 wpa_key_mgmt=WPA-PSK
 rsn_pairwise=CCMP
 """.strip()
 
-    backup(HOSTAPD_CONF)
     with open(HOSTAPD_CONF, "w") as f:
-        f.write(content)
-
-    subprocess.run(
-        ["sed", "-i", f"s|#DAEMON_CONF=.*|DAEMON_CONF={HOSTAPD_CONF}|", "/etc/default/hostapd"],
-        check=False,
-    )
+        f.write(content + "\n")
 
 
 def write_dnsmasq(cfg):
     ap = cfg["ap"]
+    wifi = cfg["wifi"]
+
     content = f"""
-interface={cfg['wifi']['interface']}
+interface={wifi['interface']}
 dhcp-range={ap['dhcp_start']},{ap['dhcp_end']},{ap['lease_time']}
 """.strip()
 
-    backup(DNSMASQ_CONF)
     with open(DNSMASQ_CONF, "w") as f:
-        f.write(content)
+        f.write(content + "\n")
 
 
-def configure_static_ip(cfg):
+def setup_ip_and_nat(cfg):
     ap = cfg["ap"]
     iface = cfg["wifi"]["interface"]
 
-    subprocess.run(
-        ["ip", "addr", "flush", "dev", iface],
-        check=False
-    )
+    run(["ip", "addr", "flush", "dev", iface])
+    run(["ip", "addr", "add", f"{ap['ip']}/24", "dev", iface])
+    run(["ip", "link", "set", iface, "up"])
 
-    subprocess.run(
-        ["ip", "addr", "add", f"{ap['ip']}/24", "dev", iface],
-        check=False
-    )
+    # Enable forwarding
+    with open("/proc/sys/net/ipv4/ip_forward", "w") as f:
+        f.write("1")
 
-    subprocess.run(
-        ["ip", "link", "set", iface, "up"],
-        check=False
-    )
-
-
-# -------------------------------------------------------
-# HELPERS
-# -------------------------------------------------------
-
-def stop_ap_services():
-    subprocess.run(["systemctl", "stop", "hostapd"], check=False)
-    subprocess.run(["systemctl", "stop", "dnsmasq"], check=False)
+    # NAT
+    run([
+        "iptables", "-t", "nat", "-A", "POSTROUTING",
+        "-o", "eth0", "-j", "MASQUERADE"
+    ])
 
 
-def stop_client_wifi():
-    subprocess.run(["systemctl", "stop", "wpa_supplicant"], check=False)
-
-
-def backup(path):
-    if os.path.exists(path):
-        shutil.copy(path, path + ".bak")
-
-
-def load_wifi_ini():
-    parser = configparser.ConfigParser()
-    parser.read(WIFI_INI)
-
-    if "wifi" not in parser:
-        raise RuntimeError("wifi.ini missing [wifi] section")
-
-    return parser
-
-
-def build_wpa_block(wifi):
-    return f"""
-country={wifi['country']}
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-
-network={{
-    ssid="{wifi['ssid']}"
-    psk="{wifi['psk']}"
-}}
-""".strip()
+def load_ini():
+    p = configparser.ConfigParser()
+    p.read(WIFI_INI)
+    return p
 
 
 if __name__ == "__main__":
