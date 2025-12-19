@@ -451,12 +451,7 @@ async function saveCalibration() {
   renderSwitchButtons();
   closeCalibration();
 
-  const switches = await fetch("/api/switches").then((r) => r.json());
-  renderMarkers(
-    document.getElementById("layout-svg"),
-    currentLayoutBricks,
-    switches
-  );
+  await loadAndRenderLayout(); // re-render layout + markers
 }
 
 function closeCalibration() {
