@@ -156,9 +156,15 @@ def api_update_switch_config():
         save_switch_config(cfg)
         return jsonify({"status": "ok"})
 
-    # 🔴 From here on, switch is NOT hidden → full validation
+    # switch is NOT hidden
+    # Allow channel to be None IF this is just an unhide action
+    is_unhide_only = (
+        "hidden" in data and
+        data.get("hidden") is False and
+        "channel" not in data
+    )
 
-    if channel is None:
+    if channel is None and not is_unhide_only:
         return jsonify({"error": "Channel is required"}), 400
 
     channel = int(channel)
