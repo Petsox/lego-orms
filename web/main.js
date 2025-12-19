@@ -4,6 +4,7 @@
 
 let SWITCHES = [];
 let activeSwitch = null;
+let hoveredChannel = null;
 
 // -------------------------------------------------------
 // LOADERS

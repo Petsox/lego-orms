@@ -8,36 +8,64 @@
   <body>
     <h1>Train Switch Control</h1>
 
-    <div id="switches"></div>
+    <div id="app">
+      <header id="header">
+        <h1>Layout Control</h1>
+      </header>
 
-    <!-- CALIBRATION PANEL (unchanged) -->
-    <div id="cal-panel">
-      <h3>Switch <span id="cal-id"></span></h3>
+      <div id="main">
+        <div id="controls-panel">
+          <div id="switches"></div>
 
-      <label>
-        Name:
-        <input id="cal-user-name" type="text" placeholder="Optional name" />
-      </label>
+          <!-- CALIBRATION PANEL (unchanged) -->
+          <div id="cal-panel">
+            <h3>Switch <span id="cal-id"></span></h3>
 
-      Servo channel (0–15):
-      <input id="cal-channel" type="number" min="0" max="15" /><br />
+            <label>
+              Name:
+              <input
+                id="cal-user-name"
+                type="text"
+                placeholder="Optional name"
+              />
+            </label>
 
-      Angle 0: <span id="cal-a0-val">65</span>
-      <input id="cal-a0" type="range" min="58" max="105" step="1" /><br />
+            Servo channel (0–15):
+            <input id="cal-channel" type="number" min="0" max="15" /><br />
 
-      Angle 1: <span id="cal-a1-val">105</span>
-      <input id="cal-a1" type="range" min="58" max="105" step="1" /><br />
+            Angle 0: <span id="cal-a0-val">65</span>
+            <input id="cal-a0" type="range" min="58" max="105" step="1" /><br />
 
-      <label class="cal-checkbox">
-        <span>Hide this switch</span>
-        <input type="checkbox" id="cal-hidden" />
-      </label>
+            Angle 1: <span id="cal-a1-val">105</span>
+            <input id="cal-a1" type="range" min="58" max="105" step="1" /><br />
 
-      <div class="cal-buttons">
-        <button onclick="testServo(0)">Test 0</button>
-        <button onclick="testServo(1)">Test 1</button>
-        <button onclick="saveCalibration()">Save</button>
-        <button onclick="closeCalibration()">Close</button>
+            <label class="cal-checkbox">
+              <span>Hide this switch</span>
+              <input type="checkbox" id="cal-hidden" />
+            </label>
+
+            <div class="cal-buttons">
+              <button onclick="testServo(0)">Test 0</button>
+              <button onclick="testServo(1)">Test 1</button>
+              <button onclick="saveCalibration()">Save</button>
+              <button onclick="closeCalibration()">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="layout-panel">
+          <svg
+            id="layout-svg"
+            viewBox="0 0 1000 1000"
+            preserveAspectRatio="xMidYMid meet"
+          >
+            
+          <rect x="80" y="80" width="400" height="40"
+      fill="#444" />
+
+
+          </svg>
+        </div>
       </div>
     </div>
 
