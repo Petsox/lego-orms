@@ -331,13 +331,13 @@ async function unhideSwitch(sw) {
     return;
   }
 
-  // Update frontend state
-  sw.hidden = false;
-
-  openHiddenPanel(); // refresh hidden list
-  await loadAndRenderLayout(); // re-render layout + markers¨
+  // 🔑 RELOAD FROM BACKEND — DO NOT MUTATE LOCAL STATE
+  await loadSwitches();          // <-- THIS IS THE FIX
   renderSwitchButtons();
+  openHiddenPanel();
+  await loadAndRenderLayout();
 }
+
 
 // -------------------------------------------------------
 // CALIBRATION UI (UNCHANGED LOGIC)

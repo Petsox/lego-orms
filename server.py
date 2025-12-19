@@ -210,6 +210,7 @@ def api_update_switch_config():
 def api_toggle_switch(sid):
     sid = str(sid)
 
+    # Load config
     with open("switch_config.json", "r") as f:
         cfg = json.load(f)
 
@@ -217,13 +218,6 @@ def api_toggle_switch(sid):
         return jsonify({"error": "Switch not configured"}), 400
 
     sw = cfg["switches"][sid]
-
-    # 🔑 HARD GUARD: channel must exist
-    if sw.get("channel") is None:
-        return jsonify({
-            "error": "Switch has no channel assigned",
-            "message": "Please calibrate this switch before using it."
-        }), 400
 
     channel = int(sw["channel"])
     angle0 = int(sw.get("angle0", 65))
@@ -238,6 +232,7 @@ def api_toggle_switch(sid):
         f"SERVO MOVE → switch={sid}, channel={channel}, angle={angle}"
     )
 
+    # 🔥 ACTUAL SERVO COMMAND
     kit.servo[channel].angle = angle
 
     # Save new state
