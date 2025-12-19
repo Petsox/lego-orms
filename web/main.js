@@ -332,7 +332,7 @@ async function unhideSwitch(sw) {
   }
 
   // 🔑 RELOAD FROM BACKEND — DO NOT MUTATE LOCAL STATE
-  await loadSwitches();          // <-- THIS IS THE FIX
+  await loadSwitchesFromLayout();         // <-- THIS IS THE FIX
   renderSwitchButtons();
   openHiddenPanel();
   await loadAndRenderLayout();
