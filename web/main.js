@@ -6,6 +6,10 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8; // 1 LEGO stud = 8 pixels
+const tracks = [
+  { x: 10, y: 10, length: 16, width: 4, rotation: 0 },
+  { x: 26, y: 10, length: 16, width: 4, rotation: 90 }
+];
 
 // -------------------------------------------------------
 // LOADERS
@@ -132,11 +136,6 @@ svg.setAttribute(
   "viewBox",
   `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
 );
-
-const tracks = [
-  { x: 10, y: 10, length: 16, width: 4, rotation: 0 },
-  { x: 26, y: 10, length: 16, width: 4, rotation: 90 }
-];
 
 renderTracks(document.getElementById("layout-svg"), tracks);
 
