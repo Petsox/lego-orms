@@ -6,12 +6,13 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8;
+const PADDING_STUDS = 10;
+const ROTATION_EPS = 0.0001;
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 function bbOrientationToDegrees(orientation) {
   return orientation / 10;
 }
-
 
 // -------------------------------------------------------
 // LOADERS
@@ -41,7 +42,6 @@ async function loadLayout() {
   const data = await res.json();
   renderLayout(data.bricks);
 }
-
 
 // -------------------------------------------------------
 // RENDERING
@@ -90,10 +90,12 @@ function renderSwitchButtons() {
 //Render Layout Map
 
 function computeLayoutBounds(bricks) {
-  let minX = Infinity, minY = Infinity;
-  let maxX = -Infinity, maxY = -Infinity;
+  let minX = Infinity,
+    minY = Infinity;
+  let maxX = -Infinity,
+    maxY = -Infinity;
 
-  bricks.forEach(b => {
+  bricks.forEach((b) => {
     minX = Math.min(minX, b.x);
     minY = Math.min(minY, b.y);
     maxX = Math.max(maxX, b.x + b.w);
@@ -104,7 +106,7 @@ function computeLayoutBounds(bricks) {
     x: minX * STUD_PX,
     y: minY * STUD_PX,
     width: (maxX - minX) * STUD_PX,
-    height: (maxY - minY) * STUD_PX
+    height: (maxY - minY) * STUD_PX,
   };
 }
 
@@ -115,10 +117,13 @@ function renderLayout(bricks) {
   const bounds = computeLayoutBounds(bricks);
   svg.setAttribute(
     "viewBox",
-    `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
+    `${bounds.x - PADDING_STUDS * STUD_PX}
+   ${bounds.y - PADDING_STUDS * STUD_PX}
+   ${bounds.width + 2 * PADDING_STUDS * STUD_PX}
+   ${bounds.height + 2 * PADDING_STUDS * STUD_PX}`
   );
 
-  bricks.forEach(b => {
+  bricks.forEach((b) => {
     const x = b.x * STUD_PX;
     const y = b.y * STUD_PX;
     const w = b.w * STUD_PX;
@@ -134,17 +139,13 @@ function renderLayout(bricks) {
     rect.setAttribute("height", h);
     rect.setAttribute("fill", b.is_switch ? "#666" : "#444");
 
-    if (b.rotation) {
-      rect.setAttribute(
-        "transform",
-        `rotate(${b.rotation} ${cx} ${cy})`
-      );
+    if (Math.abs(b.rotation) > ROTATION_EPS) {
+      rect.setAttribute("transform", `rotate(${b.rotation} ${cx} ${cy})`);
     }
 
     svg.appendChild(rect);
   });
 }
-
 
 //Render hidden switches
 document
