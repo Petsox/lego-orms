@@ -5,19 +5,12 @@
 let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
-const STUD_PX = 8; // 1 LEGO stud = 8 pixels
-
-const tracks = [
-  { x: 10, y: 10, w: 16, h: 4, rot: 0 },
-  { x: 10, y: 20, w: 16, h: 4, rot: 1 },
-  { x: 10, y: 30, w: 16, h: 4, rot: 2 },
-  { x: 10, y: 40, w: 16, h: 4, rot: 3 }
-];
+const STUD_PX = 8;
+const SVG_NS = "http://www.w3.org/2000/svg";
 
 function bbOrientationToDegrees(orientation) {
   return orientation / 10;
 }
-
 
 
 // -------------------------------------------------------
@@ -37,6 +30,18 @@ async function loadSwitchesFromLayout() {
 
   console.log("Loaded switches:", SWITCHES.length);
 }
+
+async function loadLayout() {
+  const res = await fetch("/api/layout");
+  if (!res.ok) {
+    console.error("Failed to load layout");
+    return;
+  }
+
+  const data = await res.json();
+  renderLayout(data.bricks);
+}
+
 
 // -------------------------------------------------------
 // RENDERING
@@ -84,63 +89,15 @@ function renderSwitchButtons() {
 
 //Render Layout Map
 
-function trackToRect(track) {
-  return {
-    x: track.x * STUD_PX,
-    y: track.y * STUD_PX,
-    width: track.length * STUD_PX,
-    height: track.width * STUD_PX,
-    rotation: track.rotation,
-    cx: (track.x + track.length / 2) * STUD_PX,
-    cy: (track.y + track.width / 2) * STUD_PX
-  };
-}
-
-function renderLayout(svg, bricks) {
-  svg.innerHTML = "";
-
-  bricks.forEach(b => {
-    const x = b.x * STUD_PX;
-    const y = b.y * STUD_PX;
-    const w = b.w * STUD_PX;
-    const h = b.h * STUD_PX;
-
-    const cx = x + w / 2;
-    const cy = y + h / 2;
-
-    const rect = document.createElementNS(
-      "http://www.w3.org/2000/svg", "rect"
-    );
-
-    rect.setAttribute("x", x);
-    rect.setAttribute("y", y);
-    rect.setAttribute("width", w);
-    rect.setAttribute("height", h);
-    rect.setAttribute(
-      "fill", b.is_switch ? "#666" : "#444"
-    );
-
-    if (b.rotation !== 0) {
-      rect.setAttribute(
-        "transform",
-        `rotate(${b.rotation} ${cx} ${cy})`
-      );
-    }
-
-    svg.appendChild(rect);
-  });
-}
-
-
-function computeBounds(tracks) {
+function computeLayoutBounds(bricks) {
   let minX = Infinity, minY = Infinity;
   let maxX = -Infinity, maxY = -Infinity;
 
-  tracks.forEach(t => {
-    minX = Math.min(minX, t.x);
-    minY = Math.min(minY, t.y);
-    maxX = Math.max(maxX, t.x + t.length);
-    maxY = Math.max(maxY, t.y + t.width);
+  bricks.forEach(b => {
+    minX = Math.min(minX, b.x);
+    minY = Math.min(minY, b.y);
+    maxX = Math.max(maxX, b.x + b.w);
+    maxY = Math.max(maxY, b.y + b.h);
   });
 
   return {
@@ -151,13 +108,42 @@ function computeBounds(tracks) {
   };
 }
 
-const bounds = computeBounds(tracks);
-document.getElementById("layout-svg").setAttribute(
-  "viewBox",
-  `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
-);
+function renderLayout(bricks) {
+  const svg = document.getElementById("layout-svg");
+  svg.innerHTML = "";
 
-renderTracks(document.getElementById("layout-svg"), tracks);
+  const bounds = computeLayoutBounds(bricks);
+  svg.setAttribute(
+    "viewBox",
+    `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
+  );
+
+  bricks.forEach(b => {
+    const x = b.x * STUD_PX;
+    const y = b.y * STUD_PX;
+    const w = b.w * STUD_PX;
+    const h = b.h * STUD_PX;
+
+    const cx = x + w / 2;
+    const cy = y + h / 2;
+
+    const rect = document.createElementNS(SVG_NS, "rect");
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", w);
+    rect.setAttribute("height", h);
+    rect.setAttribute("fill", b.is_switch ? "#666" : "#444");
+
+    if (b.rotation) {
+      rect.setAttribute(
+        "transform",
+        `rotate(${b.rotation} ${cx} ${cy})`
+      );
+    }
+
+    svg.appendChild(rect);
+  });
+}
 
 
 //Render hidden switches
@@ -380,6 +366,7 @@ function closeCalibration() {
 
 async function init() {
   await loadSwitchesFromLayout();
+  await loadLayout();
   renderSwitchButtons();
   bindCalibrationSliders();
 }
