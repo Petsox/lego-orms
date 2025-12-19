@@ -157,16 +157,26 @@ def api_update_switch_config():
         return jsonify({"status": "ok"})
 
     # switch is NOT hidden
-    # Allow channel to be None IF this is just an unhide action
+    # Allow channel to be None if this is just an unhide action
     is_unhide_only = (
         "hidden" in data and
         data.get("hidden") is False and
         "channel" not in data
     )
 
-    if channel is None and not is_unhide_only:
-        return jsonify({"error": "Channel is required"}), 400
+    if channel is None:
+        if not is_unhide_only:
+            return jsonify({"error": "Channel is required"}), 400
 
+        # ✅ Unhide without channel
+        sw["hidden"] = False
+        sw["user_name"] = user_name
+
+        cfg["switches"][sid] = sw
+        save_switch_config(cfg)
+        return jsonify({"status": "ok"})
+
+    # 🔴 From here on: channel IS present and switch is active
     channel = int(channel)
 
     other_sid, other_sw = find_switch_using_channel(
