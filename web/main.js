@@ -6,10 +6,18 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8; // 1 LEGO stud = 8 pixels
+
 const tracks = [
-  { x: 10, y: 10, length: 16, width: 4, rotation: 0 },
-  { x: 26, y: 10, length: 16, width: 4, rotation: 90 }
+  { x: 10, y: 10, w: 16, h: 4, rot: 0 },
+  { x: 10, y: 20, w: 16, h: 4, rot: 1 },
+  { x: 10, y: 30, w: 16, h: 4, rot: 2 },
+  { x: 10, y: 40, w: 16, h: 4, rot: 3 }
 ];
+
+function bbRotationToDegrees(rotation) {
+  return (rotation % 4) * 90;
+}
+
 
 // -------------------------------------------------------
 // LOADERS
@@ -90,27 +98,39 @@ function trackToRect(track) {
 function renderTracks(svg, tracks) {
   svg.innerHTML = "";
 
-  tracks.forEach(track => {
-    const rect = trackToRect(track);
+  tracks.forEach(t => {
+    const x = t.x * STUD_PX;
+    const y = t.y * STUD_PX;
+    const w = t.w * STUD_PX;
+    const h = t.h * STUD_PX;
 
-    const el = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    const cx = x + w / 2;
+    const cy = y + h / 2;
 
-    el.setAttribute("x", rect.x);
-    el.setAttribute("y", rect.y);
-    el.setAttribute("width", rect.width);
-    el.setAttribute("height", rect.height);
-    el.setAttribute("fill", "#444");
+    const deg = bbRotationToDegrees(t.rot);
 
-    if (rect.rotation !== 0) {
-      el.setAttribute(
+    const rect = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "rect"
+    );
+
+    rect.setAttribute("x", x);
+    rect.setAttribute("y", y);
+    rect.setAttribute("width", w);
+    rect.setAttribute("height", h);
+    rect.setAttribute("fill", "#555");
+
+    if (deg !== 0) {
+      rect.setAttribute(
         "transform",
-        `rotate(${rect.rotation}, ${rect.cx}, ${rect.cy})`
+        `rotate(${deg} ${cx} ${cy})`
       );
     }
 
-    svg.appendChild(el);
+    svg.appendChild(rect);
   });
 }
+
 
 function computeBounds(tracks) {
   let minX = Infinity, minY = Infinity;
