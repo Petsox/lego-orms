@@ -56,6 +56,9 @@ h1 {
   }
 }
 
+#markers > * {
+  transition: opacity 0.15s ease, filter 0.15s ease;
+}
 
 /* ===== SWITCH BUTTONS ===== */
 

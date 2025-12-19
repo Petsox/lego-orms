@@ -29,20 +29,44 @@ async function loadSwitchesFromLayout() {
   console.log("Loaded switches:", SWITCHES.length);
 }
 
-async function loadLayout() {
-  const res = await fetch("/api/layout");
-  if (!res.ok) {
-    console.error("Failed to load layout");
-    return;
-  }
+async function loadAndRenderLayout() {
+  const layoutData = await fetch("/api/layout").then((r) => r.json());
+  const switchConfig = await fetch("/api/switches").then((r) => r.json());
 
-  const data = await res.json();
-  renderLayout(data.bricks);
+  renderLayout(layoutData.bricks);
+  renderMarkers(
+    document.getElementById("layout-svg"),
+    layoutData.bricks,
+    switchConfig
+  );
 }
 
 // -------------------------------------------------------
 // RENDERING
 // -------------------------------------------------------
+
+function updateMarkerHighlight() {
+  const markers = document.querySelectorAll("#markers > *");
+
+  markers.forEach((el) => {
+    const ch = el.dataset.channel;
+
+    if (!hoveredChannel) {
+      // reset
+      el.style.opacity = "1";
+      el.style.filter = "none";
+      return;
+    }
+
+    if (String(ch) === String(hoveredChannel)) {
+      el.style.opacity = "1";
+      el.style.filter = "drop-shadow(0 0 6px rgba(255,255,255,0.8))";
+    } else {
+      el.style.opacity = "0.3";
+      el.style.filter = "none";
+    }
+  });
+}
 
 function renderSwitchButtons() {
   const container = document.getElementById("switches");
@@ -50,18 +74,39 @@ function renderSwitchButtons() {
 
   SWITCHES.forEach((sw) => {
     if (sw.hidden) return;
+
     const btn = document.createElement("button");
     btn.className = "switch-btn";
 
-    // Prefer user_name, fallback to old text
-    btn.textContent =
+    // 🔹 Build button label with channel
+    const baseName =
       sw.user_name && sw.user_name.trim() !== ""
         ? sw.user_name
         : `Switch ${sw.id}`;
 
-    // Keep technical name as tooltip (useful)
+    const channelText =
+      sw.channel !== null && sw.channel !== undefined
+        ? ` (CH ${sw.channel})`
+        : " (no channel)";
+
+    btn.textContent = baseName + channelText;
+
+    // 🔹 Tooltip keeps technical name
     btn.title = sw.name || `Switch ${sw.id}`;
 
+    // 🟡 Hover highlight → layout markers
+    btn.addEventListener("mouseenter", () => {
+      hoveredChannel =
+        sw.channel !== null && sw.channel !== undefined ? sw.channel : null;
+      updateMarkerHighlight();
+    });
+
+    btn.addEventListener("mouseleave", () => {
+      hoveredChannel = null;
+      updateMarkerHighlight();
+    });
+
+    // 🔵 Click behavior (unchanged)
     btn.addEventListener("click", (e) => {
       if (e.shiftKey) {
         openCalibration(sw);
@@ -181,6 +226,61 @@ function openHiddenPanel() {
 
 function closeHiddenPanel() {
   document.getElementById("hidden-switches-panel").classList.remove("show");
+}
+
+//Render Markers
+
+const layout = await fetch("/api/layout").then((r) => r.json());
+const switches = await fetch("/api/switches").then((r) => r.json());
+
+function channelColor(channel) {
+  const hue = (channel * 47) % 360; // deterministic, well-distributed
+  return `hsl(${hue}, 70%, 55%)`;
+}
+
+function renderMarkers(svg, bricks, switchConfig) {
+  let markerGroup = svg.querySelector("#markers");
+
+  if (!markerGroup) {
+    markerGroup = document.createElementNS(SVG_NS, "g");
+    markerGroup.setAttribute("id", "markers");
+    svg.appendChild(markerGroup);
+  }
+
+  markerGroup.innerHTML = "";
+
+  bricks.forEach((b) => {
+    if (!b.is_switch) return;
+
+    const sw = switchConfig[b.id];
+    if (!sw || sw.hidden || sw.channel === null) return;
+
+    const cx = (b.x + b.w / 2) * STUD_PX;
+    const cy = (b.y + b.h / 2) * STUD_PX;
+    const color = channelColor(sw.channel);
+
+    // Marker circle
+    const circle = document.createElementNS(SVG_NS, "circle");
+    circle.setAttribute("cx", cx);
+    circle.setAttribute("cy", cy);
+    circle.setAttribute("r", 10);
+    circle.setAttribute("fill", color);
+    circle.setAttribute("stroke", "#111");
+    circle.setAttribute("stroke-width", "2");
+
+    // Channel number
+    const text = document.createElementNS(SVG_NS, "text");
+    text.setAttribute("x", cx);
+    text.setAttribute("y", cy + 4); // vertical optical centering
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("font-size", "10");
+    text.setAttribute("fill", "#000");
+    text.setAttribute("font-weight", "bold");
+    text.textContent = sw.channel;
+
+    markerGroup.appendChild(circle);
+    markerGroup.appendChild(text);
+  });
 }
 
 // -------------------------------------------------------
@@ -360,7 +460,7 @@ function closeCalibration() {
 
 async function init() {
   await loadSwitchesFromLayout();
-  await loadLayout();
+  await loadAndRenderLayout();
   renderSwitchButtons();
   bindCalibrationSliders();
 }
