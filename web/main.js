@@ -6,12 +6,8 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8;
-const PADDING_STUDS = 10;
+const PADDING_STUDS = 20;
 const SVG_NS = "http://www.w3.org/2000/svg";
-
-function bbOrientationToDegrees(orientation) {
-  return orientation / 10;
-}
 
 // -------------------------------------------------------
 // LOADERS

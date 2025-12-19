@@ -64,11 +64,21 @@ def ensure_switches_from_layout():
     switches = cfg.setdefault("switches", {})
 
     layout_switches = extract_switches_from_bbm(LAYOUT_BBM)
+    layout_ids = {str(sw["id"]) for sw in layout_switches}
+
+    config_ids = set(switches.keys())
     changed = False
 
+    # 🔴 REMOVE switches no longer in layout
+    for sid in list(config_ids):
+        if sid not in layout_ids:
+            print(f"Removing switch {sid} (no longer in Layout.bbm)")
+            del switches[sid]
+            changed = True
+
+    # 🟢 ADD new switches from layout
     for sw in layout_switches:
         sid = str(sw["id"])
-
         if sid not in switches:
             switches[sid] = {
                 "name": sw["name"],
@@ -80,11 +90,12 @@ def ensure_switches_from_layout():
                 "state": 0
             }
             changed = True
-            
+
     if changed:
         save_switch_config(cfg)
 
     return cfg
+
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 ensure_switches_from_layout()
