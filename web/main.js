@@ -269,9 +269,6 @@ function renderMarkers(svg, bricks, switchConfig) {
     circle.dataset.switchId = String(b.id);
     circle.dataset.channel = hasChannel ? sw.channel : "";
 
-    text.dataset.switchId = String(b.id);
-    text.dataset.channel = hasChannel ? sw.channel : "";
-
     // 🔢 Channel number or placeholder
     const text = document.createElementNS(SVG_NS, "text");
     text.setAttribute("x", cx);
@@ -282,6 +279,7 @@ function renderMarkers(svg, bricks, switchConfig) {
     text.setAttribute("fill", hasChannel ? "#000" : "#222");
 
     text.textContent = hasChannel ? sw.channel : "–";
+    text.dataset.switchId = String(b.id);
     text.dataset.channel = hasChannel ? sw.channel : "";
 
     markerGroup.appendChild(circle);
