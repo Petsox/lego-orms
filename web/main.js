@@ -14,9 +14,10 @@ const tracks = [
   { x: 10, y: 40, w: 16, h: 4, rot: 3 }
 ];
 
-function bbRotationToDegrees(rotation) {
-  return (rotation % 4) * 90;
+function bbOrientationToDegrees(orientation) {
+  return orientation / 10;
 }
+
 
 
 // -------------------------------------------------------
@@ -95,35 +96,34 @@ function trackToRect(track) {
   };
 }
 
-function renderTracks(svg, tracks) {
+function renderLayout(svg, bricks) {
   svg.innerHTML = "";
 
-  tracks.forEach(t => {
-    const x = t.x * STUD_PX;
-    const y = t.y * STUD_PX;
-    const w = t.w * STUD_PX;
-    const h = t.h * STUD_PX;
+  bricks.forEach(b => {
+    const x = b.x * STUD_PX;
+    const y = b.y * STUD_PX;
+    const w = b.w * STUD_PX;
+    const h = b.h * STUD_PX;
 
     const cx = x + w / 2;
     const cy = y + h / 2;
 
-    const deg = bbRotationToDegrees(t.rot);
-
     const rect = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "rect"
+      "http://www.w3.org/2000/svg", "rect"
     );
 
     rect.setAttribute("x", x);
     rect.setAttribute("y", y);
     rect.setAttribute("width", w);
     rect.setAttribute("height", h);
-    rect.setAttribute("fill", "#555");
+    rect.setAttribute(
+      "fill", b.is_switch ? "#666" : "#444"
+    );
 
-    if (deg !== 0) {
+    if (b.rotation !== 0) {
       rect.setAttribute(
         "transform",
-        `rotate(${deg} ${cx} ${cy})`
+        `rotate(${b.rotation} ${cx} ${cy})`
       );
     }
 

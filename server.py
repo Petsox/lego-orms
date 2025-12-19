@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, request, send_from_directory
 from adafruit_servokit import ServoKit
 from bbm_switch_extractor import extract_switches_from_bbm
+from bbm_layout_extractor import extract_layout_from_bbm, build_layout_cache
 import json, os, wifi, sys
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LAYOUT_BBM = os.path.join(BASE_DIR, "Layout.bbm")
 SWITCH_CONFIG_FILE = os.path.join(BASE_DIR, "switch_config.json")
+LAYOUT_CACHE_FILE = os.path.join(BASE_DIR, "layout_cache.json")
 
 kit = ServoKit(channels=16)
 
@@ -30,6 +32,20 @@ def load_switch_config():
     with open(SWITCH_CONFIG_FILE, "r") as f:
         return json.load(f)
 
+def ensure_layout_cache():
+    if not os.path.exists(LAYOUT_CACHE_FILE):
+        print("Layout cache missing, generating…")
+        return build_layout_cache(LAYOUT_BBM, LAYOUT_CACHE_FILE)
+
+    bbm_mtime = os.path.getmtime(LAYOUT_BBM)
+    cache_mtime = os.path.getmtime(LAYOUT_CACHE_FILE)
+
+    if bbm_mtime > cache_mtime:
+        print("Layout.bbm changed, regenerating layout cache…")
+        return build_layout_cache(LAYOUT_BBM, LAYOUT_CACHE_FILE)
+
+    with open(LAYOUT_CACHE_FILE, "r") as f:
+        return json.load(f)
 
 def save_switch_config(cfg):
     with open(SWITCH_CONFIG_FILE, "w") as f:
@@ -72,6 +88,7 @@ def ensure_switches_from_layout():
 
 app = Flask(__name__, static_folder="web", static_url_path="")
 ensure_switches_from_layout()
+ensure_layout_cache()
 
 @app.route("/")
 def root():
@@ -90,6 +107,11 @@ def serve_res(filename):
 def get_switches():
     cfg = load_switch_config()
     return jsonify(cfg["switches"])
+
+@app.route("/api/layout")
+def api_layout():
+    with open(LAYOUT_CACHE_FILE, "r") as f:
+        return jsonify(json.load(f))
 
 @app.route("/api/update_switch_config", methods=["POST"])
 def api_update_switch_config():
