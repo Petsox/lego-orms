@@ -230,9 +230,6 @@ function closeHiddenPanel() {
 
 //Render Markers
 
-const layout = await fetch("/api/layout").then((r) => r.json());
-const switches = await fetch("/api/switches").then((r) => r.json());
-
 function channelColor(channel) {
   const hue = (channel * 47) % 360; // deterministic, well-distributed
   return `hsl(${hue}, 70%, 55%)`;
