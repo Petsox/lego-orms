@@ -4,7 +4,6 @@
 
 let SWITCHES = [];
 let activeSwitch = null;
-let hoveredChannel = null;
 const STUD_PX = 8;
 let layoutScale = 1.07; // >1 = zoom out, <1 = zoom in
 const TRACK_COLOR = "#666";
@@ -49,20 +48,19 @@ function updateMarkerHighlight() {
   const markers = document.querySelectorAll("#markers > *");
 
   markers.forEach((el) => {
-    const ch = el.dataset.channel;
+    const sid = el.dataset.switchId;
 
-    if (!hoveredChannel) {
-      // reset
+    if (!hoveredSwitchId) {
       el.style.opacity = "1";
       el.style.filter = "none";
       return;
     }
 
-    if (String(ch) === String(hoveredChannel)) {
+    if (sid === hoveredSwitchId) {
       el.style.opacity = "1";
-      el.style.filter = "drop-shadow(0 0 6px rgba(255,255,255,0.8))";
+      el.style.filter = "drop-shadow(0 0 12px rgba(255,255,255,0.9))";
     } else {
-      el.style.opacity = "0.3";
+      el.style.opacity = "0.25";
       el.style.filter = "none";
     }
   });
@@ -96,13 +94,12 @@ function renderSwitchButtons() {
 
     // 🟡 Hover highlight → layout markers
     btn.addEventListener("mouseenter", () => {
-      hoveredChannel =
-        sw.channel !== null && sw.channel !== undefined ? sw.channel : null;
+      hoveredSwitchId = String(sw.id);
       updateMarkerHighlight();
     });
 
     btn.addEventListener("mouseleave", () => {
-      hoveredChannel = null;
+      hoveredSwitchId = null;
       updateMarkerHighlight();
     });
 
@@ -263,20 +260,24 @@ function renderMarkers(svg, bricks, switchConfig) {
     const circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", cy);
-    circle.setAttribute("r", 18);
+    circle.setAttribute("r", 54);
     circle.setAttribute("fill", color);
     circle.setAttribute("stroke", "#111");
     circle.setAttribute("stroke-width", "3");
 
     // Store channel for hover logic (even if null)
+    circle.dataset.switchId = String(b.id);
     circle.dataset.channel = hasChannel ? sw.channel : "";
+
+    text.dataset.switchId = String(b.id);
+    text.dataset.channel = hasChannel ? sw.channel : "";
 
     // 🔢 Channel number or placeholder
     const text = document.createElementNS(SVG_NS, "text");
     text.setAttribute("x", cx);
-    text.setAttribute("y", cy + 5); // optical centering
+    text.setAttribute("y", cy + 16); // optical centering
     text.setAttribute("text-anchor", "middle");
-    text.setAttribute("font-size", "15");
+    text.setAttribute("font-size", "50");
     text.setAttribute("font-weight", "bold");
     text.setAttribute("fill", hasChannel ? "#000" : "#222");
 
@@ -451,6 +452,13 @@ async function saveCalibration() {
 
   renderSwitchButtons();
   closeCalibration();
+
+  const switches = await fetch("/api/switches").then((r) => r.json());
+  renderMarkers(
+    document.getElementById("layout-svg"),
+    currentLayoutBricks,
+    switches
+  );
 }
 
 function closeCalibration() {
