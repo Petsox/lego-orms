@@ -6,7 +6,7 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8;
-let layoutScale = 0.9; // >1 = zoom out, <1 = zoom in
+let layoutScale = 1.07; // >1 = zoom out, <1 = zoom in
 const TRACK_COLOR = "#666";
 const SWITCH_COLOR = "#7a7a7a"; // slightly brighter, neutral
 const SVG_NS = "http://www.w3.org/2000/svg";
