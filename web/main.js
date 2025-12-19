@@ -7,7 +7,6 @@ let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8;
 const PADDING_STUDS = 10;
-const ROTATION_EPS = 0.0001;
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 function bbOrientationToDegrees(orientation) {
@@ -117,35 +116,25 @@ function renderLayout(bricks) {
   const bounds = computeLayoutBounds(bricks);
   svg.setAttribute(
     "viewBox",
-    `${bounds.x - PADDING_STUDS * STUD_PX}
-   ${bounds.y - PADDING_STUDS * STUD_PX}
-   ${bounds.width + 2 * PADDING_STUDS * STUD_PX}
-   ${bounds.height + 2 * PADDING_STUDS * STUD_PX}`
+    `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
   );
 
-  bricks.forEach((b) => {
-    const x = b.x * STUD_PX;
-    const y = b.y * STUD_PX;
-    const w = b.w * STUD_PX;
-    const h = b.h * STUD_PX;
-
-    const cx = x + w / 2;
-    const cy = y + h / 2;
-
+  bricks.forEach(b => {
     const rect = document.createElementNS(SVG_NS, "rect");
-    rect.setAttribute("x", x);
-    rect.setAttribute("y", y);
-    rect.setAttribute("width", w);
-    rect.setAttribute("height", h);
-    rect.setAttribute("fill", b.is_switch ? "#666" : "#444");
 
-    if (Math.abs(b.rotation) > ROTATION_EPS) {
-      rect.setAttribute("transform", `rotate(${b.rotation} ${cx} ${cy})`);
-    }
+    rect.setAttribute("x", b.x * STUD_PX);
+    rect.setAttribute("y", b.y * STUD_PX);
+    rect.setAttribute("width", b.w * STUD_PX);
+    rect.setAttribute("height", b.h * STUD_PX);
+    rect.setAttribute(
+      "fill",
+      b.is_switch ? "#666" : "#555"
+    );
 
     svg.appendChild(rect);
   });
 }
+
 
 //Render hidden switches
 document
