@@ -146,53 +146,43 @@ def api_update_switch_config():
     angle0 = data.get("angle0", sw.get("angle0", 65))
     angle1 = data.get("angle1", sw.get("angle1", 105))
 
-    # 🔑 VISIBILITY-ONLY UPDATE (hide / unhide)
-    visibility_only = (
-        "hidden" in data and
-        len(data.keys()) <= 3  # id + hidden (+ maybe user_name)
-    )
-
-    if visibility_only:
-        sw["hidden"] = hidden
+    # 🔑 HARD RULE: hidden switches must never keep a channel
+    if hidden:
+        sw["hidden"] = True
         sw["user_name"] = user_name
-
-        # 🔑 IMPORTANT: hidden switches must not keep a channel
-        if hidden:
-            sw["channel"] = None
+        sw["channel"] = None
 
         cfg["switches"][sid] = sw
         save_switch_config(cfg)
         return jsonify({"status": "ok"})
 
+    # 🔴 From here on, switch is NOT hidden → full validation
 
-    # 🔴 FULL VALIDATION (only for active switches)
-    if not hidden:
-        if channel is None:
-            return jsonify({"error": "Channel is required"}), 400
+    if channel is None:
+        return jsonify({"error": "Channel is required"}), 400
 
-        channel = int(channel)
+    channel = int(channel)
 
-        other_sid, other_sw = find_switch_using_channel(
-            cfg, channel, exclude_sid=sid
+    other_sid, other_sw = find_switch_using_channel(
+        cfg, channel, exclude_sid=sid
+    )
+
+    if other_sw:
+        other_name = (
+            other_sw.get("user_name")
+            or other_sw.get("name")
+            or f"Switch {other_sid}"
         )
+        return jsonify({
+            "error": "Channel already in use",
+            "message": f"Channel {channel} is already used by {other_name}"
+        }), 400
 
-        if other_sw:
-            other_name = (
-                other_sw.get("user_name")
-                or other_sw.get("name")
-                or f"Switch {other_sid}"
-            )
-            return jsonify({
-                "error": "Channel already in use",
-                "message": f"Channel {channel} is already used by {other_name}"
-            }), 400
-
-        sw["channel"] = channel
-        sw["angle0"] = int(angle0)
-        sw["angle1"] = int(angle1)
-
-    sw["hidden"] = hidden
+    sw["hidden"] = False
     sw["user_name"] = user_name
+    sw["channel"] = channel
+    sw["angle0"] = int(angle0)
+    sw["angle1"] = int(angle1)
 
     cfg["switches"][sid] = sw
     save_switch_config(cfg)
