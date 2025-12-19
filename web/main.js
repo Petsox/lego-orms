@@ -132,7 +132,7 @@ function computeBounds(tracks) {
 }
 
 const bounds = computeBounds(tracks);
-svg.setAttribute(
+document.getElementById("layout-svg").setAttribute(
   "viewBox",
   `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
 );
