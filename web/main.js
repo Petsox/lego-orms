@@ -5,6 +5,7 @@
 let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
+const STUD_PX = 8; // 1 LEGO stud = 8 pixels
 
 // -------------------------------------------------------
 // LOADERS
@@ -67,6 +68,78 @@ function renderSwitchButtons() {
     container.appendChild(btn);
   });
 }
+
+//Render Layout Map
+
+function trackToRect(track) {
+  return {
+    x: track.x * STUD_PX,
+    y: track.y * STUD_PX,
+    width: track.length * STUD_PX,
+    height: track.width * STUD_PX,
+    rotation: track.rotation,
+    cx: (track.x + track.length / 2) * STUD_PX,
+    cy: (track.y + track.width / 2) * STUD_PX
+  };
+}
+
+function renderTracks(svg, tracks) {
+  svg.innerHTML = "";
+
+  tracks.forEach(track => {
+    const rect = trackToRect(track);
+
+    const el = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+
+    el.setAttribute("x", rect.x);
+    el.setAttribute("y", rect.y);
+    el.setAttribute("width", rect.width);
+    el.setAttribute("height", rect.height);
+    el.setAttribute("fill", "#444");
+
+    if (rect.rotation !== 0) {
+      el.setAttribute(
+        "transform",
+        `rotate(${rect.rotation}, ${rect.cx}, ${rect.cy})`
+      );
+    }
+
+    svg.appendChild(el);
+  });
+}
+
+function computeBounds(tracks) {
+  let minX = Infinity, minY = Infinity;
+  let maxX = -Infinity, maxY = -Infinity;
+
+  tracks.forEach(t => {
+    minX = Math.min(minX, t.x);
+    minY = Math.min(minY, t.y);
+    maxX = Math.max(maxX, t.x + t.length);
+    maxY = Math.max(maxY, t.y + t.width);
+  });
+
+  return {
+    x: minX * STUD_PX,
+    y: minY * STUD_PX,
+    width: (maxX - minX) * STUD_PX,
+    height: (maxY - minY) * STUD_PX
+  };
+}
+
+const bounds = computeBounds(tracks);
+svg.setAttribute(
+  "viewBox",
+  `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
+);
+
+const tracks = [
+  { x: 10, y: 10, length: 16, width: 4, rotation: 0 },
+  { x: 26, y: 10, length: 16, width: 4, rotation: 90 }
+];
+
+renderTracks(document.getElementById("layout-svg"), tracks);
+
 
 //Render hidden switches
 document
