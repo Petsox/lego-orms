@@ -6,7 +6,9 @@ let SWITCHES = [];
 let activeSwitch = null;
 let hoveredChannel = null;
 const STUD_PX = 8;
-const PADDING_STUDS = 20;
+let layoutScale = 0.9; // >1 = zoom out, <1 = zoom in
+const TRACK_COLOR = "#666";
+const SWITCH_COLOR = "#7a7a7a"; // slightly brighter, neutral
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 // -------------------------------------------------------
@@ -110,27 +112,33 @@ function renderLayout(bricks) {
   svg.innerHTML = "";
 
   const bounds = computeLayoutBounds(bricks);
+
+  const centerX = bounds.x + bounds.width / 2;
+  const centerY = bounds.y + bounds.height / 2;
+
+  const scaledWidth = bounds.width * layoutScale;
+  const scaledHeight = bounds.height * layoutScale;
+
   svg.setAttribute(
     "viewBox",
-    `${bounds.x} ${bounds.y} ${bounds.width} ${bounds.height}`
+    `${centerX - scaledWidth / 2}
+   ${centerY - scaledHeight / 2}
+   ${scaledWidth}
+   ${scaledHeight}`
   );
 
-  bricks.forEach(b => {
+  bricks.forEach((b) => {
     const rect = document.createElementNS(SVG_NS, "rect");
 
     rect.setAttribute("x", b.x * STUD_PX);
     rect.setAttribute("y", b.y * STUD_PX);
     rect.setAttribute("width", b.w * STUD_PX);
     rect.setAttribute("height", b.h * STUD_PX);
-    rect.setAttribute(
-      "fill",
-      b.is_switch ? "#666" : "#555"
-    );
+    rect.setAttribute("fill", b.is_switch ? SWITCH_COLOR : TRACK_COLOR);
 
     svg.appendChild(rect);
   });
 }
-
 
 //Render hidden switches
 document
