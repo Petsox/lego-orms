@@ -250,30 +250,38 @@ function renderMarkers(svg, bricks, switchConfig) {
     if (!b.is_switch) return;
 
     const sw = switchConfig[b.id];
-    if (!sw || sw.hidden || sw.channel === null) return;
+    if (!sw || sw.hidden) return;
 
     const cx = (b.x + b.w / 2) * STUD_PX;
     const cy = (b.y + b.h / 2) * STUD_PX;
-    const color = channelColor(sw.channel);
 
-    // Marker circle
+    const hasChannel = sw.channel !== null && sw.channel !== undefined;
+
+    const color = hasChannel ? channelColor(sw.channel) : "#999"; // neutral gray for unassigned
+
+    // 🔵 Marker circle (BIGGER)
     const circle = document.createElementNS(SVG_NS, "circle");
     circle.setAttribute("cx", cx);
     circle.setAttribute("cy", cy);
-    circle.setAttribute("r", 10);
+    circle.setAttribute("r", 18);
     circle.setAttribute("fill", color);
     circle.setAttribute("stroke", "#111");
-    circle.setAttribute("stroke-width", "2");
+    circle.setAttribute("stroke-width", "3");
 
-    // Channel number
+    // Store channel for hover logic (even if null)
+    circle.dataset.channel = hasChannel ? sw.channel : "";
+
+    // 🔢 Channel number or placeholder
     const text = document.createElementNS(SVG_NS, "text");
     text.setAttribute("x", cx);
-    text.setAttribute("y", cy + 4); // vertical optical centering
+    text.setAttribute("y", cy + 5); // optical centering
     text.setAttribute("text-anchor", "middle");
-    text.setAttribute("font-size", "10");
-    text.setAttribute("fill", "#000");
+    text.setAttribute("font-size", "15");
     text.setAttribute("font-weight", "bold");
-    text.textContent = sw.channel;
+    text.setAttribute("fill", hasChannel ? "#000" : "#222");
+
+    text.textContent = hasChannel ? sw.channel : "–";
+    text.dataset.channel = hasChannel ? sw.channel : "";
 
     markerGroup.appendChild(circle);
     markerGroup.appendChild(text);
