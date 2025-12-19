@@ -336,6 +336,7 @@ async function unhideSwitch(sw) {
 
   renderSwitchButtons();
   openHiddenPanel(); // refresh hidden list
+  await loadAndRenderLayout(); // re-render layout + markers
 }
 
 // -------------------------------------------------------

@@ -155,9 +155,15 @@ def api_update_switch_config():
     if visibility_only:
         sw["hidden"] = hidden
         sw["user_name"] = user_name
+
+        # 🔑 IMPORTANT: hidden switches must not keep a channel
+        if hidden:
+            sw["channel"] = None
+
         cfg["switches"][sid] = sw
         save_switch_config(cfg)
         return jsonify({"status": "ok"})
+
 
     # 🔴 FULL VALIDATION (only for active switches)
     if not hidden:
