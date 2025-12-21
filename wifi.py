@@ -5,6 +5,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 WIFI_INI = os.path.join(BASE_DIR, "wifi.ini")
 
+HOSTAPD_CONF = "/etc/hostapd/hostapd.conf"
+DNSMASQ_CONF = "/etc/dnsmasq.d/lego-orms.conf"
+
 
 def run(cmd):
     print("[wifi]", " ".join(cmd))
@@ -18,72 +21,99 @@ def ensure_wifi_config():
     print(f"[wifi] Mode: {mode}")
 
     if mode == "ap":
-        setup_ap_nm(cfg)
+        setup_ap(cfg)
     else:
         print("[wifi] Client mode not implemented")
 
 
-# -------------------------------
-# NetworkManager AP implementation
-# -------------------------------
+# --------------------------------------------------
+# AP MODE (hostapd + dnsmasq)
+# --------------------------------------------------
 
-def setup_ap_nm(cfg):
+def setup_ap(cfg):
     wifi = cfg["wifi"]
     ap = cfg["ap"]
 
     iface = wifi.get("interface", "wlan0")
-    ssid = ap["ssid"]
-    psk = ap["psk"]
-    band = ap.get("band", "bg")
-    channel = ap.get("channel", "6")
 
-    con_name = "lego-orms-ap"
+    # 🔥 RELEASE wlan0 FROM ALL CLIENT MANAGERS
+    run(["systemctl", "stop", "NetworkManager"])
+    run(["systemctl", "stop", "wpa_supplicant"])
+    run(["systemctl", "stop", "wpa_supplicant@wlan0"])
+    run(["systemctl", "stop", "dhcpcd"])
 
-    # Ensure NetworkManager is running
-    run(["systemctl", "enable", "--now", "NetworkManager"])
+    run(["ip", "link", "set", iface, "down"])
+    run(["ip", "link", "set", iface, "up"])
 
-    # Remove existing AP connection if present
-    run(["nmcli", "con", "delete", con_name])
+    write_hostapd_conf(wifi, ap, iface)
+    write_dnsmasq_conf(wifi, ap, iface)
+    configure_ip(ap, iface)
 
-    # Create AP connection
-    run([
-        "nmcli", "con", "add",
-        "type", "wifi",
-        "ifname", iface,
-        "con-name", con_name,
-        "autoconnect", "yes",
-        "ssid", ssid
-    ])
+    # 📡 ENABLE SERVICES
+    run(["systemctl", "unmask", "hostapd"])
+    run(["systemctl", "enable", "hostapd"])
+    run(["systemctl", "enable", "dnsmasq"])
 
-    # Configure AP mode, WPA2-only, and custom IP/DHCP range
-    run([
-        "nmcli", "con", "modify", con_name,
-        "802-11-wireless.mode", "ap",
-        "802-11-wireless.band", band,
-        "802-11-wireless.channel", channel,
+    run(["systemctl", "restart", "dnsmasq"])
+    run(["systemctl", "restart", "hostapd"])
 
-        # 🔒 WPA2 only (no WPA3 / no WPS)
-        "wifi-sec.key-mgmt", "wpa-psk",
-        "wifi-sec.proto", "rsn",
-        "wifi-sec.pairwise", "ccmp",
-        "wifi-sec.group", "ccmp",
-        "wifi-sec.psk", psk,
-        "802-11-wireless-security.pmf", "disable",
-
-        # 🌐 AP IP + DHCP
-        "ipv4.method", "shared",
-        "ipv4.addresses", "10.0.0.1/24",
-        "ipv4.shared-dhcp-range", "10.0.0.10,10.0.0.50",
-        "ipv4.never-default", "yes",
-        "ipv6.method", "ignore"
-    ])
-
-    # Bring AP up
-    run(["nmcli", "con", "up", con_name])
-
-    print("[wifi] AP ready (10.0.0.1 / DHCP 10.0.0.10–10.0.0.50)")
+    print("[wifi] AP READY (hostapd + dnsmasq)")
 
 
+# --------------------------------------------------
+# FILE GENERATION
+# --------------------------------------------------
+
+def write_hostapd_conf(wifi, ap, iface):
+    content = f"""
+interface={iface}
+driver=nl80211
+
+ssid={ap['ssid']}
+hw_mode=g
+channel={ap['channel']}
+country_code={wifi['country']}
+
+ieee80211n=1
+wmm_enabled=1
+
+# WPA2 ONLY — NO WPA3 / NO WPS
+wpa=2
+wpa_passphrase={ap['psk']}
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+ieee80211w=0
+wps_state=0
+""".strip()
+
+    with open(HOSTAPD_CONF, "w") as f:
+        f.write(content + "\n")
+
+    print(f"[wifi] Wrote {HOSTAPD_CONF}")
+
+
+def write_dnsmasq_conf(wifi, ap, iface):
+    content = f"""
+interface={iface}
+bind-interfaces
+dhcp-range={ap['dhcp_start']},{ap['dhcp_end']},{ap['lease_time']}
+""".strip()
+
+    with open(DNSMASQ_CONF, "w") as f:
+        f.write(content + "\n")
+
+    print(f"[wifi] Wrote {DNSMASQ_CONF}")
+
+
+def configure_ip(ap, iface):
+    run(["ip", "addr", "flush", "dev", iface])
+    run(["ip", "addr", "add", f"{ap['ip']}/24", "dev", iface])
+    run(["ip", "link", "set", iface, "up"])
+
+
+# --------------------------------------------------
+# HELPERS
+# --------------------------------------------------
 
 def load_ini():
     p = configparser.ConfigParser()
