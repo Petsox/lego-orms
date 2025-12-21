@@ -34,13 +34,15 @@ def setup_ap_nm(cfg):
     iface = wifi.get("interface", "wlan0")
     ssid = ap["ssid"]
     psk = ap["psk"]
+    band = ap.get("band", "bg")
+    channel = ap.get("channel", "6")
 
     con_name = "lego-orms-ap"
 
     # Ensure NetworkManager is running
     run(["systemctl", "enable", "--now", "NetworkManager"])
 
-    # Remove existing AP connection if present
+    # Remove existing AP connection if present (ignore errors)
     run(["nmcli", "con", "delete", con_name])
 
     # Create AP connection
@@ -53,13 +55,24 @@ def setup_ap_nm(cfg):
         "ssid", ssid
     ])
 
-    # Configure AP mode + security
+    # 🔒 FORCE WPA2-PSK ONLY (no WPA3, no WPS, no PIN)
     run([
         "nmcli", "con", "modify", con_name,
         "802-11-wireless.mode", "ap",
-        "802-11-wireless.band", "bg",
+        "802-11-wireless.band", band,
+        "802-11-wireless.channel", channel,
+
+        # Security
         "wifi-sec.key-mgmt", "wpa-psk",
+        "wifi-sec.proto", "rsn",            # WPA2 only
+        "wifi-sec.pairwise", "ccmp",
+        "wifi-sec.group", "ccmp",
         "wifi-sec.psk", psk,
+
+        # 🔥 Disable WPA3 / PMF / WPS behavior
+        "802-11-wireless-security.pmf", "disable",
+
+        # Networking
         "ipv4.method", "shared",
         "ipv6.method", "ignore"
     ])
@@ -67,7 +80,7 @@ def setup_ap_nm(cfg):
     # Bring AP up
     run(["nmcli", "con", "up", con_name])
 
-    print("[wifi] AP ready via NetworkManager")
+    print("[wifi] AP ready via NetworkManager (WPA2-only)")
 
 
 def load_ini():
