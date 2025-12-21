@@ -42,7 +42,7 @@ def setup_ap_nm(cfg):
     # Ensure NetworkManager is running
     run(["systemctl", "enable", "--now", "NetworkManager"])
 
-    # Remove existing AP connection if present (ignore errors)
+    # Remove existing AP connection if present
     run(["nmcli", "con", "delete", con_name])
 
     # Create AP connection
@@ -55,32 +55,34 @@ def setup_ap_nm(cfg):
         "ssid", ssid
     ])
 
-    # 🔒 FORCE WPA2-PSK ONLY (no WPA3, no WPS, no PIN)
+    # Configure AP mode, WPA2-only, and custom IP/DHCP range
     run([
         "nmcli", "con", "modify", con_name,
         "802-11-wireless.mode", "ap",
         "802-11-wireless.band", band,
         "802-11-wireless.channel", channel,
 
-        # Security
+        # 🔒 WPA2 only (no WPA3 / no WPS)
         "wifi-sec.key-mgmt", "wpa-psk",
-        "wifi-sec.proto", "rsn",            # WPA2 only
+        "wifi-sec.proto", "rsn",
         "wifi-sec.pairwise", "ccmp",
         "wifi-sec.group", "ccmp",
         "wifi-sec.psk", psk,
-
-        # 🔥 Disable WPA3 / PMF / WPS behavior
         "802-11-wireless-security.pmf", "disable",
 
-        # Networking
+        # 🌐 AP IP + DHCP
         "ipv4.method", "shared",
+        "ipv4.addresses", "10.0.0.1/24",
+        "ipv4.shared-dhcp-range", "10.0.0.10,10.0.0.50",
+        "ipv4.never-default", "yes",
         "ipv6.method", "ignore"
     ])
 
     # Bring AP up
     run(["nmcli", "con", "up", con_name])
 
-    print("[wifi] AP ready via NetworkManager (WPA2-only)")
+    print("[wifi] AP ready (10.0.0.1 / DHCP 10.0.0.10–10.0.0.50)")
+
 
 
 def load_ini():
