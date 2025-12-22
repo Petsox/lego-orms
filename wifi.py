@@ -58,6 +58,11 @@ def setup_ap(cfg):
     run(["systemctl", "restart", "hostapd"])
 
     print("[wifi] AP READY (hostapd + dnsmasq)")
+    
+    # SET STATIC IP FOR BUILD-IN NIC
+
+    run(["ip", "addr", "add", "192.168.1.185/24", "dev", "eth0"])
+    run(["ip", "route", "replace", "default", "via", "192.168.1.1"])
 
 
 # --------------------------------------------------
