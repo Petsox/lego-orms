@@ -1,3 +1,4 @@
+from time import time
 from flask import Flask, jsonify, request, send_from_directory
 from adafruit_servokit import ServoKit
 from bbm_switch_extractor import extract_switches_from_bbm
@@ -234,6 +235,10 @@ def api_toggle_switch(sid):
 
     # 🔥 ACTUAL SERVO COMMAND
     kit.servo[channel].angle = angle
+    time.sleep(0.4)  # enough time to reach position
+    
+    # Disable PWM signal
+    kit.servo[channel].angle = None
 
     # Save new state
     sw["state"] = new_state
