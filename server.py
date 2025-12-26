@@ -1,4 +1,4 @@
-from time import time
+import time
 from flask import Flask, jsonify, request, send_from_directory
 from adafruit_servokit import ServoKit
 from bbm_switch_extractor import extract_switches_from_bbm
@@ -219,6 +219,12 @@ def api_toggle_switch(sid):
         return jsonify({"error": "Switch not configured"}), 400
 
     sw = cfg["switches"][sid]
+
+    if sw.get("channel") is None:
+        return jsonify({
+            "error": "Switch has no channel assigned",
+            "message": "Please calibrate this switch before using it."
+        }), 400
 
     channel = int(sw["channel"])
     angle0 = int(sw.get("angle0", 65))
